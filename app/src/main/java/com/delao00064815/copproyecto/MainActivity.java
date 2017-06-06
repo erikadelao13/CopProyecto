@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent2 = new Intent(this, Directorio.class);
                 startActivity(intent2);
                 break;
-            case R.id.oEmpleo:
+            case R.id.ofertas_empleo:
                 Intent intent3 = new Intent(this, OfertaEmpleo.class);
                 startActivity(intent3);
                 break;
-            case R.id.taller:
+            case R.id.talleres:
                 Intent intent4 = new Intent(this, Talleres.class);
 
         }

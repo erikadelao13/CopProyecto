@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".about_us.AboutUs"></activity>
+        <activity android:name=".directorio.Directorio"></activity>
     </application>
 
 </manifest>

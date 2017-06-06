@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             >
             <ImageView
-                android:onClick="ofertas_empleo"
+                android:onClick="onClick"
                 android:id="@+id/ofertas_empleo"
                 android:layout_gravity="center"
                 android:padding="8dp"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             >
             <ImageView
-                android:onClick="talleres"
+                android:onClick="onClick"
                 android:id="@+id/talleres"
                 android:layout_gravity="center"
                 android:padding="8dp"
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             >
             <ImageView
-                android:onClick="directorio"
+                android:onClick="onClick"
                 android:id="@+id/directorio"
                 android:layout_gravity="center"
                 android:padding="8dp"
@@ -106,7 +106,7 @@
             >
             <ImageView
                 android:id="@+id/aboutUs"
-                android:onClick="aboutUs"
+                android:onClick="onClick"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
