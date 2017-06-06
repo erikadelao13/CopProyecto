@@ -13,7 +13,7 @@
         android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/icon" />
+        android:src="@drawable/icon"/>
 
     <LinearLayout
         android:layout_marginTop="10dp"
@@ -28,20 +28,20 @@
             android:layout_height="wrap_content"
             >
             <ImageView
-                android:id="@+id/oEmpleo"
+                android:onClick="ofertas_empleo"
+                android:id="@+id/ofertas_empleo"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/em"
-                android:onClick="onClick"/>
+                android:src="@drawable/em"/>
             <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Ofertas de empleo"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -50,14 +50,14 @@
             android:layout_height="wrap_content"
             >
             <ImageView
-                android:id="@+id/taller"
+                android:onClick="talleres"
+                android:id="@+id/talleres"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/tall"
-                android:onClick="onClick"
                 />
             <TextView
                 android:layout_gravity="center"
@@ -82,25 +82,23 @@
             android:layout_height="wrap_content"
             >
             <ImageView
+                android:onClick="directorio"
                 android:id="@+id/directorio"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/directory"
-                android:onClick="onClick"/>
+                android:src="@drawable/directory"/>
             <TextView
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Directorio"
-                android:textSize="18sp"
-                android:onClick="onClick"/>
+                android:textSize="18sp"/>
         </LinearLayout>
 
         <LinearLayout
-            android:onClick="aboutUs"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:orientation="vertical"
@@ -108,6 +106,7 @@
             >
             <ImageView
                 android:id="@+id/aboutUs"
+                android:onClick="aboutUs"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"
