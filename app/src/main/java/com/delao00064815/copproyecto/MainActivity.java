@@ -1,11 +1,18 @@
 package com.delao00064815.copproyecto;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import com.delao00064815.copproyecto.about_us.AboutUs;
+import com.delao00064815.copproyecto.directorio.Directorio;
+import com.delao00064815.copproyecto.ofertaEmpleo.OfertaEmpleo;
+import com.delao00064815.copproyecto.talleres.Talleres;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,5 +39,26 @@ public class MainActivity extends AppCompatActivity {
 
         }*/
         return true;
+    }
+    public void onClick(View view){
+        int id = view.getId();
+        switch (id) {
+            case R.id.aboutUs:
+                Intent intent = new Intent(this, AboutUs.class);
+                startActivity(intent);
+                break;
+            case R.id.directorio:
+                Intent intent2 = new Intent(this, Directorio.class);
+                startActivity(intent2);
+                break;
+            case R.id.oEmpleo:
+                Intent intent3 = new Intent(this, OfertaEmpleo.class);
+                startActivity(intent3);
+                break;
+            case R.id.taller:
+                Intent intent4 = new Intent(this, Talleres.class);
+
+        }
+
     }
 }
