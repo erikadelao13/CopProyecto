@@ -51,7 +51,7 @@
             >
             <ImageView
                 android:onClick="onClick"
-                android:id="@+id/talleres"
+                android:id="@+id/taller_img"
                 android:layout_gravity="center"
                 android:padding="8dp"
                 android:layout_weight="1"

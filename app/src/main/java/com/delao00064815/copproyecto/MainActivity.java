@@ -57,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent3 = new Intent(this, OfertaEmpleo.class);
                 startActivity(intent3);
                 break;
-            case R.id.talleres:
+            case R.id.taller_img:
                 Intent intent4 = new Intent(this, Talleres.class);
+                startActivity(intent4);
 
         }
 

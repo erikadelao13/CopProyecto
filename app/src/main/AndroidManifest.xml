@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".about_us.AboutUs"></activity>
         <activity android:name=".directorio.Directorio"></activity>
+        <activity android:name=".talleres.Talleres"></activity>
+        <activity android:name=".ofertaEmpleo.OfertaEmpleo"></activity>
     </application>
 
 </manifest>
