@@ -22,6 +22,8 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Login extends AppCompatActivity {
 
@@ -49,11 +51,63 @@ public class Login extends AppCompatActivity {
         // Get text from email and passord field
         final String email = etEmail.getText().toString();
         final String password = etPassword.getText().toString();
-
+        if(validarTodo()){
         // Initialize  AsyncLogin() class with email and password
         new AsyncLogin().execute(email,password);
+        }
+        else
+            Toast.makeText(Login.this, "Ingresa tus datos correctamente", Toast.LENGTH_SHORT).show();
 
     }
+    public boolean validarTodo() {
+        EditText usuario = (EditText)findViewById(R.id.user);
+        EditText passw = (EditText)findViewById(R.id.pass1);
+        String user = usuario.getText().toString();
+        String pass= passw.getText().toString();
+
+        if (Patron(user) ==false || validarEsp(user)==true || validarEspP(pass)==true){
+
+            return false;
+        }
+        else
+            return true;
+
+
+    }
+    public boolean validarEsp(String cadena){
+        EditText usua = (EditText)findViewById(R.id.user);
+        if(cadena.matches("")){
+            usua.setError("Esta vacio el campo Carnet");
+            return true;
+        }
+        return false;
+    }public boolean validarEspP(String cadena){
+        EditText usua = (EditText)findViewById(R.id.pass1);
+        if(cadena.matches("")){
+            usua.setError("Esta vacio el campo Contraseña");
+            return true;
+        }
+        return false;
+    }
+    public boolean Patron(String x){
+        String c  = x;
+        EditText usu = (EditText)findViewById(R.id.user);
+        Pattern pattern = Pattern
+                .compile("^[0]{3}[0-9]{3}[0-1]{1}[0-7]{1}$");
+
+        Matcher mather = pattern.matcher(c);
+
+        if (mather.find()) {
+
+            return true;
+        }
+        else{
+            usu.setError("No es carnet válido");
+            return false;
+        }
+
+    }
+
 
     private class AsyncLogin extends AsyncTask<String, String, String>
     {

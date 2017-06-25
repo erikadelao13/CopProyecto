@@ -41,6 +41,7 @@
                         android:gravity="center"
                         android:id="@+id/user"
                         android:hint="Carnet UCA"
+
                         />
                 </android.support.design.widget.TextInputLayout>
 
