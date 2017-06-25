@@ -11,18 +11,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-
-        </activity>
-        <activity android:name=".about_us.AboutUs" />
-        <activity android:name=".directorio.Directorio" />
-        <activity android:name=".talleres.Talleres" />
-        <activity android:name=".ofertaEmpleo.OfertaEmpleo" />
-        <activity android:name=".Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".about_us.AboutUs" />
+        <activity android:name=".directorio.Directorio" />
+        <activity android:name=".talleres.Talleres" />
+        <activity android:name=".ofertaEmpleo.OfertaEmpleo"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name=".Login">
+
         </activity>
     </application>
 
