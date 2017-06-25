@@ -1,17 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.delao00064815.copproyecto.designs.TrabajosPasan">
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aqui iran informacion de las pasantias y
- ofertas de empleo"
-        android:layout_marginTop="219dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textSize="18sp"/>
+        card_view:cardBackgroundColor="#ffffff"
+        card_view:cardCornerRadius="2dp"
+        card_view:cardElevation="5dp"
+        card_view:cardUseCompatPadding="true">
 
-</RelativeLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.4"
+                    android:orientation="vertical">
+                    <TextView
+                        android:textSize="18sp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#333333"
+                        android:textStyle="bold"
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:text="Titulo"/>
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/content"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:text="Categorias:"
+
+                        />
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/content2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:text="Ing. Informatica"/>
+
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/content3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:text="Arquitectura"
+                        />
+
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_alignParentBottom="true"
+                        android:id="@+id/content4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="?attr/textAppearanceListItem"
+                        android:text="Ing. Quimica"
+                        />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/imagee"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/cop1"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_marginTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1">
+                <Button
+                    android:background="@android:color/transparent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver"
+                    />
+                <Button
+
+                    android:background="@android:color/transparent"
+
+                    android:text="Explorar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
