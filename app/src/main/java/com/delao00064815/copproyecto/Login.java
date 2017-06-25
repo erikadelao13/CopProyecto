@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.delao00064815.copproyecto.cloudMessaging.RegistrationService;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -43,6 +46,9 @@ public class Login extends AppCompatActivity {
         etEmail = (EditText) findViewById(R.id.user);
         etPassword = (EditText) findViewById(R.id.pass1);
 
+        //Obtiene token para notifiaciones
+        Intent i = new Intent(this, RegistrationService.class);
+        startService(i);
     }
 
     // Triggers when LOGIN Button clicked
