@@ -35,4 +35,5 @@ dependencies {
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
 
     testCompile 'junit:junit:4.12'
+    apply plugin: 'com.google.gms.google-services'
 }

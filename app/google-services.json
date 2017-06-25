@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "539034381181",
+    "project_id": "copproyecto"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539034381181:android:2ffbe3bd283d29f0",
+        "android_client_info": {
+          "package_name": "com.delao00064815.copproyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "539034381181-ddnkjdijdbvv1glg4g8ik9jaqj3p32a8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhIUQc938dmw5GnzxcHnd1OLb7f_hOdkg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
