@@ -8,19 +8,22 @@
     android:layout_height="match_parent"
     tools:context="com.delao00064815.copproyecto.MainActivity"
     android:background="#FFFFFF">
-
     <ImageView
-        android:layout_weight="1"
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/official3"/>
+    <View
+        android:background="#E2E2E2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:src="@drawable/icon"/>
+        android:layout_height="5dp"/>
 
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7">
+        android:layout_weight="0.5">
         <LinearLayout
             android:orientation="vertical"
             android:layout_weight="1"
@@ -31,17 +34,19 @@
                 android:onClick="onClick"
                 android:id="@+id/ofertas_empleo"
                 android:layout_gravity="center"
-                android:padding="8dp"
+                android:padding="30dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/em"/>
             <TextView
+                android:id="@+id/txtEmpleados"
                 android:layout_gravity="center"
+                android:layout_weight="0.1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:text="Ofertas de empleo"
-                android:textSize="18sp"/>
+                android:textSize="15sp"/>
         </LinearLayout>
         <LinearLayout
             android:orientation="vertical"
@@ -53,18 +58,20 @@
                 android:onClick="onClick"
                 android:id="@+id/taller_img"
                 android:layout_gravity="center"
-                android:padding="8dp"
+                android:padding="30dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/tall"
                 />
             <TextView
+                android:id="@+id/txtTalleres"
                 android:layout_gravity="center"
+                android:layout_weight="0.1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:text="Talleres"
-                android:textSize="18sp"/>
+                android:textSize="15sp"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -73,7 +80,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.7">
+        android:layout_weight="0.5">
 
         <LinearLayout
             android:orientation="vertical"
@@ -85,17 +92,19 @@
                 android:onClick="onClick"
                 android:id="@+id/directorio"
                 android:layout_gravity="center"
-                android:padding="8dp"
+                android:padding="30dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/directory"/>
             <TextView
+                android:id="@+id/txtDirectorio"
                 android:layout_gravity="center"
+                android:layout_weight="0.1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:text="Directorio"
-                android:textSize="18sp"/>
+                android:textSize="15sp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -108,17 +117,19 @@
                 android:id="@+id/aboutUs"
                 android:onClick="onClick"
                 android:layout_gravity="center"
-                android:padding="8dp"
+                android:padding="30dp"
                 android:layout_weight="1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:src="@drawable/boutus"/>
             <TextView
+                android:id="@+id/txtAboutUs"
                 android:layout_gravity="center"
+                android:layout_weight="0.1"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:text="Sobre nosotros"
-                android:textSize="18sp"/>
+                android:textSize="15sp"/>
         </LinearLayout>
 
     </LinearLayout>
