@@ -50,7 +50,7 @@ public class AdaptadorTalleres extends BaseAdapter {
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
         String currentName = images.get(position);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageTalleres);
-        Picasso.with(context).load(R.drawable.oferta1).into(imageView);
+        //Picasso.with(context).load(R.drawable.oferta1).into(imageView);
         return v;
     }
 
