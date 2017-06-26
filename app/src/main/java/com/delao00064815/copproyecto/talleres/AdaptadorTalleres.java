@@ -21,9 +21,9 @@ public class AdaptadorTalleres extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<Talleres> images;
+    private List<String> images;
 
-    public AdaptadorTalleres(Context context, int layout, List<Talleres> images){
+    public AdaptadorTalleres(Context context, int layout, List<String> images){
         this.context=context;
         this.layout=layout;
         this.images=images;
@@ -40,7 +40,7 @@ public class AdaptadorTalleres extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -49,9 +49,9 @@ public class AdaptadorTalleres extends BaseAdapter {
 
         LayoutInflater layout_inflater = LayoutInflater.from(this.context);
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
-        Talleres currentName = images.get(position);
+        String currentName = images.get(position);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageTalleres);
-        //imageView.setImageDrawable();
+        Picasso.with(context).load(R.drawable.fullofficial).into(imageView);
         return v;
     }
 
