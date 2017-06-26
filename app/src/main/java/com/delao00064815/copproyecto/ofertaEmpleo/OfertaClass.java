@@ -6,11 +6,11 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 public class OfertaClass {
     int idOferta;
-    String idTipoOferta, empresa,remuneracion,descripcionEmpleo, cargo, fechaLimite,img,carrera;
+    String nomTipoOferta, empresa,remuneracion,descripcionEmpleo, cargo, fechaLimite,img,carrera;
 
-    public OfertaClass(int idOferta, String idTipoOferta, String empresa, String cargo, String img,String carrera) {
+    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String cargo, String img,String carrera) {
         this.idOferta = idOferta;
-        this.idTipoOferta = idTipoOferta;
+        this.nomTipoOferta = nomTipoOferta;
         this.empresa = empresa;
         this.cargo = cargo;
         this.img = img;
@@ -34,11 +34,11 @@ public class OfertaClass {
     }
 
     public String getIdTipoOferta() {
-        return idTipoOferta;
+        return nomTipoOferta;
     }
 
     public void setIdTipoOferta(String idTipoOferta) {
-        this.idTipoOferta = idTipoOferta;
+        this.nomTipoOferta = idTipoOferta;
     }
 
     public String getEmpresa() {

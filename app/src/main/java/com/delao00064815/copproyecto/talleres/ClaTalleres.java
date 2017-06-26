@@ -10,17 +10,14 @@ public class ClaTalleres {
     private String fechaTaller;
     private String nomCategoria;
     private String imgTaller;
-    private String tallerPos;
-    private String playerImage;
 
-    public ClaTalleres(int idTaller, String nomTaller, String fechaTaller, String nomCategoria, String imgTaller, String tallerPos, String playerImage) {
+    public ClaTalleres(int idTaller, String nomTaller, String fechaTaller, String nomCategoria, String imgTaller) {
         this.idTaller = idTaller;
         this.nomTaller = nomTaller;
         this.fechaTaller = fechaTaller;
         this.nomCategoria = nomCategoria;
         this.imgTaller = imgTaller;
-        this.tallerPos = tallerPos;
-        this.playerImage = playerImage;
+
     }
 
     public int getIdTaller() {
@@ -63,19 +60,4 @@ public class ClaTalleres {
         this.imgTaller = imgTaller;
     }
 
-    public String getTallerPos() {
-        return tallerPos;
-    }
-
-    public void setTallerPos(String tallerPos) {
-        this.tallerPos = tallerPos;
-    }
-
-    public String getPlayerImage() {
-        return playerImage;
-    }
-
-    public void setPlayerImage(String playerImage) {
-        this.playerImage = playerImage;
-    }
 }

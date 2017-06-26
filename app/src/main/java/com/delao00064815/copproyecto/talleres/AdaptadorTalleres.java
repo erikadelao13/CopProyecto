@@ -11,6 +11,7 @@ import com.squareup.picasso.Picasso;
 
 import com.delao00064815.copproyecto.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,9 +22,9 @@ public class AdaptadorTalleres extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private List<String> images;
+    private ArrayList<ClaTalleres> images;
 
-    public AdaptadorTalleres(Context context, int layout, List<String> images){
+    public AdaptadorTalleres(Context context, int layout, ArrayList<ClaTalleres> images){
         this.context=context;
         this.layout=layout;
         this.images=images;
@@ -48,9 +49,9 @@ public class AdaptadorTalleres extends BaseAdapter {
         View v = convertView;
         LayoutInflater layout_inflater = LayoutInflater.from(this.context);
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
-        String currentName = images.get(position);
+        String currentName = images.get(position).getImgTaller();
         ImageView imageView = (ImageView) v.findViewById(R.id.imageTalleres);
-        //Picasso.with(context).load(R.drawable.oferta1).into(imageView);
+        Picasso.with(context).load(currentName).into(imageView);
         return v;
     }
 

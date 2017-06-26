@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
     /*spinner*/
     public void onClick(View view){
         int id = view.getId();
+        String msg;
         switch (id) {
             case R.id.aboutUs:
                 Intent intent = new Intent(this, AboutUs.class);
@@ -69,14 +70,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.directorio:
                 Intent intent2 = new Intent(this, Directorio.class);
+                msg="directory";
+                intent2.putExtra("message",msg);
                 startActivity(intent2);
                 break;
             case R.id.ofertas_empleo:
                 Intent intent3 = new Intent(this, OfertaEmpleo.class);
+                msg="jobs";
+                intent3.putExtra("message",msg);
                 startActivity(intent3);
                 break;
             case R.id.taller_img:
                 Intent intent4 = new Intent(this, Talleres.class);
+                msg="workshop";
+                intent4.putExtra("message",msg);
                 startActivity(intent4);
 
         }
