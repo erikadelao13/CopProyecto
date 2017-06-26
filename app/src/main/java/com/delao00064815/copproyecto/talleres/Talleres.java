@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,8 +27,12 @@ public class Talleres extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_talleres);
+        setContentView(R.layout.listview_talleres);
+        //aqui deberia sacar la lista de la base de datos supongo
+        images = new ArrayList<String>() {
+        };
         AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
+        listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(myAdapter);
     }
     public int getDrawableId(Context context, String name){
