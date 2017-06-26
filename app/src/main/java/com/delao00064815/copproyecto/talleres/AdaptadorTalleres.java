@@ -46,12 +46,11 @@ public class AdaptadorTalleres extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = convertView;
-
         LayoutInflater layout_inflater = LayoutInflater.from(this.context);
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
         String currentName = images.get(position);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageTalleres);
-        Picasso.with(context).load(R.drawable.fullofficial).into(imageView);
+        Picasso.with(context).load(R.drawable.oferta1).into(imageView);
         return v;
     }
 

@@ -21,6 +21,7 @@ import java.util.List;
  */
 
 public class Talleres extends AppCompatActivity {
+
     ListView listView;
     List<String> images;
 
@@ -31,6 +32,12 @@ public class Talleres extends AppCompatActivity {
         //aqui deberia sacar la lista de la base de datos supongo
         images = new ArrayList<String>() {
         };
+        images.add("official4");
+        images.add("official4");
+        images.add("official4");
+        images.add("official4");
+        images.add("official4");
+
         AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(myAdapter);
