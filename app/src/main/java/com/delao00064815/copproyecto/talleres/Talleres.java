@@ -45,8 +45,7 @@ public class Talleres extends AppCompatActivity {
         AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(myAdapter);
-        register = (Button) findViewById(R.id.register);
-        register.setOnClickListener(new View.OnClickListener(){
+        /*register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 AlertDialog.Builder builder = new AlertDialog.Builder(Talleres.this);
@@ -62,7 +61,7 @@ public class Talleres extends AppCompatActivity {
                 builder.setView(mView);
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                /*builder.setTitle("Esta a punto de inscribirse a este taller");
+                builder.setTitle("Esta a punto de inscribirse a este taller");
                 builder.setTitle("Estas seguro que deseas inscribirte?, si es asi, por favor oprime Aceptar, de lo contrario, oprima No.");
                 builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
                     @Override
@@ -72,9 +71,9 @@ public class Talleres extends AppCompatActivity {
                 } );
                 builder.setNegativeButton("No",null);
                 AlertDialog alertDialog = builder.create();
-                alertDialog.show();*/
+                alertDialog.show();
             }
-        });
+        });*/
 
 
     }
