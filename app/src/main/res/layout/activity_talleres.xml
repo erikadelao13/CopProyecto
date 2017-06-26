@@ -19,7 +19,7 @@
 
     <Button
         android:layout_gravity="bottom|end"
-        android:id="@+id/txtInscribirse"
+        android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="20dp"

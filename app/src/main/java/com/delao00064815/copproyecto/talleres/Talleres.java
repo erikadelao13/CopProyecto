@@ -1,12 +1,16 @@
 package com.delao00064815.copproyecto.talleres;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,7 +25,7 @@ import java.util.List;
  */
 
 public class Talleres extends AppCompatActivity {
-
+    Button register;
     ListView listView;
     List<String> images;
 
@@ -41,10 +45,40 @@ public class Talleres extends AppCompatActivity {
         AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(myAdapter);
+        register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                AlertDialog.Builder builder = new AlertDialog.Builder(Talleres.this);
+                View mView = getLayoutInflater().inflate(R.layout.custom_dialog,null);
+                Button aceptar = (Button) findViewById(R.id.aceptar);
+                aceptar.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(Talleres.this, "Has sido registrado correctamente.",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                });
+                builder.setView(mView);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                /*builder.setTitle("Esta a punto de inscribirse a este taller");
+                builder.setTitle("Estas seguro que deseas inscribirte?, si es asi, por favor oprime Aceptar, de lo contrario, oprima No.");
+                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                } );
+                builder.setNegativeButton("No",null);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();*/
+            }
+        });
+
+
     }
-    public int getDrawableId(Context context, String name){
-        return context.getResources().getIdentifier(name,"drawable", context.getPackageName());
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
