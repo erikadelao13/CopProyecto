@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent3);
                 break;
             case R.id.taller_img:
+                Log.d("prueba","rip");
                 Intent intent4 = new Intent(this, Talleres.class);
                 msg="workshop";
                 intent4.putExtra("message",msg);
