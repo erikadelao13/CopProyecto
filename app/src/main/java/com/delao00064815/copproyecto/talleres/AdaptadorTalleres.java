@@ -67,7 +67,7 @@ public class AdaptadorTalleres extends BaseAdapter {
                 // Use the Builder class for convenient dialog construction
                 AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
 
-                builder.setTitle("Usted está a punto de registrarse");
+                builder.setTitle("Usted está a punto de inscribirse");
 
                 builder.setPositiveButton("si", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
