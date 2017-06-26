@@ -20,7 +20,7 @@ public class Directorio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.directory);
+        setContentView(R.layout.directory_content);
     }
 
     @Override

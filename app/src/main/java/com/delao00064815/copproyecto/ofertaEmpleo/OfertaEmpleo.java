@@ -28,7 +28,7 @@ public class OfertaEmpleo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ofertas_empleo);
+        setContentView(R.layout.oferta_content);
         searchView = (MaterialSearchView)findViewById(R.id.search_view);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
