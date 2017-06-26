@@ -37,7 +37,8 @@
                 android:text="Si"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="AceptarOnClick"/>
             <View
                 android:background="#E2E2E1"
                 android:layout_width="3dp"
@@ -46,7 +47,8 @@
             android:text="No"
             android:layout_weight="1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:onClick="CancelOnClick"/>
 
     </LinearLayout>
 

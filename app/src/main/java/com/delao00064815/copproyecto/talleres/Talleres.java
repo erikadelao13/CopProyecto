@@ -48,7 +48,7 @@ public class Talleres extends AppCompatActivity {
         listView.setAdapter(myAdapter);
 
         /************para el dialog************************/
-        Button register = (Button) findViewById(R.id.register);
+        /*Button register = (Button) findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -68,7 +68,7 @@ public class Talleres extends AppCompatActivity {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             }
-        });
+        });*/
 
 
     }

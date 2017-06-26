@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.delao00064815.copproyecto.about_us.AboutUs;
+import com.delao00064815.copproyecto.cloudMessaging.RegistrationService;
 import com.delao00064815.copproyecto.directorio.Directorio;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaEmpleo;
 import com.delao00064815.copproyecto.talleres.Talleres;
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         txtDirectorio.setTypeface(typeface);
         txtAboutUs.setTypeface(typeface);
 
+        //Obtiene token para notifiaciones
+        Intent i = new Intent(this, RegistrationService.class);
+        startService(i);
 
     }
 /*spinner*/

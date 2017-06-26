@@ -45,10 +45,6 @@ public class Login extends AppCompatActivity {
         // Get Reference to variables
         etEmail = (EditText) findViewById(R.id.user);
         etPassword = (EditText) findViewById(R.id.pass1);
-
-        //Obtiene token para notifiaciones
-        Intent i = new Intent(this, RegistrationService.class);
-        startService(i);
     }
 
     // Triggers when LOGIN Button clicked

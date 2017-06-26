@@ -1,6 +1,7 @@
 package com.delao00064815.copproyecto.talleres;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ public class AdaptadorTalleres extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
         View v = convertView;
         LayoutInflater layout_inflater = LayoutInflater.from(this.context);
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
@@ -58,13 +59,32 @@ public class AdaptadorTalleres extends BaseAdapter {
         ImageView imageView = (ImageView) v.findViewById(R.id.imageTalleres);
         Picasso.with(context).load(R.drawable.fullofficial).into(imageView);
 
-/*
+
         Button register = (Button) v.findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                View mView = context.getLayoutInflater().inflate(R.layout.custom_dialog,null);
+                // Use the Builder class for convenient dialog construction
+                AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+
+                builder.setTitle("Usted está a punto de registrarse");
+
+                builder.setPositiveButton("si", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Toast.makeText(parent.getContext(),"Has sido registrado correctamente",Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.setNegativeButton("no", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }});
+
+                builder.setMessage("¿Está seguro que desea inscribirse a este taller?");
+                // Create the AlertDialog object and return it
+                AlertDialog dialog = builder.create();
+                dialog.show();
+               /* View mView = context.getLayoutInflater().inflate(R.layout.custom_dialog,null);
                 Button aceptar = (Button) v.findViewById(R.id.aceptar);
                 aceptar.setOnClickListener(new View.OnClickListener(){
                     @Override
@@ -75,9 +95,9 @@ public class AdaptadorTalleres extends BaseAdapter {
                 });
                 builder.setView(mView);
                 AlertDialog dialog = builder.create();
-                dialog.show();
+                dialog.show();*/
             }
-        });*/
+        });
 
         return v;
     }
