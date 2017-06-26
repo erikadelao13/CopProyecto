@@ -7,10 +7,4 @@
         >
 
     </item>
-
-    <item
-        android:id="@+id/action_card2"
-        android:title="Something random">
-
-    </item>
 </menu>
