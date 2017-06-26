@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -45,12 +46,17 @@ public class Talleres extends AppCompatActivity {
         AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(myAdapter);
-        /*register.setOnClickListener(new View.OnClickListener(){
+
+        /************para el dialog************************/
+        Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v){
+                Log.d("Prueba","Mensaje ");
                 AlertDialog.Builder builder = new AlertDialog.Builder(Talleres.this);
                 View mView = getLayoutInflater().inflate(R.layout.custom_dialog,null);
-                Button aceptar = (Button) findViewById(R.id.aceptar);
+                Button aceptar = (Button) v.findViewById(R.id.aceptar);
                 aceptar.setOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v) {
@@ -61,19 +67,8 @@ public class Talleres extends AppCompatActivity {
                 builder.setView(mView);
                 AlertDialog dialog = builder.create();
                 dialog.show();
-                builder.setTitle("Esta a punto de inscribirse a este taller");
-                builder.setTitle("Estas seguro que deseas inscribirte?, si es asi, por favor oprime Aceptar, de lo contrario, oprima No.");
-                builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                } );
-                builder.setNegativeButton("No",null);
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
             }
-        });*/
+        });
 
 
     }

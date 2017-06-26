@@ -192,7 +192,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomCategoria"),
                     url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
         }
-        tAdapter=new AdaptadorTalleres(context,R.id.listView,ws);
+        //tAdapter=new AdaptadorTalleres(context,R.id.listView,ws);
         tList.setAdapter(tAdapter);
 
     }
