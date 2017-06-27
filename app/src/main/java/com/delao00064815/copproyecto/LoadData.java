@@ -234,6 +234,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
+        String gg="";
 
         oAdapter=new OfertaAdapter(context,offer);
         rView1.setAdapter(oAdapter);
