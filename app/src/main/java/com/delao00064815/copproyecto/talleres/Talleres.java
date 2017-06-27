@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutionException;
 public class Talleres extends AppCompatActivity {
     Button register;
     ListView listView;
-    List<String> images;
+    ArrayList<String> images;
     AdaptadorTalleres myAdapter;
 
     @Override
@@ -38,15 +38,17 @@ public class Talleres extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_talleres);
         //aqui deberia sacar la lista de la base de datos supongo
-        /*images = new ArrayList<String>() {
+        images = new ArrayList<String>() {
         };
         images.add("official4");
         images.add("official4");
         images.add("official4");
         images.add("official4");
-        images.add("official4");*/
+        images.add("official4");
 
         listView = (ListView) findViewById(R.id.listView);
+        /*AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);
+        listView.setAdapter(adapter);*/
 
         try {
             new LoadData(this,myAdapter,listView,"taller").execute().get();

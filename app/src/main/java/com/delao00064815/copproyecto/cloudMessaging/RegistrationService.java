@@ -35,7 +35,7 @@ public class RegistrationService extends IntentService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Log.d("Registration Token", registrationToken);
+        //Log.d("Registration Token", registrationToken);
 
     }
 }

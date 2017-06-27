@@ -8,7 +8,8 @@ public class OfertaClass {
     int idOferta;
     String nomTipoOferta, empresa,remuneracion,descripcionEmpleo, cargo, fechaLimite,img,carrera;
 
-    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String cargo, String img,String carrera) {
+
+    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String cargo, String img, String carrera) {
         this.idOferta = idOferta;
         this.nomTipoOferta = nomTipoOferta;
         this.empresa = empresa;
@@ -28,6 +29,8 @@ public class OfertaClass {
     public int getIdOferta() {
         return idOferta;
     }
+
+    public String getnomTipoOferta(){ return nomTipoOferta;}
 
     public void setIdOferta(int idOferta) {
         this.idOferta = idOferta;

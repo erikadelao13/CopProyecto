@@ -57,7 +57,7 @@ public class AdaptadorTalleres extends BaseAdapter {
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
         //String currentName = images.get(position);
         ImageView imageView = (ImageView) v.findViewById(R.id.imageTalleres);
-        Picasso.with(context).load(R.drawable.fullofficial).into(imageView);
+        Picasso.with(context).load(images.get(position).getImgTaller()).into(imageView);
 
 
         Button register = (Button) v.findViewById(R.id.register);
@@ -84,18 +84,22 @@ public class AdaptadorTalleres extends BaseAdapter {
                 // Create the AlertDialog object and return it
                 AlertDialog dialog = builder.create();
                 dialog.show();
-               /* View mView = context.getLayoutInflater().inflate(R.layout.custom_dialog,null);
-                Button aceptar = (Button) v.findViewById(R.id.aceptar);
-                aceptar.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(context, "Has sido registrado correctamente.",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                });
-                builder.setView(mView);
+            }
+        });
+
+        ImageView imageTalleres = (ImageView) v.findViewById(R.id.imageTalleres);
+        imageTalleres.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+                View v2 = layoutInflater.inflate(R.layout.image_view_talleres, null);
+                ImageView image = (ImageView) v2.findViewById(R.id.image_view_talleres);
+                AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
                 AlertDialog dialog = builder.create();
-                dialog.show();*/
+                dialog.setView(v2);
+                dialog.setCancelable(true);
+                image.setImageResource(R.drawable.oferta1);
+                dialog.show();
             }
         });
 
