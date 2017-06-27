@@ -33,24 +33,24 @@ public class OfertaEmpleo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.oferta_content);
-        searchView = (MaterialSearchView)findViewById(R.id.search_view);
+        setContentView(R.layout.ofertas_empleo);
+        /*searchView = (MaterialSearchView)findViewById(R.id.search_view);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
        // getSupportActionBar().setTitle("Material Search");
-       toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
+       toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));*/
 
         rView=(RecyclerView)findViewById(R.id.mRecycler);
-        /*
+
         try {
-            new LoadData(this,oAdapter,rView,"taller").execute().get();
+            new LoadData(this,oAdapter,rView,"oferta").execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
+        /*searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
 
@@ -65,7 +65,7 @@ public class OfertaEmpleo extends AppCompatActivity {
                // lstView.setAdapter(adapter);
 
             }
-        });
+        });*/
 
         /*searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
             @Override

@@ -48,17 +48,19 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<DirectorioClass> direct=new ArrayList<>();
 
     //URLs
-    String ip="copuca-com.stackstaging.com/";
+    //String ip="copuca-com.stackstaging.com/";
+    String ip="10.45.7.31";
     String url_talleres="http://"+ip+"/WebServer/imagenes/talleres/";
     String url_ofertas="http://"+ip+"/WebServer/imagenes/ofertas/";
 
-    String url_workshop="http://"+ip+"/WebServer/talleres.php";
+    String url_workshop="http://"+ip+"/COP/talleres.php";
     String url_employers="http://"+ip+"/WebServer/empleados.php";
-    String url_offers="http://"+ip+"/WebServer/ofertas.php";
+    String url_offers="http://"+ip+"/COP/ofertas_empleo.php";
 
     //Listas
     ListView tList;
-    RecyclerView rView;
+    RecyclerView rView1;
+    RecyclerView rView2;
 
     //Adaptadores
     AdaptadorTalleres tAdapter;
@@ -79,7 +81,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     public LoadData(Context c,OfertaAdapter oa,RecyclerView rv,String condition) {
         context=c;
         oAdapter=oa;
-        rView=rv;
+        rView1=rv;
         type=condition;
     }
 
@@ -87,7 +89,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     public LoadData(Context c,DirectAdapter da,RecyclerView rv,String condition){
         context=c;
         dAdapter=da;
-        rView=rv;
+        rView2=rv;
         type=condition;
     }
 
@@ -125,7 +127,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                      e.printStackTrace();
                  }
                  break;
-             case "empleados":
+             case "empleado":
                  try {
                      response=getInfoWeb(url_employers);
                  } catch (MalformedURLException e) {
@@ -193,7 +195,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         catch (Exception e){
 
         }
-        Log.d(TAG, "enviarjuegosGET:"+result.toString()+"");
+        Log.d(TAG, "getInfoWeb:"+result.toString()+"");
         return result.toString();
     }
 
@@ -206,8 +208,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomCategoria"),
                     url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
         }
-        tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
-        tList.setAdapter(tAdapter);
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getIdTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getFechaTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");
+
+        /*tAdapter=new AdaptadorTalleres(context,ws);
+        tList.setAdapter(tAdapter);*/
 
     }
 
@@ -215,14 +223,20 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         JSONArray jsonArr=new JSONArray(jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
-                    jsonArr.getJSONObject(i).getString("nomTipoOferta"),
+                    jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
                     jsonArr.getJSONObject(i).getString("empresa"),
                     jsonArr.getJSONObject(i).getString("cargo"),
-                    url_ofertas+jsonArr.getJSONObject(i).getString("imgOferta"),
+                    url_ofertas+jsonArr.getJSONObject(i).getString("img"),
                     jsonArr.getJSONObject(i).getString("nomCarrera")));
         }
+        Log.d(TAG, "setOffer: "+offer.get(1).getIdTipoOferta()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getnomTipoOferta()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
+
         oAdapter=new OfertaAdapter(context,offer);
-        rView.setAdapter(oAdapter);
+        rView1.setAdapter(oAdapter);
     }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);
@@ -233,6 +247,6 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargo")));
         }
         dAdapter=new DirectAdapter(context,direct);
-        rView.setAdapter(dAdapter);
+        rView2.setAdapter(dAdapter);
     }
 }
