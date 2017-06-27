@@ -28,9 +28,9 @@ public class AdaptadorTalleres extends BaseAdapter {
 
     private Context context;
     private int layout;
-    private ArrayList<ClaTalleres> images;
+    private ArrayList<String> images;
 
-    public AdaptadorTalleres(Context context, int layout, ArrayList<ClaTalleres> images){
+    public AdaptadorTalleres(Context context, int layout, ArrayList<String> images){
         this.context=context;
         this.layout=layout;
         this.images=images;

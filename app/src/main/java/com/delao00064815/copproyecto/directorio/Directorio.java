@@ -9,7 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.delao00064815.copproyecto.LoadData;
+//import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.R;
 

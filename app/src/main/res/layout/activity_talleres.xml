@@ -16,18 +16,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:scaleType="centerCrop" />
-   <!-- <TextView
+        <TextView
         android:id="@+id/movieBigViewHolderTitleTextView"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="bottom"
-        android:background="#c4c4c4"
+        android:background="#EEF5DB"
         android:padding="10dp"
         android:textColor="#bbfcfbff"
         android:text=""
         android:textAllCaps="true"
         android:textSize="20sp"
-        android:textStyle="bold" /> -->
+        android:textStyle="bold" />
 
     <Button
         android:layout_gravity="bottom|end"
