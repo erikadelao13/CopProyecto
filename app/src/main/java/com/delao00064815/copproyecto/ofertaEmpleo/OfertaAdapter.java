@@ -1,6 +1,7 @@
 package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Context;
+import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,12 +28,9 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
         holder.titulo.setText(players.get(position).getCargo());
-        /*holder.tituloTxt.setText(players.get(position).getTitulo());
-        holder.subtituloTxt.setText(players.get(position).getSubtitulo());
-        holder.imgNoticiaTxt.setText(players.get(position).getImgNoticia());
-        holder.idJuegoTxt.setText(Integer.toString(players.get(position).getIdJuego()));
-        holder.idNoticiaTxt.setText(Integer.toString(players.get(position).getIdNoticia()));
-        holder.descNoticiaTxt.setText(players.get(position).getDescNoticia());*/
+        holder.carrera.setText(players.get(position).getCarrera());
+        Rect rect =new Rect(holder.foto.getLeft(),holder.foto.getTop(),holder.foto.getRight(),holder.foto.getBottom());
+        holder.foto.setImageUrl(players.get(position).getImg(),rect);
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
