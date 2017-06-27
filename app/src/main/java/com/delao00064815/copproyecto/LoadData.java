@@ -48,7 +48,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<DirectorioClass> direct=new ArrayList<>();
 
     //URLs
-    String ip="http://copuca-com.stackstaging.com/";
+    String ip="http://copuca-com.stackstaging.com";
     String url_talleres="http://"+ip+"/WebServer/imagenes/talleres/";
     String url_ofertas="http://"+ip+"/WebServer/imagenes/ofertas/";
 
