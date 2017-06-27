@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 //import com.delao00064815.copproyecto.LoadData;
+import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.R;
 
@@ -29,7 +30,7 @@ public class Directorio extends AppCompatActivity {
         setContentView(R.layout.directory);
 
         rView=(RecyclerView)findViewById(R.id.mRecyclerDirectory);
-    /*
+
         try {
             new LoadData(this,dAdapter,rView,"empleado").execute().get();
         } catch (InterruptedException e) {
@@ -37,7 +38,7 @@ public class Directorio extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-*/
+
     }
 
     @Override

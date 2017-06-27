@@ -2,6 +2,7 @@ package com.delao00064815.copproyecto.directorio;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,13 +29,14 @@ public class DirectAdapter extends RecyclerView.Adapter<com.delao00064815.coppro
         holder.nombre.setText(players.get(position).getNombreEmpleado());
         holder.cargo.setText(players.get(position).getCargo());
         holder.correo.setText(players.get(position).getCorreoEmpleado());
+        Log.d("Hola", "onBindViewHolder: "+players.get(position).getNombreEmpleado()+"");
 
-        holder.setItemClickListener(new ItemClickListener() {
+        /*holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
                 //Toast.makeText(c,players.get(pos).getIdNoticia(),Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
     @Override
     public int getItemCount() {
