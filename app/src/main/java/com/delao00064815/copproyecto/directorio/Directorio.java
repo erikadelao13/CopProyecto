@@ -29,7 +29,7 @@ public class Directorio extends AppCompatActivity {
         setContentView(R.layout.directory_content);
 
         rView=(RecyclerView)findViewById(R.id.mRecyclerDirectory);
-
+/*
         try {
             new LoadData(this,dAdapter,rView,"taller").execute().get();
         } catch (InterruptedException e) {
@@ -37,7 +37,7 @@ public class Directorio extends AppCompatActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
+*/
     }
 
     @Override

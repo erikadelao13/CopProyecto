@@ -41,13 +41,14 @@ public class OfertaEmpleo extends AppCompatActivity {
        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));
 
         rView=(RecyclerView)findViewById(R.id.mRecycler);
+        /*
         try {
             new LoadData(this,oAdapter,rView,"taller").execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
+        }*/
 
         searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
