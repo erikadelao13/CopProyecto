@@ -46,31 +46,6 @@ public class Talleres extends AppCompatActivity {
         AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
         listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(myAdapter);
-
-        /************para el dialog************************/
-        /*Button register = (Button) findViewById(R.id.register);
-        register.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                Log.d("Prueba","Mensaje ");
-                AlertDialog.Builder builder = new AlertDialog.Builder(Talleres.this);
-                View mView = getLayoutInflater().inflate(R.layout.custom_dialog,null);
-                Button aceptar = (Button) v.findViewById(R.id.aceptar);
-                aceptar.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(Talleres.this, "Has sido registrado correctamente.",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                });
-                builder.setView(mView);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });*/
-
-
     }
 
 

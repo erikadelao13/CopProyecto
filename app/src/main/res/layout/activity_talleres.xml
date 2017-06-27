@@ -7,7 +7,7 @@
     android:layout_margin="0dp"
     android:background="@color/cardview_dark_background"
     card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="4dp"
+    card_view:cardElevation="2dp"
     card_view:cardUseCompatPadding="true">
 
     <ImageView
@@ -16,6 +16,18 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:scaleType="centerCrop" />
+   <!-- <TextView
+        android:id="@+id/movieBigViewHolderTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_gravity="bottom"
+        android:background="#c4c4c4"
+        android:padding="10dp"
+        android:textColor="#bbfcfbff"
+        android:text=""
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textStyle="bold" /> -->
 
     <Button
         android:layout_gravity="bottom|end"
@@ -25,7 +37,7 @@
         android:padding="20dp"
         android:text="Inscribirse"
         android:textAllCaps="true"
-        android:textSize="15sp"
+        android:textSize="10sp"
         android:textStyle="bold" />
 
 
