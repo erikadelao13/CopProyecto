@@ -48,14 +48,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<DirectorioClass> direct=new ArrayList<>();
 
     //URLs
-    //String ip="copuca-com.stackstaging.com/";
+    String ip2="copuca-com.stackstaging.com";
     String ip="10.45.7.31";
-    String url_talleres="http://"+ip+"/WebServer/imagenes/talleres/";
-    String url_ofertas="http://"+ip+"/WebServer/imagenes/ofertas/";
+    String url_talleres="http://"+ip2+"/WebServer/imagenes/talleres/";
+    String url_ofertas="http://"+ip2+"/WebServer/imagenes/ofertas/";
 
-    String url_workshop="http://"+ip+"/COP/talleres.php";
-    String url_employers="http://"+ip+"/WebServer/empleados.php";
-    String url_offers="http://"+ip+"/COP/ofertas_empleo.php";
+    String url_workshop="http://"+ip2+"/WebServer/talleres.php";
+    String url_employers="http://"+ip2+"/WebServer/empleados.php";
+    String url_offers="http://"+ip2+"/WebServer/ofertas_empleo.php";
 
     //Listas
     ListView tList;
@@ -214,8 +214,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");
 
-        /*tAdapter=new AdaptadorTalleres(context,ws);
-        tList.setAdapter(tAdapter);*/
+        tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
+        tList.setAdapter(tAdapter);
 
     }
 
@@ -243,10 +243,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         JSONArray jsonArr=new JSONArray(jsoncad);
         for (int i=0;i<jsonArr.length();i++){
             direct.add(new DirectorioClass(jsonArr.getJSONObject(i).getInt("idEmpleado"),
-                    jsonArr.getJSONObject(i).getString("nomEmpleado"),
+                    jsonArr.getJSONObject(i).getString("nombreEmpleado"),
                     jsonArr.getJSONObject(i).getString("correoEmpleado"),
-                    jsonArr.getJSONObject(i).getString("cargo")));
+                    jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
+        Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
         dAdapter=new DirectAdapter(context,direct);
         rView2.setAdapter(dAdapter);
     }

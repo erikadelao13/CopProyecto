@@ -26,10 +26,10 @@ public class Directorio extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.directory_content);
+        setContentView(R.layout.directory);
 
         rView=(RecyclerView)findViewById(R.id.mRecyclerDirectory);
-/*
+    /*
         try {
             new LoadData(this,dAdapter,rView,"empleado").execute().get();
         } catch (InterruptedException e) {

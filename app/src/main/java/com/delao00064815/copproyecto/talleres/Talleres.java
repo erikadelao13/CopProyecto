@@ -47,16 +47,16 @@ public class Talleres extends AppCompatActivity {
         images.add("official4");
 
         listView = (ListView) findViewById(R.id.listView);
-        AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);
-        listView.setAdapter(adapter);
+        /*AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);
+        listView.setAdapter(adapter);*/
 
-        /*try {
+        try {
             new LoadData(this,myAdapter,listView,"taller").execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }*/
+        }
 
         /************para el dialog************************/
         /*Button register = (Button) findViewById(R.id.register);
