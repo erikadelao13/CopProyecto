@@ -2,6 +2,7 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +13,12 @@ import com.delao00064815.copproyecto.R;
 import java.util.ArrayList;
 
 public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
+    String TAG="Lo que sea";
     Context c;
-    ArrayList<OfertaClass> players;
+    ArrayList<OfertaClass> ofertas;
     public OfertaAdapter(Context c, ArrayList<OfertaClass> players) {
         this.c = c;
-        this.players = players;
+        this.ofertas = players;
     }
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -26,12 +28,16 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
     }
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        /*holder.tituloTxt.setText(players.get(position).getTitulo());
-        holder.subtituloTxt.setText(players.get(position).getSubtitulo());
-        holder.imgNoticiaTxt.setText(players.get(position).getImgNoticia());
-        holder.idJuegoTxt.setText(Integer.toString(players.get(position).getIdJuego()));
-        holder.idNoticiaTxt.setText(Integer.toString(players.get(position).getIdNoticia()));
+        /*holder.tituloTxt.setText(players.get(position).getIdOferta());
+        holder.subtituloTxt.setText(players.get(position).getnomTipoOferta());
+        holder.imgNoticiaTxt.setText(players.get(position).getEmpresa());
+        holder.idJuegoTxt.setText(players.);
+        holder.idNoticiaTxt.setText(Integer.toString(players);
         holder.descNoticiaTxt.setText(players.get(position).getDescNoticia());*/
+        Log.d(TAG, "onBindViewHolder: "+ofertas.get(position).getnomTipoOferta()+"");
+        holder.title.setText(ofertas.get(position).getnomTipoOferta());
+        holder.content.setText(ofertas.get(position).getCarrera());
+        holder.lastDate.setText(ofertas.get(position).getFechaLimite());
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
@@ -41,6 +47,6 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
     }
     @Override
     public int getItemCount() {
-        return players.size();
+        return ofertas.size();
     }
 }

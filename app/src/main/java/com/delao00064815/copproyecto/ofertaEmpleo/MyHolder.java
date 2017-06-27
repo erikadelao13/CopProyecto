@@ -6,23 +6,22 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.delao00064815.copproyecto.R;
 
 
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    TextView tituloTxt, subtituloTxt,imgNoticiaTxt,idNoticiaTxt, idJuegoTxt,descNoticiaTxt;
+    TextView title,content,lastDate;
+    ImageView imagee;
     ItemClickListener itemClickListener;
     public MyHolder(View itemView) {
         super(itemView);
-        /*
-       tituloTxt= (TextView) itemView.findViewById(R.id.titulotxt);
-        subtituloTxt= (TextView) itemView.findViewById(R.id.subtitulotxt);
-        imgNoticiaTxt= (TextView) itemView.findViewById(R.id.imgnoticiatxt);
-        idNoticiaTxt= (TextView) itemView.findViewById(R.id.idnoticiatxt);
-        idJuegoTxt= (TextView) itemView.findViewById(R.id.idjuegotxt);
-        descNoticiaTxt= (TextView) itemView.findViewById(R.id.descNoticiatxt);
-        itemView.setOnClickListener(this);
-        */
+        title =(TextView)itemView.findViewById(R.id.title);
+        content=(TextView)itemView.findViewById(R.id.content2);
+        lastDate=(TextView)itemView.findViewById(R.id.lastDate);
+
     }
     public  void setItemClickListener(ItemClickListener ic)
     {

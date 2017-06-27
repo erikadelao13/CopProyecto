@@ -29,15 +29,15 @@ public class Directorio extends AppCompatActivity {
         setContentView(R.layout.directory_content);
 
         rView=(RecyclerView)findViewById(R.id.mRecyclerDirectory);
-
+/*
         try {
-            new LoadData(this,dAdapter,rView,"taller").execute().get();
+            new LoadData(this,dAdapter,rView,"empleado").execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
+*/
     }
 
     @Override
