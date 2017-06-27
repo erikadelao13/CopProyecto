@@ -15,11 +15,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by hmanr on 5/6/2017.
@@ -29,23 +31,55 @@ public class Talleres extends AppCompatActivity {
     Button register;
     ListView listView;
     List<String> images;
+    AdaptadorTalleres myAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.listview_talleres);
         //aqui deberia sacar la lista de la base de datos supongo
-        images = new ArrayList<String>() {
+        /*images = new ArrayList<String>() {
         };
         images.add("official4");
         images.add("official4");
         images.add("official4");
         images.add("official4");
-        images.add("official4");
+        images.add("official4");*/
 
-        AdaptadorTalleres myAdapter = new AdaptadorTalleres(this, R.layout.activity_talleres, images);
         listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(myAdapter);
+
+        try {
+            new LoadData(this,myAdapter,listView,"taller").execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        /************para el dialog************************/
+        /*Button register = (Button) findViewById(R.id.register);
+        register.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                Log.d("Prueba","Mensaje ");
+                AlertDialog.Builder builder = new AlertDialog.Builder(Talleres.this);
+                View mView = getLayoutInflater().inflate(R.layout.custom_dialog,null);
+                Button aceptar = (Button) v.findViewById(R.id.aceptar);
+                aceptar.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(Talleres.this, "Has sido registrado correctamente.",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+                });
+                builder.setView(mView);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });*/
+
+
     }
 
 

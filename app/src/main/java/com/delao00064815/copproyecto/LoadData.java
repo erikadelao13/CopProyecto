@@ -8,7 +8,10 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Switch;
 
+import com.delao00064815.copproyecto.directorio.DirectAdapter;
+import com.delao00064815.copproyecto.directorio.DirectorioClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.MyHolder;
+import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
 import com.delao00064815.copproyecto.talleres.AdaptadorTalleres;
 import com.delao00064815.copproyecto.talleres.ClaTalleres;
@@ -42,6 +45,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Arreglos
     ArrayList<OfertaClass> offer=new ArrayList<>();
     ArrayList<ClaTalleres> ws=new ArrayList<>();
+    ArrayList<DirectorioClass> direct=new ArrayList<>();
 
     //URLs
     String ip="http://copuca-com.stackstaging.com/";
@@ -55,9 +59,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Listas
     ListView tList;
     RecyclerView rView;
+
     //Adaptadores
     AdaptadorTalleres tAdapter;
-    MyHolder mHolder;
+    DirectAdapter dAdapter;
+    OfertaAdapter oAdapter;
 
 
 
@@ -70,9 +76,17 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     }
 
     //Constructor para ofertas de empleo
-    public LoadData(Context c,MyHolder mH,RecyclerView rv,String condition) {
+    public LoadData(Context c,OfertaAdapter oa,RecyclerView rv,String condition) {
         context=c;
-        mHolder=mH;
+        oAdapter=oa;
+        rView=rv;
+        type=condition;
+    }
+
+    //Constructor para directorio
+    public LoadData(Context c,DirectAdapter da,RecyclerView rv,String condition){
+        context=c;
+        dAdapter=da;
         rView=rv;
         type=condition;
     }
@@ -99,21 +113,21 @@ public class LoadData extends AsyncTask<Void, Void, String> {
          switch(type) {
             case "taller":
                 try {
-                    getInfoWeb(url_workshop);
+                    response=getInfoWeb(url_workshop);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
                 break;
              case "oferta":
                  try {
-                     getInfoWeb(url_offers);
+                     response=getInfoWeb(url_offers);
                  } catch (MalformedURLException e) {
                      e.printStackTrace();
                  }
                  break;
              case "empleados":
                  try {
-                     getInfoWeb(url_employers);
+                     response=getInfoWeb(url_employers);
                  } catch (MalformedURLException e) {
                      e.printStackTrace();
                  }
@@ -192,7 +206,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomCategoria"),
                     url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
         }
-        //tAdapter=new AdaptadorTalleres(context,R.id.listView,ws);
+        tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
         tList.setAdapter(tAdapter);
 
     }
@@ -207,13 +221,18 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     url_ofertas+jsonArr.getJSONObject(i).getString("imgOferta"),
                     jsonArr.getJSONObject(i).getString("nomCarrera")));
         }
-        //Faltan adaptadores
+        oAdapter=new OfertaAdapter(context,offer);
+        rView.setAdapter(oAdapter);
     }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);
         for (int i=0;i<jsonArr.length();i++){
-
+            direct.add(new DirectorioClass(jsonArr.getJSONObject(i).getInt("idEmpleado"),
+                    jsonArr.getJSONObject(i).getString("nomEmpleado"),
+                    jsonArr.getJSONObject(i).getString("correoEmpleado"),
+                    jsonArr.getJSONObject(i).getString("cargo")));
         }
-        //Faltan adaptadores
+        dAdapter=new DirectAdapter(context,direct);
+        rView.setAdapter(dAdapter);
     }
 }
