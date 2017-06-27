@@ -26,6 +26,7 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
     }
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
+        holder.titulo.setText(players.get(position).getCargo());
         /*holder.tituloTxt.setText(players.get(position).getTitulo());
         holder.subtituloTxt.setText(players.get(position).getSubtitulo());
         holder.imgNoticiaTxt.setText(players.get(position).getImgNoticia());

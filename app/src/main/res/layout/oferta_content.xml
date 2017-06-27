@@ -10,9 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
+        android:titleTextColor="#FFFFFF"
+
         />
 
-    <com.miguelcatalan.materialsearchview.MaterialSearchView
+   <!-- <com.miguelcatalan.materialsearchview.MaterialSearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +25,7 @@
         app:searchSuggestionIcon="@drawable/ic_suggestion"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        />
+        /> -->
 <android.support.v7.widget.CardView
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/NewsCardView"
@@ -69,7 +71,7 @@
                     android:layout_height="wrap_content"
 
                     android:textAppearance="?attr/textAppearanceListItem"
-                    android:text="Categorias:"
+                    android:text="Carreras:"
 
                     />
                 <TextView
@@ -82,27 +84,9 @@
                     android:textAppearance="?attr/textAppearanceListItem"
                     android:text="Ing. Informatica"/>
 
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_alignParentBottom="true"
-                    android:id="@+id/content3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?attr/textAppearanceListItem"
-                    android:text="Arquitectura"
-                    />
 
-                <TextView
-                    android:layout_marginTop="8dp"
-                    android:layout_marginLeft="32dp"
-                    android:layout_alignParentBottom="true"
-                    android:id="@+id/content4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?attr/textAppearanceListItem"
-                    android:text="Ing. Quimica"
-                    />
+
+
             </LinearLayout>
 
 
@@ -133,15 +117,9 @@
                 android:background="@android:color/transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ver"
+                android:text="Ver más"
                 />
-            <Button
 
-                android:background="@android:color/transparent"
-
-                android:text="Explorar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
 

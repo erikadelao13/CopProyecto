@@ -25,8 +25,8 @@ public class DirectAdapter extends RecyclerView.Adapter<com.delao00064815.coppro
     }
     @Override
     public void onBindViewHolder(MyHolder holder, int position) {
-        /*holder.tituloTxt.setText(players.get(position).getTitulo());
-        holder.subtituloTxt.setText(players.get(position).getSubtitulo());
+        holder.nombre.setText(players.get(position).getIdEmpleado());
+        /*holder.subtituloTxt.setText(players.get(position).getSubtitulo());
         holder.imgNoticiaTxt.setText(players.get(position).getImgNoticia());
         holder.idJuegoTxt.setText(Integer.toString(players.get(position).getIdJuego()));
         holder.idNoticiaTxt.setText(Integer.toString(players.get(position).getIdNoticia()));
