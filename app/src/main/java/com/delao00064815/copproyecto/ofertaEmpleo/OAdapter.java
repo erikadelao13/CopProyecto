@@ -16,6 +16,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 import static com.delao00064815.copproyecto.R.id.imageView;
 
 /**
@@ -66,6 +68,7 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
                 AlertDialog dialog = builder.create();
                 dialog.setView(v2);
                 dialog.setCancelable(true);
+                PhotoViewAttacher photoView = new PhotoViewAttacher(image); //esto uso para el zoom de las imagenes y otras cosas que agregue al gradle
                 Picasso.with(c).load(oferta.get(position).getImg()).into(image);
                 dialog.show();
             }

@@ -20,6 +20,8 @@ import com.delao00064815.copproyecto.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.co.senab.photoview.PhotoViewAttacher;
+
 /**
  * Created by rober on 24/6/2017.
  */
@@ -91,10 +93,13 @@ public class AdaptadorTalleres extends BaseAdapter {
         imageTalleres.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+
                 LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
                 View v2 = layoutInflater.inflate(R.layout.image_view_talleres, null);
                 ImageView image = (ImageView) v2.findViewById(R.id.image_view_talleres);
                 AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+                //con esto cargo las imagenes desde el webservice
+                PhotoViewAttacher photoView = new PhotoViewAttacher(image); //esto uso para el zoom de las imagenes y otras cosas que agregue al gradle
                 Picasso.with(context).load(images.get(position).getImgTaller()).into(image);
                 AlertDialog dialog = builder.create();
                 dialog.setView(v2);
