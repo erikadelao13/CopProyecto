@@ -26,12 +26,16 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_nombre"
                 android:padding="6dp"
-                android:text="Brenzo Lozano Segovia"/>
+                android:textColor="#000000"
+                android:text="Brenzo Lozano Segovia"
+                android:textStyle="bold"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
                 android:id="@+id/txt_cargo"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 android:text="Cargo: Técnico de Emprendimiento"
                 />
             <TextView
@@ -39,6 +43,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="6dp"
+                android:textStyle="italic"
+                android:textColor="#2962FF"
                 android:text="Correo electrónico: blozano@uca.edu.sv"/>
         </LinearLayout>
 
