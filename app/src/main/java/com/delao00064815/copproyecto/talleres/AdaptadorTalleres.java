@@ -51,7 +51,7 @@ public class AdaptadorTalleres extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, final ViewGroup parent) {
+    public View getView(final int position, View convertView, final ViewGroup parent) {
         View v = convertView;
         LayoutInflater layout_inflater = LayoutInflater.from(this.context);
         v = layout_inflater.inflate(R.layout.activity_talleres, null);
@@ -87,7 +87,7 @@ public class AdaptadorTalleres extends BaseAdapter {
             }
         });
 
-        ImageView imageTalleres = (ImageView) v.findViewById(R.id.imageTalleres);
+        final ImageView imageTalleres = (ImageView) v.findViewById(R.id.imageTalleres);
         imageTalleres.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -95,10 +95,11 @@ public class AdaptadorTalleres extends BaseAdapter {
                 View v2 = layoutInflater.inflate(R.layout.image_view_talleres, null);
                 ImageView image = (ImageView) v2.findViewById(R.id.image_view_talleres);
                 AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
+                Picasso.with(context).load(images.get(position).getImgTaller()).into(image);
                 AlertDialog dialog = builder.create();
                 dialog.setView(v2);
                 dialog.setCancelable(true);
-                image.setImageResource(R.drawable.oferta1);
+                //image.setImageResource(R.drawable.oferta1);
                 dialog.show();
             }
         });

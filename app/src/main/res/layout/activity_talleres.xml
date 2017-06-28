@@ -7,7 +7,7 @@
     android:layout_margin="0dp"
     android:background="@color/cardview_dark_background"
     card_view:cardCornerRadius="2dp"
-    card_view:cardElevation="2dp"
+    card_view:cardElevation="4dp"
     card_view:cardUseCompatPadding="true">
 
     <ImageView
@@ -17,11 +17,11 @@
         android:layout_gravity="top"
         android:scaleType="centerCrop" />
         <TextView
-        android:id="@+id/movieBigViewHolderTitleTextView"
+        android:id="@+id/backgroundLine"
         android:layout_width="match_parent"
         android:layout_height="54dp"
         android:layout_gravity="bottom"
-        android:background="#EEF5DB"
+        android:background="#f5f5f5"
         android:padding="10dp"
         android:textColor="#bbfcfbff"
         android:text=""
