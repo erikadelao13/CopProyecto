@@ -22,7 +22,7 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
     }
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.ofertas_empleo,parent,false);
+        View v= LayoutInflater.from(c).inflate(R.layout.oferta_content,parent,false);
         MyHolder holder=new MyHolder(v);
         return holder;
     }

@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 import android.widget.Toast;
 
 //import com.delao00064815.copproyecto.LoadData;
@@ -21,15 +22,15 @@ import java.util.concurrent.ExecutionException;
  */
 
 public class Directorio extends AppCompatActivity {
-    DirectAdapter dAdapter;
-    RecyclerView rView;
+    DAdapter dAdapter;
+    ListView rView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.directory);
 
-        rView=(RecyclerView)findViewById(R.id.mRecyclerDirectory);
+        rView=(ListView) findViewById(R.id.mRecyclerDirectory);
 
         try {
             new LoadData(this,dAdapter,rView,"empleado").execute().get();

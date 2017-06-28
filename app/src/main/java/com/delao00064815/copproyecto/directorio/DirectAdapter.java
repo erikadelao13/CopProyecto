@@ -20,7 +20,7 @@ public class DirectAdapter extends RecyclerView.Adapter<com.delao00064815.coppro
     }
     @Override
     public com.delao00064815.copproyecto.directorio.MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.ofertas_empleo,parent,false);
+        View v= LayoutInflater.from(c).inflate(R.layout.directory_content,parent,false);
         com.delao00064815.copproyecto.directorio.MyHolder holder=new com.delao00064815.copproyecto.directorio.MyHolder(v);
         return holder;
     }
@@ -29,14 +29,14 @@ public class DirectAdapter extends RecyclerView.Adapter<com.delao00064815.coppro
         holder.nombre.setText(players.get(position).getNombreEmpleado());
         holder.cargo.setText(players.get(position).getCargo());
         holder.correo.setText(players.get(position).getCorreoEmpleado());
-        Log.d("Hola", "onBindViewHolder: "+players.get(position).getNombreEmpleado()+"");
+        Log.d("Prueba", "onBindViewHolder: "+players.get(position).getNombreEmpleado()+"");
 
-        /*holder.setItemClickListener(new ItemClickListener() {
+        holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(int pos) {
                 //Toast.makeText(c,players.get(pos).getIdNoticia(),Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
     }
     @Override
     public int getItemCount() {

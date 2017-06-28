@@ -28,8 +28,8 @@ import java.util.concurrent.ExecutionException;
 
 public class OfertaEmpleo extends AppCompatActivity {
     MaterialSearchView searchView;
-    OfertaAdapter oAdapter;
-    RecyclerView rView;
+    OAdapter oAdapter;
+    ListView rView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +37,10 @@ public class OfertaEmpleo extends AppCompatActivity {
         /*searchView = (MaterialSearchView)findViewById(R.id.search_view);
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
-       // getSupportActionBar().setTitle("Material Search");
+       getSupportActionBar().setTitle("Material Search");
        toolbar.setTitleTextColor(Color.parseColor("#FFFFFF"));*/
 
-        rView=(RecyclerView)findViewById(R.id.mRecycler);
+        rView=(ListView)findViewById(R.id.mRecycler);
 
         try {
             new LoadData(this,oAdapter,rView,"oferta").execute().get();

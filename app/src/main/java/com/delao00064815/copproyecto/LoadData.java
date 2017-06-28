@@ -8,9 +8,11 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Switch;
 
+import com.delao00064815.copproyecto.directorio.DAdapter;
 import com.delao00064815.copproyecto.directorio.DirectAdapter;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.MyHolder;
+import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
 import com.delao00064815.copproyecto.talleres.AdaptadorTalleres;
@@ -64,8 +66,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     //Adaptadores
     AdaptadorTalleres tAdapter;
-    DirectAdapter dAdapter;
-    OfertaAdapter oAdapter;
+    DAdapter dAdapter;
+    OAdapter oAdapter;
 
 
 
@@ -78,18 +80,18 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     }
 
     //Constructor para ofertas de empleo
-    public LoadData(Context c,OfertaAdapter oa,RecyclerView rv,String condition) {
+    public LoadData(Context c, OAdapter oa, ListView rv, String condition) {
         context=c;
         oAdapter=oa;
-        rView1=rv;
+        tList=rv;
         type=condition;
     }
 
     //Constructor para directorio
-    public LoadData(Context c,DirectAdapter da,RecyclerView rv,String condition){
+    public LoadData(Context c,DAdapter adapter,ListView rv,String condition){
         context=c;
-        dAdapter=da;
-        rView2=rv;
+        dAdapter=adapter;
+        tList=rv;
         type=condition;
     }
 
@@ -221,6 +223,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     public void setOffer(String jsonCad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsonCad);
+        Log.d(TAG, "setOffer: "+jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
                     jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
@@ -236,8 +239,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
         String gg="";
 
-        oAdapter=new OfertaAdapter(context,offer);
-        rView1.setAdapter(oAdapter);
+        oAdapter=new OAdapter(context,offer);
+        tList.setAdapter(oAdapter);
     }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);
@@ -248,7 +251,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
         Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
-        dAdapter=new DirectAdapter(context,direct);
-        rView2.setAdapter(dAdapter);
+        dAdapter=new DAdapter(context,direct);
+        tList.setAdapter(dAdapter);
     }
 }
