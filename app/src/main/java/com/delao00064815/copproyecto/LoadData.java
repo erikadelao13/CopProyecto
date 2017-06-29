@@ -291,9 +291,9 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
-                    jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
+                    jsonArr.getJSONObject(i).getString("cargo"),
                     jsonArr.getJSONObject(i).getString("empresa"),
-                    jsonArr.getJSONObject(i).getString("fechaLimite"),
+                    jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
                     url_ofertas+jsonArr.getJSONObject(i).getString("img"),
                     jsonArr.getJSONObject(i).getString("nomCarrera")));
             Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
