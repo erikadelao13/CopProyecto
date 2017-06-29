@@ -66,7 +66,7 @@ public class AdaptadorTalleres extends BaseAdapter {
         Picasso.with(context).load(images.get(position).getImgTaller()).into(imageView);
 
 
-        Button register = (Button) v.findViewById(R.id.register);
+        final Button register = (Button) v.findViewById(R.id.register);
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -85,6 +85,7 @@ public class AdaptadorTalleres extends BaseAdapter {
                         try {
                             new LoadData(parent.getContext(), String.valueOf(images.get(position).getIdTaller())).execute().get();
                             Log.d("taunty", String.valueOf(images.get(position).getIdTaller()));
+                            register.setVisibility(View.INVISIBLE);
                             Toast.makeText(parent.getContext(),"Has sido registrado correctamente",Toast.LENGTH_SHORT).show();
                         } catch (InterruptedException e) {
                             e.printStackTrace();
