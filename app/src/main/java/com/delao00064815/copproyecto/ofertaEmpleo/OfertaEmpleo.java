@@ -107,9 +107,6 @@ public class OfertaEmpleo extends AppCompatActivity {
             Intent i = new Intent(this, Login.class);
             startActivity(i);
         }
-        /*else if(){
-
-        }*/
         return true;
     }
     /*public boolean onCreateOptionsMenu(Menu menu) {
