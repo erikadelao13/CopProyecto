@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
             return true;
         }
         else{
-            usu.setError("No es carnet válido");
+            usu.setError("No son datos válidos");
             return false;
         }
 
