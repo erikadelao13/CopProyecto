@@ -44,8 +44,7 @@
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="El centro de Orientacion profecional cop es un modelo
-de atencion y servicios para estudiantes de la Universidad Centroamericana Jose Simeon Cañas.  "
+            android:text="El Centro de Orientación Profesional (COP) es un modelo de atención y servicios para estudiantes de la Universidad Centroamericana José Simeón Cañas."
             android:layout_below="@+id/textView"
             android:textSize="14sp"
             android:layout_alignLeft="@+id/textView"
@@ -56,7 +55,7 @@ de atencion y servicios para estudiantes de la Universidad Centroamericana Jose 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Áreas de desempeño"
+            android:text="Productos"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_below="@+id/textView2"

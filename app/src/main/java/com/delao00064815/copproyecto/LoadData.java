@@ -43,7 +43,6 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     private String response = "";
     private String type;
-    private String parameter;
 
     //Arreglos
     ArrayList<OfertaClass> offer=new ArrayList<>();

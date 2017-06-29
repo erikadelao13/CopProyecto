@@ -6,7 +6,7 @@
     android:layout_height="300dp"
     android:layout_margin="0dp"
     android:background="@color/cardview_dark_background"
-    card_view:cardCornerRadius="2dp"
+    card_view:cardCornerRadius="4dp"
     card_view:cardElevation="4dp"
     card_view:cardUseCompatPadding="true">
 
