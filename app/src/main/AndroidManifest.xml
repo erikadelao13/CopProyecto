@@ -30,7 +30,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".ofertaEmpleo.OfertaEmpleo"
-            android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"
             />
         <activity android:name=".Login"
