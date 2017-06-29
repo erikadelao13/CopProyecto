@@ -219,7 +219,7 @@ public class Login extends AppCompatActivity {
                 /* SharedPreferences*/
                 SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putString("carnetE", String.valueOf(etEmail));
+                editor.putString("carnetE", etEmail.getText().toString());
                 editor.commit();
 
                 Toast.makeText(Login.this, "Inicio de Sesión Perfecto", Toast.LENGTH_SHORT).show();

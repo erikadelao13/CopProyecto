@@ -2,7 +2,9 @@ package com.delao00064815.copproyecto.talleres;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.delao00064815.copproyecto.LoadData;
 import com.squareup.picasso.Picasso;
 
 import com.delao00064815.copproyecto.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
@@ -66,6 +70,11 @@ public class AdaptadorTalleres extends BaseAdapter {
         register.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
+                if(!pref.contains("carnetE")) {
+                    Toast.makeText(parent.getContext(),"Debes iniciar sesión para poder registrarte a un taller",Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 // Use the Builder class for convenient dialog construction
                 AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
 
@@ -73,7 +82,15 @@ public class AdaptadorTalleres extends BaseAdapter {
 
                 builder.setPositiveButton("si", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(parent.getContext(),"Has sido registrado correctamente",Toast.LENGTH_SHORT).show();
+                        try {
+                            new LoadData(parent.getContext(), String.valueOf(images.get(position).getIdTaller())).execute().get();
+                            Log.d("taunty", String.valueOf(images.get(position).getIdTaller()));
+                            Toast.makeText(parent.getContext(),"Has sido registrado correctamente",Toast.LENGTH_SHORT).show();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
 

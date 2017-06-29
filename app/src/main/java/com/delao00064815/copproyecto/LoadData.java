@@ -2,18 +2,15 @@ package com.delao00064815.copproyecto;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.Switch;
 
 import com.delao00064815.copproyecto.directorio.DAdapter;
-import com.delao00064815.copproyecto.directorio.DirectAdapter;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
-import com.delao00064815.copproyecto.ofertaEmpleo.MyHolder;
 import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
-import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
 import com.delao00064815.copproyecto.talleres.AdaptadorTalleres;
 import com.delao00064815.copproyecto.talleres.ClaTalleres;
@@ -25,9 +22,13 @@ import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 /**
@@ -58,6 +59,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     String url_workshop="http://"+ip2+"/WebServer/talleres.php";
     String url_employers="http://"+ip2+"/WebServer/empleados.php";
     String url_offers="http://"+ip2+"/WebServer/ofertas_empleo.php";
+    String url_workshopSignUp="http://"+ip2+"/WebServer/registroTalleres.php";
 
     //Listas
     ListView tList;
@@ -95,6 +97,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         type=condition;
     }
 
+    //Constructor para agregarTaller
+    public LoadData(Context c,String condition){
+        context=c;
+        type=condition;
+    }
+
 
     //Constructor vacio
     public LoadData(){}
@@ -107,7 +115,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         pDialog.setMessage("Loading data. Please wait...");
         pDialog.setIndeterminate(false);
         pDialog.setCancelable(false);
-        pDialog.show();
+        //pDialog.show();
 
     }
 
@@ -136,6 +144,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                      e.printStackTrace();
                  }
                  break;
+             default:
+                 try {
+                     signUp(type);
+                 } catch (UnsupportedEncodingException e) {
+                     e.printStackTrace();
+                 }
          }
         return null;
     }
@@ -200,6 +214,58 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "getInfoWeb:"+result.toString()+"");
         return result.toString();
     }
+
+    public  void signUp(String idTaller) throws UnsupportedEncodingException {
+        // Get user defined values
+
+        SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
+
+        String carnetE = pref.getString("carnetE", null);
+        Log.d("signinUp", carnetE);
+        if(carnetE.equals(null)){
+            return;
+        }
+        BufferedReader reader=null;
+
+        // Send data
+        try
+        {
+            // Defined URL  where to send data
+            URL uri = new URL(url_workshopSignUp+"?carnetE="+carnetE+"&idTaller="+idTaller);
+
+            HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
+            httpCon.setReadTimeout(20000);
+            httpCon.setConnectTimeout(20000);
+            httpCon.setDoInput(true);
+            httpCon.setDoOutput(true);
+            int respuesta =httpCon.getResponseCode();
+
+            reader = new BufferedReader(new InputStreamReader(httpCon.getInputStream()));
+            StringBuilder sb = new StringBuilder();
+            String line = null;
+
+            // Read Server Response
+            while((line = reader.readLine()) != null)
+            {
+                sb.append(line + "\n");
+            }
+            Log.d("response", sb.toString());
+        }
+        catch(Exception ex)
+        {
+
+        }
+        finally
+        {
+            try
+            {
+                reader.close();
+            }
+            catch(Exception ex) {}
+        }
+
+    }
+
 
     public void setWorkshop(String jsonCad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsonCad);

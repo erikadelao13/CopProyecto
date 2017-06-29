@@ -114,8 +114,8 @@ public class OfertaEmpleo extends AppCompatActivity {
     }
     /*public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_item,menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        searchView.setMenuItem(item);
+        //MenuItem item = menu.findItem(R.id.action_search);
+        //searchView.setMenuItem(item);
         return true;
     }*/
 }
