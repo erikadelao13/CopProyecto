@@ -1,40 +1,38 @@
 package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.R;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
+import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
+import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroFacultad;
+import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroTipoOferta;
+import com.github.clans.fab.FloatingActionMenu;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 /**
  * Created by hmanr on 5/6/2017.
  */
 
-public class OfertaEmpleo extends AppCompatActivity {
+public class OfertaEmpleo extends FragmentActivity {
     //MaterialSearchView searchView;
     OAdapter oAdapter;
     ListView rView;
+    FloatingActionMenu actionMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ofertas_empleo);
-
+        actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
+        actionMenu.setClosedOnTouchOutside(true);
 
         rView=(ListView)findViewById(R.id.mRecycler);
 
@@ -100,7 +98,26 @@ public class OfertaEmpleo extends AppCompatActivity {
         return true;
     }
 */
-    @Override
+    //@Override
+    public void selectCarrera(View v){
+            FiltroCarrera my_dialog = new FiltroCarrera();
+            my_dialog.show(getSupportFragmentManager(),"Dialog Carrera");
+            actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
+            actionMenu.toggle(true);
+    }
+    public void selectTipo(View v){
+        FiltroTipoOferta my_dialog = new FiltroTipoOferta();
+        my_dialog.show(getSupportFragmentManager(),"Dialog Tipo");
+        actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
+        actionMenu.toggle(true);
+    }
+    public void selectFacultad(View v){
+        FiltroFacultad my_dialog = new FiltroFacultad();
+        my_dialog.show(getSupportFragmentManager(),"Dialog Facultad");
+        actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
+        actionMenu.toggle(true);
+    }
+
     public boolean onOptionsItemSelected(MenuItem item){
         int res_id = item.getItemId();
         if(res_id==R.id.login){
