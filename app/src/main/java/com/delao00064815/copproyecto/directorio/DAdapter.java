@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.delao00064815.copproyecto.R;
+import com.delao00064815.copproyecto.ofertaEmpleo.*;
 
 import org.w3c.dom.Text;
 
