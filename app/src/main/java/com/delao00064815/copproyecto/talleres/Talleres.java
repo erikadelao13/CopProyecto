@@ -40,11 +40,11 @@ public class Talleres extends AppCompatActivity {
         //aqui deberia sacar la lista de la base de datos supongo
         images = new ArrayList<String>() {
         };
+       /* images.add("official4");
         images.add("official4");
         images.add("official4");
         images.add("official4");
-        images.add("official4");
-        images.add("official4");
+        images.add("official4");*/
 
         listView = (ListView) findViewById(R.id.listView);
         /*AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);

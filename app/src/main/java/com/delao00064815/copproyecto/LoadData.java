@@ -265,27 +265,6 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     }
 
-
-    public void setWorkshop(String jsonCad) throws JSONException {
-        JSONArray jsonArr=new JSONArray(jsonCad);
-        for (int i=0;i<jsonArr.length();i++){
-            ws.add(new ClaTalleres(jsonArr.getJSONObject(i).getInt("idTaller"),
-                    jsonArr.getJSONObject(i).getString("nomTaller"),
-                    jsonArr.getJSONObject(i).getString("fechaTaller"),
-                    jsonArr.getJSONObject(i).getString("nomCategoria"),
-                    url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
-        }
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getIdTaller()+"");
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getFechaTaller()+"");
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");
-
-        tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
-        tList.setAdapter(tAdapter);
-
-    }
-
     public void setOffer(String jsonCad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsonCad);
         Log.d(TAG, "setOffer: "+jsonCad);
@@ -308,6 +287,25 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         oAdapter=new OAdapter(context,offer);
         tList.setAdapter(oAdapter);
     }
+    public void setWorkshop(String jsonCad) throws JSONException {
+        JSONArray jsonArr=new JSONArray(jsonCad);
+        for (int i=0;i<jsonArr.length();i++){
+            ws.add(new ClaTalleres(jsonArr.getJSONObject(i).getInt("idTaller"),
+                    jsonArr.getJSONObject(i).getString("nomTaller"),
+                    jsonArr.getJSONObject(i).getString("fechaTaller"),
+                    jsonArr.getJSONObject(i).getString("nomCategoria"),
+                    url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
+        }
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getIdTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getFechaTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");
+
+        tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
+        tList.setAdapter(tAdapter);
+
+    }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);
         for (int i=0;i<jsonArr.length();i++){
@@ -317,7 +315,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
         Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
-        dAdapter=new DAdapter(context,direct);
+        dAdapter=new DAdapter(context,R.layout.directory_content,direct);
         tList.setAdapter(dAdapter);
     }
 }
