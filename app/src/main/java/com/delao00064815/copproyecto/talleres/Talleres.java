@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
+import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
 
 import java.util.ArrayList;

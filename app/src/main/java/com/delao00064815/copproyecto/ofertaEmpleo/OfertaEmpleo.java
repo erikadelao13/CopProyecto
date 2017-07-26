@@ -10,6 +10,7 @@ import android.widget.ListView;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
+import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroFacultad;
@@ -43,6 +44,13 @@ public class OfertaEmpleo extends FragmentActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+        /*try {
+            new NetOfertas(this,oAdapter,rView).execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }*/
 
         /*searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override

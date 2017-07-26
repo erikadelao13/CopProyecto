@@ -180,7 +180,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                 break;
 
         }
-        pDialog.dismiss();
+       // pDialog.dismiss();
 
     }
 
@@ -292,15 +292,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
-                    jsonArr.getJSONObject(i).getString("nomTipoOferta"),
+                    jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
                     jsonArr.getJSONObject(i).getString("empresa"),
-                    jsonArr.getJSONObject(i).getString("remuneracion"),
-                    jsonArr.getJSONObject(i).getString("descEmpleo"),
+                    jsonArr.getJSONObject(i).getString("descripcionEmpleo"),
                     jsonArr.getJSONObject(i).getString("cargo"),
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
-                    jsonArr.getJSONObject(i).getString("img"),
-                    url_ofertas+jsonArr.getJSONObject(i).getString("carrera"),
-                    jsonArr.getJSONObject(i).getInt("vistas")));
+                    url_ofertas+jsonArr.getJSONObject(i).getString("img"),
+                    jsonArr.getJSONObject(i).getString("nomCarrera")));
             Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
         Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
@@ -320,7 +318,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
         Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
-        dAdapter=new DAdapter(context,direct);
+        dAdapter=new DAdapter(context,R.layout.directory_content,direct);
         tList.setAdapter(dAdapter);
     }
 }

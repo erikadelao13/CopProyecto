@@ -48,11 +48,10 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
     OAdapter oAdapter;
 
     //Constructor
-    public NetOfertas(Context c, OAdapter oa, ListView rv, String condition) {
+    public NetOfertas(Context c, OAdapter oa, ListView rv) {
         context=c;
         oAdapter=oa;
         tList=rv;
-        type=condition;
     }
 
 
@@ -83,6 +82,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+        pDialog.dismiss();
     }
 
 
@@ -120,15 +120,13 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
-                    jsonArr.getJSONObject(i).getString("nomTipoOferta"),
+                    jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
                     jsonArr.getJSONObject(i).getString("empresa"),
-                    jsonArr.getJSONObject(i).getString("remuneracion"),
-                    jsonArr.getJSONObject(i).getString("descEmpleo"),
+                    jsonArr.getJSONObject(i).getString("descripcionEmpleo"),
                     jsonArr.getJSONObject(i).getString("cargo"),
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
-                    jsonArr.getJSONObject(i).getString("img"),
-                    url_ofertas_imagen+jsonArr.getJSONObject(i).getString("carrera"),
-                    jsonArr.getJSONObject(i).getInt("vistas")));
+                    url_ofertas_imagen+jsonArr.getJSONObject(i).getString("img"),
+                    jsonArr.getJSONObject(i).getString("nomCarrera")));
             Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
         Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");

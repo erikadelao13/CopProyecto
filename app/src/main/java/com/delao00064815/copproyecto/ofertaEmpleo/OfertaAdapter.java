@@ -34,8 +34,8 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.idJuegoTxt.setText(players.);
         holder.idNoticiaTxt.setText(Integer.toString(players);
         holder.descNoticiaTxt.setText(players.get(position).getDescNoticia());*/
-        Log.d(TAG, "onBindViewHolder: "+ofertas.get(position).getnomTipoOferta()+"");
-        holder.title.setText(ofertas.get(position).getnomTipoOferta());
+        Log.d(TAG, "onBindViewHolder: "+ofertas.get(position).getNomTipoOferta()+"");
+        holder.title.setText(ofertas.get(position).getNomTipoOferta());
         holder.content.setText(ofertas.get(position).getCarrera());
         holder.lastDate.setText(ofertas.get(position).getFechaLimite());
         holder.setItemClickListener(new ItemClickListener() {
