@@ -5,43 +5,32 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
  */
 
 public class OfertaClass {
-    int idOferta;
-    String nomTipoOferta, empresa,remuneracion,descripcionEmpleo, cargo, fechaLimite,img,carrera;
+    int idOferta, vistas;
+    String nomTipoOferta, empresa,remuneracion, descEmpleo, cargo, fechaLimite, img, carrera;
 
-
-    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String cargo, String img, String carrera) {
-        this.idOferta = idOferta;
-        this.nomTipoOferta = nomTipoOferta;
-        this.empresa = empresa;
-        this.cargo = cargo;
-        this.img = img;
-        this.carrera =carrera;
-    }
-
-    public String getCarrera() {
-        return carrera;
-    }
-
-    public void setCarrera(String carrera) {
-        this.carrera = carrera;
-    }
 
     public int getIdOferta() {
         return idOferta;
     }
 
-    public String getnomTipoOferta(){ return nomTipoOferta;}
-
     public void setIdOferta(int idOferta) {
         this.idOferta = idOferta;
     }
 
-    public String getIdTipoOferta() {
+    public int getVistas() {
+        return vistas;
+    }
+
+    public void setVistas(int vistas) {
+        this.vistas = vistas;
+    }
+
+    public String getNomTipoOferta() {
         return nomTipoOferta;
     }
 
-    public void setIdTipoOferta(String idTipoOferta) {
-        this.nomTipoOferta = idTipoOferta;
+    public void setNomTipoOferta(String nomTipoOferta) {
+        this.nomTipoOferta = nomTipoOferta;
     }
 
     public String getEmpresa() {
@@ -60,12 +49,12 @@ public class OfertaClass {
         this.remuneracion = remuneracion;
     }
 
-    public String getDescripcionEmpleo() {
-        return descripcionEmpleo;
+    public String getDescEmpleo() {
+        return descEmpleo;
     }
 
-    public void setDescripcionEmpleo(String descripcionEmpleo) {
-        this.descripcionEmpleo = descripcionEmpleo;
+    public void setDescEmpleo(String descEmpleo) {
+        this.descEmpleo = descEmpleo;
     }
 
     public String getCargo() {
@@ -91,4 +80,26 @@ public class OfertaClass {
     public void setImg(String img) {
         this.img = img;
     }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String remuneracion, String descEmpleo, String cargo, String fechaLimite, String img, String carrera, int vistas) {
+        this.idOferta = idOferta;
+        this.nomTipoOferta = nomTipoOferta;
+        this.empresa = empresa;
+        this.remuneracion = remuneracion;
+        this.descEmpleo=descEmpleo;
+        this.cargo = cargo;
+        this.fechaLimite = fechaLimite;
+        this.img = img;
+        this.carrera =carrera;
+        this.vistas = vistas;
+    }
+
 }
