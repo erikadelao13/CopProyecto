@@ -23,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
     TextView txtTalleres;
     TextView txtDirectorio;
     TextView txtAboutUs;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        session = new SessionManager(getApplicationContext());
 
         txtEmpleados = (TextView) findViewById(R.id.txtEmpleados);
         txtTalleres = (TextView) findViewById(R.id.txtTalleres);
@@ -48,7 +51,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu,menu);
+        if(session.isLoggedIn()){
+            menuInflater.inflate(R.menu.menuloggedin, menu);
+        } else {
+            menuInflater.inflate(R.menu.menu,menu);
+        }
         return true;
     }
 
@@ -59,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, Login.class);
             startActivity(i);
         }
-        /*else if(){
-
-        }*/
+        else if(res_id==R.id.logout){
+            session.logoutUser();
+            invalidateOptionsMenu();
+        }
         return true;
     }
     /*spinner*/
