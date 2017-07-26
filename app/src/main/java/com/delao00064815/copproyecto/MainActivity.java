@@ -1,7 +1,6 @@
 package com.delao00064815.copproyecto;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
     TextView txtTalleres;
     TextView txtDirectorio;
     TextView txtAboutUs;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        session = new SessionManager(getApplicationContext());
 
         txtEmpleados = (TextView) findViewById(R.id.txtEmpleados);
         txtTalleres = (TextView) findViewById(R.id.txtTalleres);
@@ -48,15 +50,11 @@ public class MainActivity extends AppCompatActivity {
 /*spinner*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        if(pref.contains("carnetE")){
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu_session,menu);
-            MenuItem menuItem = (MenuItem) findViewById(R.id.sesion);
-            menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
+        MenuInflater menuInflater = getMenuInflater();
+        if(session.isLoggedIn()){
+            menuInflater.inflate(R.menu.menuloggedin, menu);
         } else {
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu, menu);
+            menuInflater.inflate(R.menu.menu,menu);
         }
         return true;
     }
@@ -68,9 +66,10 @@ public class MainActivity extends AppCompatActivity {
             Intent i = new Intent(this, Login.class);
             startActivity(i);
         }
-        /*else if(){
-
-        }*/
+        else if(res_id==R.id.logout){
+            session.logoutUser();
+            invalidateOptionsMenu();
+        }
         return true;
     }
     /*spinner*/

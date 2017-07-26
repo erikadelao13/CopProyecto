@@ -37,10 +37,14 @@ public class Login extends AppCompatActivity {
     private EditText etEmail;
     private EditText etPassword;
 
+    SessionManager session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        session = new SessionManager(getApplicationContext());
 
         // Get Reference to variables
         etEmail = (EditText) findViewById(R.id.user);
@@ -216,11 +220,8 @@ public class Login extends AppCompatActivity {
 
             if(result.equalsIgnoreCase("true"))
             {
-                /* SharedPreferences*/
-                SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0); // 0 - for private mode
-                SharedPreferences.Editor editor = pref.edit();
-                editor.putString("carnetE", etEmail.getText().toString());
-                editor.commit();
+                /* guardar SharedPreferences*/
+                session.createLoginSession(etEmail.getText().toString());
 
                 Toast.makeText(Login.this, "Inicio de Sesión Perfecto", Toast.LENGTH_SHORT).show();
 
