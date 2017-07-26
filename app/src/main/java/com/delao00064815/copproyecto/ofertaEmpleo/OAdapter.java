@@ -51,7 +51,7 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
         TextView empire=(TextView)convertView.findViewById(R.id.content);
 
         OfertaClass o=getItem(position);
-        title.setText(o.getnomTipoOferta());
+        title.setText(o.getNomTipoOferta());
         carreer.setText(o.getCarrera());
         finalDate.setText(o.getCargo());
         empire.setText(o.getEmpresa());

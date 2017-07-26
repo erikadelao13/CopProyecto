@@ -265,33 +265,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     }
 
-    public void setOffer(String jsonCad) throws JSONException {
-        JSONArray jsonArr=new JSONArray(jsonCad);
-        Log.d(TAG, "setOffer: "+jsonCad);
-        for (int i=0;i<jsonArr.length();i++){
-            offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
-                    jsonArr.getJSONObject(i).getString("cargo"),
-                    jsonArr.getJSONObject(i).getString("empresa"),
-                    jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
-                    url_ofertas+jsonArr.getJSONObject(i).getString("img"),
-                    jsonArr.getJSONObject(i).getString("nomCarrera")));
-            Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
-        }
-        Log.d(TAG, "setOffer: "+offer.get(1).getIdTipoOferta()+"");
-        Log.d(TAG, "setOffer: "+offer.get(1).getnomTipoOferta()+"");
-        Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
-        Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
-        Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
-        String gg="";
 
-        oAdapter=new OAdapter(context,offer);
-        tList.setAdapter(oAdapter);
-    }
     public void setWorkshop(String jsonCad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             ws.add(new ClaTalleres(jsonArr.getJSONObject(i).getInt("idTaller"),
                     jsonArr.getJSONObject(i).getString("nomTaller"),
+                    jsonArr.getJSONObject(i).getString("aulaTaller"),
                     jsonArr.getJSONObject(i).getString("fechaTaller"),
                     jsonArr.getJSONObject(i).getString("nomCategoria"),
                     url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
@@ -306,6 +286,31 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         tList.setAdapter(tAdapter);
 
     }
+
+    public void setOffer(String jsonCad) throws JSONException {
+        JSONArray jsonArr=new JSONArray(jsonCad);
+        Log.d(TAG, "setOffer: "+jsonCad);
+        for (int i=0;i<jsonArr.length();i++){
+            offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
+                    jsonArr.getJSONObject(i).getString("nomTipoOferta"),
+                    jsonArr.getJSONObject(i).getString("empresa"),
+                    jsonArr.getJSONObject(i).getString("remuneracion"),
+                    jsonArr.getJSONObject(i).getString("descEmpleo"),
+                    jsonArr.getJSONObject(i).getString("cargo"),
+                    jsonArr.getJSONObject(i).getString("fechaLimite"),
+                    jsonArr.getJSONObject(i).getString("img"),
+                    url_ofertas+jsonArr.getJSONObject(i).getString("carrera"),
+                    jsonArr.getJSONObject(i).getInt("vistas")));
+            Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
+        }
+        Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
+
+        oAdapter=new OAdapter(context,offer);
+        tList.setAdapter(oAdapter);
+    }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);
         for (int i=0;i<jsonArr.length();i++){
@@ -315,7 +320,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
         Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
-        dAdapter=new DAdapter(context,R.layout.directory_content,direct);
+        dAdapter=new DAdapter(context,direct);
         tList.setAdapter(dAdapter);
     }
 }
