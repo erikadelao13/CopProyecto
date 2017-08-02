@@ -3,6 +3,7 @@ package com.delao00064815.copproyecto.talleres;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
+import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
 
 import java.util.ArrayList;
@@ -87,8 +89,16 @@ public class Talleres extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu,menu);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        if(pref.contains("carnetE")){
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu_session,menu);
+            MenuItem menuItem = (MenuItem) findViewById(R.id.sesion);
+            menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
+        } else {
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu, menu);
+        }
         return true;
     }
 
