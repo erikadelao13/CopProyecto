@@ -320,7 +320,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
         Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
-        dAdapter=new DAdapter(context,direct);
+        dAdapter=new DAdapter(context, R.layout.directory_content,direct);
         tList.setAdapter(dAdapter);
     }
 }
