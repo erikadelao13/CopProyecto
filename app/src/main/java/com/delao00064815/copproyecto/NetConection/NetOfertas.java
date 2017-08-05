@@ -30,6 +30,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
     static final String TAG = "NetOfertas";
     private Context context;
     private ProgressDialog pDialog;
+    String condition="";
 
     private String response = "";
     private String type;
@@ -42,16 +43,18 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
     String ip2="copuca-com.stackstaging.com";
     String url_ofertas_imagen="http://"+ip2+"/WebServer/imagenes/ofertas/";
     String url_offers="http://"+ip2+"/WebServer/ofertas_empleo.php";
+    String url_views="http://"+ip2+"/WebServer/vistas.php?idOferta=";
 
     //Lista y Adaptador
     ListView tList;
     OAdapter oAdapter;
 
     //Constructor
-    public NetOfertas(Context c, OAdapter oa, ListView rv) {
+    public NetOfertas(Context c, OAdapter oa, ListView rv,String condicion) {
         context=c;
         oAdapter=oa;
         tList=rv;
+        condition=condicion;
     }
 
 
@@ -67,12 +70,21 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
 
     @Override
     protected String doInBackground(Void... voids) {
-        try {
-            response=getOferta(url_offers);
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
+        switch(condition){
+            case "offer":
+            try {
+                response = getOferta(url_offers);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
+            break;
+            case "view":
+                try{
+                    response = getOferta(url_views);
+                }catch(MalformedURLException e){
+                    e.printStackTrace();
+                }
         }
-
         return null;
     }
     @Override

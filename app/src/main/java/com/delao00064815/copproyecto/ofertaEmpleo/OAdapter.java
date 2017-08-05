@@ -75,4 +75,5 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
         });
         return convertView;
     }
+
 }
