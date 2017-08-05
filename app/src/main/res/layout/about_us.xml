@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/cop_2" />
+        android:src="@drawable/icon" />
 
     <RelativeLayout
         android:layout_width="match_parent"
