@@ -103,6 +103,36 @@ public class OfertaEmpleo  extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 break;
+            case "Ing. Electrica":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Electrica").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Licenciatura en Mercadeo":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Licenciatura%20en%20Mercadeo").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Leyes":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Leyes").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
             default:
 
 

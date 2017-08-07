@@ -17,7 +17,7 @@ import com.delao00064815.copproyecto.ofertaEmpleo.OfertaEmpleo;
  */
 
 public class FiltroCarrera extends android.support.v4.app.DialogFragment {
-    final CharSequence[] carrera = {"Ing. Informática", "Ing. Quimica", "Ing. Industrial"};
+    final CharSequence[] carrera = {"Ing. Informática", "Ing. Quimica", "Ing. Industrial","Ing. Electrica", "Licenciatura en Mercadeo", "Leyes"};
     String opciones;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -41,6 +41,18 @@ public class FiltroCarrera extends android.support.v4.app.DialogFragment {
                         opciones = (String) carrera[args1];
 
                     break;
+                    case 3:
+                        opciones = (String) carrera[args1];
+
+                        break;
+                    case 4:
+                        opciones = (String) carrera[args1];
+
+                        break;
+                    case 5:
+                        opciones = (String) carrera[args1];
+
+                        break;
                     default:
                         opciones = "Sin Filtro";
                         break;
