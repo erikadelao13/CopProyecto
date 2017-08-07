@@ -36,6 +36,10 @@
             android:screenOrientation="portrait">
 
         </activity>
+        <activity android:name=".Registro"
+            android:screenOrientation="portrait">
+
+        </activity>
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"

@@ -49,7 +49,7 @@ public class FiltroCarrera extends android.support.v4.app.DialogFragment {
         }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(getActivity(),"Tu carrera es: "+ opciones, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Filtro por carrera activado "+ opciones, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getContext(), OfertaEmpleo.class);
                 intent.putExtra("message",opciones);
                 startActivity(intent);

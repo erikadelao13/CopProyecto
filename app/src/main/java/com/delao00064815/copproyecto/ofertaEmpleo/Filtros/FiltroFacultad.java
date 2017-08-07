@@ -9,6 +9,7 @@ import android.widget.Toast;
 /**
  * Created by César on 25/07/2017.
  */
+/*ESTE FALTA BORRARLO*/
 
 public class FiltroFacultad extends android.support.v4.app.DialogFragment {
     final CharSequence[] facultad = {"Facultad de Ciencias Sociales y Humanidades", "Facultad de Ciencias Económicas y Empresariales", "Facultad de Ingeniería y Arquitectura"};

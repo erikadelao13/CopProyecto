@@ -1,13 +1,15 @@
 package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-
+import com.github.clans.fab.FloatingActionButton;
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.NetConection.NetOfertas;
@@ -28,6 +30,7 @@ public class OfertaEmpleo extends FragmentActivity {
     OAdapter oAdapter;
     ListView rView;
     FloatingActionMenu actionMenu;
+    FloatingActionButton actionSinfiltro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +38,13 @@ public class OfertaEmpleo extends FragmentActivity {
         setContentView(R.layout.ofertas_empleo);
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.setClosedOnTouchOutside(true);
+        actionSinfiltro =(FloatingActionButton)findViewById(R.id.sinfiltro_float_button);
         String tipoFiltro = getIntent().getStringExtra("message");
         rView=(ListView)findViewById(R.id.mRecycler);
         switch(tipoFiltro){
             case "jobs":
                 try {
+                    actionSinfiltro.setVisibility(View.GONE);
                     new LoadData(this,oAdapter,rView,"oferta").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -49,6 +54,7 @@ public class OfertaEmpleo extends FragmentActivity {
                 break;
             case "Ing. Informática":
                 try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
                     new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Informatica").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -58,6 +64,7 @@ public class OfertaEmpleo extends FragmentActivity {
                 break;
             case "Ing. Quimica":
                 try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
                     new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Quimica").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -67,7 +74,28 @@ public class OfertaEmpleo extends FragmentActivity {
                 break;
             case "Ing. Industrial":
                 try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
                     new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Industrial").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Pasantía":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://copuca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Pasantia").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Oferta de Empleo":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://copuca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Plaza%20Fija").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -133,14 +161,34 @@ public class OfertaEmpleo extends FragmentActivity {
 
         });*/
     }
-
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu,menu);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+        if(pref.contains("carnetE")){
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu_session,menu);
+            MenuItem menuItem = (MenuItem) findViewById(R.id.sesion);
+            menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
+        } else {
+            MenuInflater menuInflater = getMenuInflater();
+            menuInflater.inflate(R.menu.menu, menu);
+        }
         return true;
     }
-*/
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int res_id = item.getItemId();
+        if(res_id==R.id.login){
+            Intent i = new Intent(this, Login.class);
+            startActivity(i);
+        }
+        /*else if(){
+
+        }*/
+        return true;
+    }
+
     //@Override
     public void selectCarrera(View v){
             FiltroCarrera my_dialog = new FiltroCarrera();
@@ -155,24 +203,11 @@ public class OfertaEmpleo extends FragmentActivity {
         actionMenu.toggle(true);
     }
     public void selectFacultad(View v){
-        FiltroFacultad my_dialog = new FiltroFacultad();
-        my_dialog.show(getSupportFragmentManager(),"Dialog Facultad");
+        Intent intent = new Intent(this, OfertaEmpleo.class);
+        intent.putExtra("message","jobs");
+        startActivity(intent);
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.toggle(true);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item){
-        int res_id = item.getItemId();
-        if(res_id==R.id.login){
-            Intent i = new Intent(this, Login.class);
-            startActivity(i);
-        }
-        return true;
-    }
-    /*public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
-        //MenuItem item = menu.findItem(R.id.action_search);
-        //searchView.setMenuItem(item);
-        return true;
-    }*/
 }
