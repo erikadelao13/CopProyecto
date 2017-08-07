@@ -34,6 +34,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
 
     private String response = "";
     private String type;
+    private int idoferta;
 
 
     //Arreglo
@@ -55,6 +56,10 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         oAdapter=oa;
         tList=rv;
         condition=condicion;
+    }
+    public NetOfertas(Context c,int id){
+        context=c;
+        idoferta=id;
     }
 
 
@@ -78,23 +83,31 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
                 e.printStackTrace();
             }
             break;
-            case "view":
-                try{
-                    response = getOferta(url_views);
-                }catch(MalformedURLException e){
-                    e.printStackTrace();
-                }
+            default:
+                try {
+                    getOferta2(url_views,idoferta);
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    }
+                    break;
         }
         return null;
     }
     @Override
     protected void onPostExecute(String result){
-        try {
-            setOffer(response);
-        } catch (JSONException e) {
-            e.printStackTrace();
+        switch (condition) {
+            case "offer":
+            try {
+                setOffer(response);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+                pDialog.dismiss();
+                break;
+            default:
+                pDialog.dismiss();
+                break;
         }
-        pDialog.dismiss();
     }
 
 
@@ -125,6 +138,36 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
 
         }
         Log.d(TAG, "getTaller:"+result.toString()+"");
+        return result.toString();
+    }
+
+    public String getOferta2(String url,int id) throws MalformedURLException {
+        URL uri = new URL(url+id);
+        String linea ="";
+        StringBuilder result = null;
+        int respuesta = 0;
+        try {
+            Log.d(TAG, "getInfoWeb: "+uri+"");
+            HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
+            httpCon.setReadTimeout(20000);
+            httpCon.setConnectTimeout(20000);
+            httpCon.setDoInput(true);
+            httpCon.setDoOutput(true);
+            respuesta =httpCon.getResponseCode();
+            result = new StringBuilder();
+            if (respuesta == HttpURLConnection.HTTP_OK){
+                Log.d(TAG, "getOferta2: Funciona");
+                InputStream in =new BufferedInputStream(httpCon.getInputStream());
+                BufferedReader read = new BufferedReader(new InputStreamReader(in));
+                while ((linea=read.readLine())!=null){
+                    result.append(linea);
+                }
+            }
+        }
+        catch (Exception e){
+
+        }
+        Log.d(TAG, "getOferta:"+result.toString()+"");
         return result.toString();
     }
     public void setOffer(String jsonCad) throws JSONException {

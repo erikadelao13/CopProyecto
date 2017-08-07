@@ -29,17 +29,17 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         >
-         <com.github.clans.fab.FloatingActionButton
-             android:id="@+id/carrera_float_button"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             app:fab_label="Carrera"
-             app:fab_colorNormal="@color/colorPrimary"
-             app:fab_colorPressed="@color/colorPrimary"
-             app:fab_colorRipple="@color/colorPrimary"
-             android:src="@mipmap/ic_carrera"
-             android:onClick="selectCarrera"
-             />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/carrera_float_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:fab_label="Carrera"
+            app:fab_colorNormal="@color/colorPrimary"
+            app:fab_colorPressed="@color/colorPrimary"
+            app:fab_colorRipple="@color/colorPrimary"
+            android:src="@mipmap/ic_carrera"
+            android:onClick="selectCarrera"
+            />
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/tipoferta_float_button"
             android:layout_width="match_parent"
@@ -65,6 +65,5 @@
     </com.github.clans.fab.FloatingActionMenu>
 
 </RelativeLayout>
-
 
 

@@ -1,11 +1,13 @@
 package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,6 +20,7 @@ import java.util.List;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
+import static com.delao00064815.copproyecto.R.id.details;
 import static com.delao00064815.copproyecto.R.id.imageView;
 
 /**
@@ -50,6 +53,7 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
         TextView carreer=(TextView)convertView.findViewById(R.id.content2);
         TextView finalDate=(TextView)convertView.findViewById(R.id.lastDate);
         TextView empire=(TextView)convertView.findViewById(R.id.content);
+        Button but=(Button)convertView.findViewById(R.id.details);
 
         OfertaClass o=getItem(position);
         title.setText(o.getNomTipoOferta());
@@ -57,6 +61,20 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
         finalDate.setText(o.getCargo());
         empire.setText(o.getEmpresa());
         Picasso.with(c).load(o.getImg()).into(img);
+
+        but.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(c,Oferta_descripcion.class);
+                intent.putExtra("id",oferta.get(position).getIdOferta());
+                intent.putExtra("nombre",oferta.get(position).getNomTipoOferta());
+                intent.putExtra("carrera",oferta.get(position).getCarrera());
+                intent.putExtra("img",oferta.get(position).getImg());
+                intent.putExtra("empresa",oferta.get(position).getEmpresa());
+                c.startActivity(intent);
+            }
+
+        });
 
         ImageView imageTalleres = (ImageView)convertView.findViewById(R.id.imageO);
         imageTalleres.setOnClickListener(new View.OnClickListener(){

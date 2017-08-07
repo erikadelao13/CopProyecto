@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="160dp"
+    android:layout_height="190dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:tag="cards">
@@ -10,7 +10,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/NewsCardView"
         android:layout_width="match_parent"
-        android:layout_height="165dp"
+        android:layout_height="180dp"
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
@@ -56,14 +56,15 @@
                         android:textAppearance="?attr/textAppearanceListItem" />
 
                     <TextView
-                    android:id="@+id/lastDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="32dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Fecha Limite"
-                    android:textAppearance="?attr/textAppearanceListItem" />
+                        android:id="@+id/lastDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="8dp"
+                        android:text="Fecha Limite"
+                        android:textAppearance="?attr/textAppearanceListItem" />
+
                     <TextView
                         android:id="@+id/content"
                         android:layout_width="wrap_content"
@@ -81,10 +82,16 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:padding="2dp"
-                    />
+                    android:padding="2dp" />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ver mas"
+                android:onClick="details"
+                android:layout_gravity="right"/>
 
         </LinearLayout>
 
