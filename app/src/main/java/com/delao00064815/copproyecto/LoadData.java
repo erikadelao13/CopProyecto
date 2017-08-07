@@ -90,7 +90,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         rList=rv;
         type=condition;
     }
-    public LoadData(Context c,OAdapter oa,ListView rv,String condition, String filtros){
+    public LoadData(Context c,OfertaAdapter oa,ListView rv,String condition, String filtros){
         context=c;
         oAdapter=oa;
         tList=rv;

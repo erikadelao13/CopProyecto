@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -25,8 +26,8 @@ import java.util.concurrent.ExecutionException;
 
 public class OfertaEmpleo extends FragmentActivity {
     //MaterialSearchView searchView;
-    OAdapter oAdapter;
-    ListView rView;
+    OfertaAdapter oAdapter;
+    RecyclerView rView;
     FloatingActionMenu actionMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class OfertaEmpleo extends FragmentActivity {
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.setClosedOnTouchOutside(true);
 
-        rView=(ListView)findViewById(R.id.mRecycler);
+        rView=(RecyclerView)findViewById(R.id.mRecycler);
 
         try {
             new LoadData(this,oAdapter,rView,"oferta").execute().get();
