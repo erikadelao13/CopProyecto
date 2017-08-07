@@ -55,7 +55,7 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
                 LayoutInflater layoutInflater = LayoutInflater.from(c);
                 View v2 = layoutInflater.inflate(R.layout.image_view_ofertas, null);
                 ImageView image = (ImageView) v2.findViewById(R.id.image_view_ofertas);
-                AlertDialog.Builder builder = new AlertDialog.Builder(c);
+                AlertDialog.Builder builder = new AlertDialog.Builder(c, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
                 AlertDialog dialog = builder.create();
                 dialog.setView(v2);
                 dialog.setCancelable(true);
