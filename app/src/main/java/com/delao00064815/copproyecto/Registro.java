@@ -112,5 +112,6 @@ public class Registro extends AppCompatActivity{
                 Registro.this.finish();
             }
         }
+        //cambio para pushear
     }
 }
