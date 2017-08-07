@@ -43,6 +43,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     private String response = "";
     private String type;
+    private String filtro;
 
     //Arreglos
     ArrayList<OfertaClass> offer=new ArrayList<>();
@@ -87,6 +88,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         tList=rv;
         type=condition;
     }
+    public LoadData(Context c,OAdapter oa,ListView rv,String condition, String filtros){
+        context=c;
+        oAdapter=oa;
+        tList=rv;
+        type=condition;
+        filtro=filtros;
+    }
 
     //Constructor para directorio
     public LoadData(Context c,DAdapter adapter,ListView rv,String condition){
@@ -96,11 +104,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         type=condition;
     }
 
+
     //Constructor para agregarTaller
     public LoadData(Context c,String condition){
         context=c;
         type=condition;
     }
+
 
 
     //Constructor vacio
@@ -143,6 +153,20 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                      e.printStackTrace();
                  }
                  break;
+             case "ofertaCarrera":
+                 try {
+                     response=getInfoWeb(filtro);
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 }
+                 break;
+             case "ofertaTipo":
+                 try {
+                     response=getInfoWeb(filtro);
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 }
+                 break;
              default:
                  try {
                      signUp(type);
@@ -178,7 +202,20 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
-
+            case "ofertaCarrera":
+                try {
+                    setOffer(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "ofertaTipo":
+                try {
+                    setOffer(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
         pDialog.dismiss();
 
@@ -220,7 +257,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
 
         String carnetE = pref.getString("carnetE", null);
-        Log.d("signinUp", carnetE);
+//        Log.d("signinUp", carnetE);
         if(carnetE.equals(null)){
             return;
         }
@@ -301,10 +338,10 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomCarrera")));
             Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
-        Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
+       /* Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
-        Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
+        Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");*/
 
         oAdapter=new OAdapter(context,offer);
         tList.setAdapter(oAdapter);

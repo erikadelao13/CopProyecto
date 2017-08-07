@@ -28,22 +28,57 @@ public class OfertaEmpleo extends FragmentActivity {
     OAdapter oAdapter;
     ListView rView;
     FloatingActionMenu actionMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ofertas_empleo);
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.setClosedOnTouchOutside(true);
-
+        String tipoFiltro = getIntent().getStringExtra("message");
         rView=(ListView)findViewById(R.id.mRecycler);
+        switch(tipoFiltro){
+            case "jobs":
+                try {
+                    new LoadData(this,oAdapter,rView,"oferta").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Informática":
+                try {
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Informatica").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Quimica":
+                try {
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Quimica").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Industrial":
+                try {
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Industrial").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
 
-        try {
-            new LoadData(this,oAdapter,rView,"oferta").execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+
         }
+
         /*try {
             new NetOfertas(this,oAdapter,rView).execute().get();
         } catch (InterruptedException e) {
