@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 import com.delao00064815.copproyecto.directorio.DAdapter;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
+import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
 import com.delao00064815.copproyecto.talleres.AdaptadorTalleres;
 import com.delao00064815.copproyecto.talleres.ClaTalleres;
@@ -64,12 +66,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Listas
     ListView tList;
     RecyclerView rView1;
-    RecyclerView rView2;
+    RecyclerView rList;
 
     //Adaptadores
     AdaptadorTalleres tAdapter;
     DAdapter dAdapter;
-    OAdapter oAdapter;
+    OfertaAdapter oAdapter;
 
 
 
@@ -82,10 +84,10 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     }
 
     //Constructor para ofertas de empleo
-    public LoadData(Context c, OAdapter oa, ListView rv, String condition) {
+    public LoadData(Context c, OfertaAdapter oa, RecyclerView rv, String condition) {
         context=c;
         oAdapter=oa;
-        tList=rv;
+        rList=rv;
         type=condition;
     }
     public LoadData(Context c,OAdapter oa,ListView rv,String condition, String filtros){
@@ -97,7 +99,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     }
 
     //Constructor para directorio
-    public LoadData(Context c,DAdapter adapter,ListView rv,String condition){
+    public LoadData(Context c,DAdapter adapter, ListView rv,String condition){
         context=c;
         dAdapter=adapter;
         tList=rv;
@@ -343,8 +345,9 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");*/
 
-        oAdapter=new OAdapter(context,offer);
-        tList.setAdapter(oAdapter);
+        oAdapter=new OfertaAdapter(context,offer);
+        rList.setAdapter(oAdapter);
+        rList.setLayoutManager(new LinearLayoutManager(context));
     }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);

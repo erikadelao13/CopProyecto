@@ -13,14 +13,16 @@ import com.delao00064815.copproyecto.R;
 
 
 public class MyHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    TextView title,content,lastDate;
+    TextView title, content, lastDate;
     ImageView imagee;
     ItemClickListener itemClickListener;
+
     public MyHolder(View itemView) {
         super(itemView);
-        title =(TextView)itemView.findViewById(R.id.title);
-        content=(TextView)itemView.findViewById(R.id.content2);
-        lastDate=(TextView)itemView.findViewById(R.id.lastDate);
+        title = (TextView) itemView.findViewById(R.id.title);
+        content = (TextView) itemView.findViewById(R.id.content2);
+        lastDate = (TextView) itemView.findViewById(R.id.lastDate);
+        imagee = (ImageView) itemView.findViewById(R.id.imageO);
 
     }
     public  void setItemClickListener(ItemClickListener ic)

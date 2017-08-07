@@ -25,6 +25,7 @@ import static com.delao00064815.copproyecto.R.id.imageView;
  */
 
 public class OAdapter extends ArrayAdapter<OfertaClass> {
+    //no se usa borrar
     Context c;
     List<OfertaClass> oferta;
     public OAdapter(Context context,List<OfertaClass> direct) {
