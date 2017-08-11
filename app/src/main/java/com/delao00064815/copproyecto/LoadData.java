@@ -90,10 +90,10 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         rList=rv;
         type=condition;
     }
-    public LoadData(Context c,OfertaAdapter oa,ListView rv,String condition, String filtros){
+    public LoadData(Context c,OfertaAdapter oa, RecyclerView rv,String condition, String filtros){
         context=c;
         oAdapter=oa;
-        tList=rv;
+        rList=rv;
         type=condition;
         filtro=filtros;
     }
@@ -346,8 +346,9 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");*/
 
         oAdapter=new OfertaAdapter(context,offer);
-        rList.setAdapter(oAdapter);
         rList.setLayoutManager(new LinearLayoutManager(context));
+        rList.setAdapter(oAdapter);
+
     }
     public void setEmployers(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);

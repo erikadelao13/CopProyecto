@@ -52,15 +52,15 @@
             android:onClick="selectTipo"
             />
         <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/facultad_float_button"
+            android:id="@+id/sinfiltro_float_button"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:fab_label="Facultad"
+            app:fab_label="Sin filtro"
             app:fab_colorNormal="@color/colorPrimary"
             app:fab_colorPressed="@color/colorPrimary"
             app:fab_colorRipple="@color/colorPrimary"
-            android:src="@mipmap/ic_facultad"
-            android:onClick="selectFacultad"
+            android:src="@mipmap/ic_inicio"
+            android:onClick="selectSinFiltro"
             />
     </com.github.clans.fab.FloatingActionMenu>
 

@@ -2,7 +2,6 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -17,7 +16,7 @@ import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroFacultad;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroTipoOferta;
 import com.github.clans.fab.FloatingActionMenu;
-
+import com.github.clans.fab.FloatingActionButton;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -29,21 +28,111 @@ public class OfertaEmpleo extends FragmentActivity {
     OfertaAdapter oAdapter;
     RecyclerView rView;
     FloatingActionMenu actionMenu;
+    FloatingActionButton actionSinfiltro;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ofertas_empleo);
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.setClosedOnTouchOutside(true);
-
+        actionSinfiltro =(com.github.clans.fab.FloatingActionButton)findViewById(R.id.sinfiltro_float_button);
+        String tipoFiltro = getIntent().getStringExtra("message");
         rView=(RecyclerView)findViewById(R.id.mRecycler);
 
-        try {
-            new LoadData(this,oAdapter,rView,"oferta").execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        switch(tipoFiltro){
+            case "jobs":
+                try {
+                    actionSinfiltro.setVisibility(View.GONE);
+                    new LoadData(this,oAdapter,rView,"oferta").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Informática":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Informatica").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Quimica":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Quimica").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Industrial":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Industrial").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Pasantía":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://copuca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Pasantia").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Oferta de Empleo":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://copuca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Plaza%20Fija").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Ing. Electrica":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Electrica").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Licenciatura en Mercadeo":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Licenciatura%20en%20Mercadeo").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "Leyes":
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Leyes").execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+
+
         }
         /*try {
             new NetOfertas(this,oAdapter,rView).execute().get();
@@ -120,13 +209,13 @@ public class OfertaEmpleo extends FragmentActivity {
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.toggle(true);
     }
-    public void selectFacultad(View v){
-        FiltroFacultad my_dialog = new FiltroFacultad();
-        my_dialog.show(getSupportFragmentManager(),"Dialog Facultad");
+    public void selectSinFiltro(View v){
+        Intent intent = new Intent(this, OfertaEmpleo.class);
+        intent.putExtra("message","jobs");
+        startActivity(intent);
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.toggle(true);
     }
-
     public boolean onOptionsItemSelected(MenuItem item){
         int res_id = item.getItemId();
         if(res_id==R.id.login){
