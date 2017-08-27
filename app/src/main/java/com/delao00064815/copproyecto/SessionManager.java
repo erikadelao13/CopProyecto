@@ -33,7 +33,7 @@ public class SessionManager {
     public static final String KEY_CARNET = "name";
 
     // Constructor
-    SessionManager(Context context) {
+    public SessionManager(Context context) {
         this._context = context;
         pref = _context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = pref.edit();

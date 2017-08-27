@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.R;
+import com.delao00064815.copproyecto.SessionManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,10 +34,13 @@ public class Talleres extends AppCompatActivity {
     ListView listView;
     ArrayList<String> images;
     AdaptadorTalleres myAdapter;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         super.onCreate(savedInstanceState);
+        session = new SessionManager(getApplicationContext());
         setContentView(R.layout.listview_talleres);
         //aqui deberia sacar la lista de la base de datos supongo
         images = new ArrayList<String>() {
@@ -52,7 +56,7 @@ public class Talleres extends AppCompatActivity {
         listView.setAdapter(adapter);*/
 
         try {
-            new LoadData(this,myAdapter,listView,"taller").execute().get();
+            new LoadData(this,myAdapter,listView,"taller",pref.getString("carnetE",null)).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
