@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
-
+import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.directorio.DAdapter;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
@@ -32,6 +32,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by hmanr on 25/6/2017.
@@ -45,6 +46,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private String type;
     private String filtro;
     private String user;
+    private ListView listView;
+    AdaptadorTalleres myAdapter;
 
     //Arreglos
     ArrayList<OfertaClass> offer=new ArrayList<>();
@@ -119,7 +122,9 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Constructor vacio
     public LoadData(){}
 
-//Proceso previo
+
+
+    //Proceso previo
     @Override
     protected void onPreExecute(){
         super.onPreExecute();
@@ -171,6 +176,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                      e.printStackTrace();
                  }
                  break;
+             case "tallerUser":
+                 try {
+                     url_Usuario="http://"+ip2+"/WebServer/talleres.php?idUsuario="+user;
+                     response=getInfoWeb(url_Usuario);
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 }
+                 break;
              default:
                  try {
                      signUp(type);
@@ -188,6 +201,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             case "taller":
                 try {
                     setUser(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "tallerUser":
+                try {
+                    setWorkshop(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -247,11 +267,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     result.append(linea);
                 }
             }
-        }
-        catch (Exception e){
 
         }
-        Log.d(TAG, "getInfoWeb:"+result.toString()+"");
+        catch (Exception e){
+            e.printStackTrace();
+        }
+       Log.d(TAG, "getInfoWeb:"+result.toString()+"");
         return result.toString();
     }
 
@@ -317,34 +338,41 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomCategoria"),
                     url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
         }
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
+        /*Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getIdTaller()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getFechaTaller()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
-        Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");*/
 
         tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
         tList.setAdapter(tAdapter);
 
     }
     public void setUser(String jsonCad) throws JSONException {
+
         JSONArray jsonArr=new JSONArray(jsonCad);
         for (int i=0;i<jsonArr.length();i++) {
-            arregloU.add(new ClaUsuario(jsonArr.getJSONObject(i).getString("idUsuario"),
+            arregloU.add(new ClaUsuario(
+                    jsonArr.getJSONObject(i).getString("idUsuario"),
                     jsonArr.getJSONObject(i).getString("idCarrera"),
                     jsonArr.getJSONObject(i).getString("nomEstudiante"),
                     jsonArr.getJSONObject(i).getString("carnetE"),
                     jsonArr.getJSONObject(i).getString("password"),
                     jsonArr.getJSONObject(i).getString("yCarrera"),
                     jsonArr.getJSONObject(i).getString("idNotificacion")));
-            try {
-                url_Usuario = "http://" + ip2 + "/WebServer/getuser.php?carnetE=" + arregloU.get(0).getIdestudiante();
-                response = getInfoWeb(url_Usuario);
-                setWorkshop(response);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
 
+        }
+       /* url_Usuario = "http://" + ip2 + "/WebServer/talleres.php?idUsuario=" + arregloU.get(0).getIdestudiante();
+        try {
+            response=getInfoWeb(url_Usuario);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }*/try {
+            new LoadData(context,tAdapter,tList,"tallerUser","2").execute().get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
     }
 

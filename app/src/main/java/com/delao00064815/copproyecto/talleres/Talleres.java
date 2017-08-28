@@ -56,7 +56,7 @@ public class Talleres extends AppCompatActivity {
         listView.setAdapter(adapter);*/
 
         try {
-            new LoadData(this,myAdapter,listView,"taller",pref.getString("carnetE",null)).execute().get();
+            new LoadData(this,myAdapter,listView,"taller",/*String.valueOf(session.getUserDetails())*/"00025815").execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -97,7 +97,7 @@ public class Talleres extends AppCompatActivity {
             MenuInflater menuInflater = getMenuInflater();
             menuInflater.inflate(R.menu.menu_session,menu);
             MenuItem menuItem = (MenuItem) findViewById(R.id.sesion);
-            menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
+         //   menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
         } else {
             MenuInflater menuInflater = getMenuInflater();
             menuInflater.inflate(R.menu.menu, menu);
