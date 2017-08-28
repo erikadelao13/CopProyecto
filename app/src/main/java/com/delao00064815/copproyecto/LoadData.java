@@ -148,6 +148,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
+             case "historial":
+                 try {
+                     url_Usuario="http://"+ip2+"/WebServer/getuser.php?carnetE="+user;
+                     response=getInfoWeb(url_Usuario);
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 }
+                 break;
              case "oferta":
                  try {
                      response=getInfoWeb(url_offers);
@@ -184,6 +192,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                      e.printStackTrace();
                  }
                  break;
+             case "historialUser":
+                 try {
+                     url_Usuario="http://"+ip2+"/WebServer/historialT.php?idUsuario="+user;
+                     response=getInfoWeb(url_Usuario);
+                 } catch (MalformedURLException e) {
+                     e.printStackTrace();
+                 }
+                 break;
              default:
                  try {
                      signUp(type);
@@ -206,6 +222,20 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                 }
                 break;
             case "tallerUser":
+                try {
+                    setWorkshop(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "historial":
+                try {
+                    setUser(response);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "historialUser":
                 try {
                     setWorkshop(response);
                 } catch (JSONException e) {
@@ -367,13 +397,28 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             response=getInfoWeb(url_Usuario);
         } catch (MalformedURLException e) {
             e.printStackTrace();
-        }*/try {
-            new LoadData(context,tAdapter,tList,"tallerUser","2").execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
+        }*/
+       if(type=="taller"){
+           try {
+               new LoadData(context,tAdapter,tList,"tallerUser",arregloU.get(0).getIdestudiante()).execute().get();
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           } catch (ExecutionException e) {
+               e.printStackTrace();
+           }
+
+       }
+       else{
+           try {
+               new LoadData(context,tAdapter,tList,"historialUser",arregloU.get(0).getIdestudiante()).execute().get();
+           } catch (InterruptedException e) {
+               e.printStackTrace();
+           } catch (ExecutionException e) {
+               e.printStackTrace();
+           }
+
+       }
+
     }
 
     public void setOffer(String jsonCad) throws JSONException {
