@@ -1,20 +1,14 @@
 package com.delao00064815.copproyecto.talleres;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
@@ -22,7 +16,6 @@ import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.SessionManager;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import static com.delao00064815.copproyecto.SessionManager.KEY_CARNET;
@@ -31,7 +24,7 @@ import static com.delao00064815.copproyecto.SessionManager.KEY_CARNET;
  * Created by hmanr on 5/6/2017.
  */
 
-public class Talleres extends AppCompatActivity {
+public class Historial extends AppCompatActivity {
     Button register;
     ListView listView;
     ArrayList<String> images;
@@ -47,47 +40,15 @@ public class Talleres extends AppCompatActivity {
         //aqui deberia sacar la lista de la base de datos supongo
         images = new ArrayList<String>() {
         };
-       /* images.add("official4");
-        images.add("official4");
-        images.add("official4");
-        images.add("official4");
-        images.add("official4");*/
-
         listView = (ListView) findViewById(R.id.listView);
-        /*AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);
-        listView.setAdapter(adapter);*/
 
         try {
-            new LoadData(this,myAdapter,listView,"taller",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*"00025815"*/).execute().get();
+            new LoadData(this,myAdapter,listView,"taller",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*String.valueOf(session.getUserDetails())"00025815"*/).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
-        /************para el dialog************************/
-        /*Button register = (Button) findViewById(R.id.register);
-        register.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v){
-                Log.d("Prueba","Mensaje ");
-                AlertDialog.Builder builder = new AlertDialog.Builder(Talleres.this);
-                View mView = getLayoutInflater().inflate(R.layout.custom_dialog,null);
-                Button aceptar = (Button) v.findViewById(R.id.aceptar);
-                aceptar.setOnClickListener(new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(Talleres.this, "Has sido registrado correctamente.",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-                });
-                builder.setView(mView);
-                AlertDialog dialog = builder.create();
-                dialog.show();
-            }
-        });*/
-
 
     }
 
