@@ -36,7 +36,7 @@ public class Historial extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         super.onCreate(savedInstanceState);
         session = new SessionManager(getApplicationContext());
-        setContentView(R.layout.listview_talleres);
+        setContentView(R.layout.activity_drawer_talleres);
         //aqui deberia sacar la lista de la base de datos supongo
         images = new ArrayList<String>() {
         };
@@ -52,32 +52,4 @@ public class Historial extends AppCompatActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        if(pref.contains("carnetE")){
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu_session,menu);
-            MenuItem menuItem = (MenuItem) findViewById(R.id.sesion);
-         //   menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
-        } else {
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu, menu);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int res_id = item.getItemId();
-        if(res_id==R.id.login){
-            Intent i = new Intent(this, Login.class);
-            startActivity(i);
-        }
-        /*else if(){
-
-        }*/
-        return true;
-    }
 }
