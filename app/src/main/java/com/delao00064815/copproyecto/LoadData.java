@@ -16,7 +16,7 @@ import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
 import com.delao00064815.copproyecto.talleres.AdaptadorTalleres;
 import com.delao00064815.copproyecto.talleres.ClaTalleres;
-import com.delao00064815.copproyecto.talleres.ClaUsuario;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -38,26 +38,26 @@ import java.util.ArrayList;
  */
 
 public class LoadData extends AsyncTask<Void, Void, String> {
+
     static final String TAG = "LoadData";
     private Context context;
     private ProgressDialog pDialog;
+
     private String response = "";
     private String type;
     private String filtro;
-    private String user;
 
     //Arreglos
     ArrayList<OfertaClass> offer=new ArrayList<>();
     ArrayList<ClaTalleres> ws=new ArrayList<>();
     ArrayList<DirectorioClass> direct=new ArrayList<>();
-    ArrayList<ClaUsuario> arregloU = new ArrayList<>();
 
     //URLs
     String ip2="copuca-com.stackstaging.com";
     String ip="10.45.7.31";
     String url_talleres="http://"+ip2+"/WebServer/imagenes/talleres/";
     String url_ofertas="http://"+ip2+"/WebServer/imagenes/ofertas/";
-    String url_Usuario="";
+
     String url_workshop="http://"+ip2+"/WebServer/talleres.php";
     String url_employers="http://"+ip2+"/WebServer/empleados.php";
     String url_offers="http://"+ip2+"/WebServer/ofertas_empleo.php";
@@ -76,12 +76,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
 
     //Constructor para Talleres
-    public LoadData(Context c, AdaptadorTalleres adapter, ListView list,String condition,String carnetuser){
+    public LoadData(Context c, AdaptadorTalleres adapter, ListView list,String condition){
         context=c;
         tAdapter=adapter;
         tList=list;
         type=condition;
-        user=carnetuser;
     }
 
     //Constructor para ofertas de empleo
@@ -137,8 +136,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
          switch(type) {
             case "taller":
                 try {
-                    url_Usuario="http://"+ip2+"/WebServer/getuser.php?carnetE="+user;
-                    response=getInfoWeb(url_Usuario);
+                    response=getInfoWeb(url_workshop);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -187,7 +185,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         switch (type){
             case "taller":
                 try {
-                    setUser(response);
+                    setWorkshop(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -326,26 +324,6 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
         tList.setAdapter(tAdapter);
 
-    }
-    public void setUser(String jsonCad) throws JSONException {
-        JSONArray jsonArr=new JSONArray(jsonCad);
-        for (int i=0;i<jsonArr.length();i++) {
-            arregloU.add(new ClaUsuario(jsonArr.getJSONObject(i).getString("idUsuario"),
-                    jsonArr.getJSONObject(i).getString("idCarrera"),
-                    jsonArr.getJSONObject(i).getString("nomEstudiante"),
-                    jsonArr.getJSONObject(i).getString("carnetE"),
-                    jsonArr.getJSONObject(i).getString("password"),
-                    jsonArr.getJSONObject(i).getString("yCarrera"),
-                    jsonArr.getJSONObject(i).getString("idNotificacion")));
-            try {
-                url_Usuario = "http://" + ip2 + "/WebServer/getuser.php?carnetE=" + arregloU.get(0).getIdestudiante();
-                response = getInfoWeb(url_Usuario);
-                setWorkshop(response);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            }
-
-        }
     }
 
     public void setOffer(String jsonCad) throws JSONException {

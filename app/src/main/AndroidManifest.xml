@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.delao00064815.copproyecto">
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,41 +20,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".about_us.AboutUs"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".directorio.Directorio"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".talleres.Talleres"
+        <activity
+            android:name=".about_us.AboutUs"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".directorio.Directorio"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".talleres.Talleres"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="OPEN_ACTIVITY_1" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ofertaEmpleo.OfertaEmpleo"
-            android:screenOrientation="portrait"
-            />
-        <activity android:name=".Login"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".Registro"
-            android:screenOrientation="portrait">
-
-        </activity>
-        <activity android:name=".ofertaEmpleo.Oferta_descripcion"></activity>
+        <activity
+            android:name=".ofertaEmpleo.OfertaEmpleo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".Registro"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".ofertaEmpleo.Oferta_descripcion" />
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.github.hathibelagal.pn" />
             </intent-filter>
         </receiver>
 
-        <service android:name=".cloudMessaging.RegistrationService"
+        <service
+            android:name=".cloudMessaging.RegistrationService"
             android:exported="false" />
         <service
             android:name=".cloudMessaging.TokenRefreshListenerService"
@@ -63,11 +69,16 @@
         </service>
         <service
             android:name=".cloudMessaging.NotificationsListenerService"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name=".Drawer_Activity"
+            android:label="@string/title_activity_drawer_"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

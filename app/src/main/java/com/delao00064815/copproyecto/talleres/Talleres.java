@@ -5,8 +5,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,7 +34,7 @@ import java.util.concurrent.ExecutionException;
  * Created by hmanr on 5/6/2017.
  */
 
-public class Talleres extends AppCompatActivity {
+public class Talleres extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     Button register;
     ListView listView;
     ArrayList<String> images;
@@ -41,7 +46,8 @@ public class Talleres extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         super.onCreate(savedInstanceState);
         session = new SessionManager(getApplicationContext());
-        setContentView(R.layout.listview_talleres);
+        setContentView(R.layout.activity_drawer_talleres);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //aqui deberia sacar la lista de la base de datos supongo
         images = new ArrayList<String>() {
         };
@@ -54,14 +60,22 @@ public class Talleres extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
         /*AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);
         listView.setAdapter(adapter);*/
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
-        try {
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        /*try {
             new LoadData(this,myAdapter,listView,"taller",pref.getString("carnetE",null)).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
-        }
+        }*/
 
         /************para el dialog************************/
         /*Button register = (Button) findViewById(R.id.register);
@@ -89,32 +103,39 @@ public class Talleres extends AppCompatActivity {
 
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-        if(pref.contains("carnetE")){
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu_session,menu);
-            MenuItem menuItem = (MenuItem) findViewById(R.id.sesion);
-            menuItem.setTitle("sesion iniciada como: "+pref.getString("carnetE",null));
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
         } else {
-            MenuInflater menuInflater = getMenuInflater();
-            menuInflater.inflate(R.menu.menu, menu);
+            super.onBackPressed();
         }
-        return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int res_id = item.getItemId();
-        if(res_id==R.id.login){
-            Intent i = new Intent(this, Login.class);
-            startActivity(i);
-        }
-        /*else if(){
 
-        }*/
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 }

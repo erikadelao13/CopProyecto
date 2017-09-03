@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.delao00064815.copproyecto.R;
@@ -20,7 +21,7 @@ import java.util.List;
 
 import uk.co.senab.photoview.PhotoViewAttacher;
 
-import static com.delao00064815.copproyecto.R.id.details;
+import static com.delao00064815.copproyecto.R.id.cardview;
 import static com.delao00064815.copproyecto.R.id.imageView;
 
 /**
@@ -53,7 +54,7 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
         TextView carreer=(TextView)convertView.findViewById(R.id.content2);
         TextView finalDate=(TextView)convertView.findViewById(R.id.lastDate);
         TextView empire=(TextView)convertView.findViewById(R.id.content);
-        Button but=(Button)convertView.findViewById(R.id.details);
+        LinearLayout but=(LinearLayout)convertView.findViewById(R.id.cardview);
 
         OfertaClass o=getItem(position);
         title.setText(o.getNomTipoOferta());

@@ -2,8 +2,13 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -23,7 +28,7 @@ import java.util.concurrent.ExecutionException;
  * Created by hmanr on 5/6/2017.
  */
 
-public class OfertaEmpleo extends FragmentActivity {
+public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnNavigationItemSelectedListener {
     //MaterialSearchView searchView;
     OfertaAdapter oAdapter;
     RecyclerView rView;
@@ -32,12 +37,22 @@ public class OfertaEmpleo extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ofertas_empleo);
+        setContentView(R.layout.activity_drawer_ofertas);
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.setClosedOnTouchOutside(true);
         actionSinfiltro =(com.github.clans.fab.FloatingActionButton)findViewById(R.id.sinfiltro_float_button);
         String tipoFiltro = getIntent().getStringExtra("message");
         rView=(RecyclerView)findViewById(R.id.mRecycler);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
         switch(tipoFiltro){
             case "jobs":
@@ -216,18 +231,46 @@ public class OfertaEmpleo extends FragmentActivity {
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.toggle(true);
     }
-    public boolean onOptionsItemSelected(MenuItem item){
-        int res_id = item.getItemId();
-        if(res_id==R.id.login){
-            Intent i = new Intent(this, Login.class);
-            startActivity(i);
-        }
-        return true;
-    }
     /*public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_item,menu);
         //MenuItem item = menu.findItem(R.id.action_search);
         //searchView.setMenuItem(item);
         return true;
     }*/
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }

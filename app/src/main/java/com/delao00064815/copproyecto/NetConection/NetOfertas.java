@@ -2,10 +2,13 @@ package com.delao00064815.copproyecto.NetConection;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.delao00064815.copproyecto.MainActivity;
 import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
 
@@ -35,6 +38,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
     private String response = "";
     private String type;
     private int idoferta;
+    private boolean flag=false;
 
 
     //Arreglo
@@ -95,18 +99,25 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
     }
     @Override
     protected void onPostExecute(String result){
-        switch (condition) {
-            case "offer":
-            try {
-                setOffer(response);
-            } catch (JSONException e) {
-                e.printStackTrace();
+        if (flag==false) {
+            switch (condition) {
+                case "offer":
+                    try {
+                        setOffer(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    pDialog.dismiss();
+                    break;
+                default:
+                    pDialog.dismiss();
+                    break;
             }
-                pDialog.dismiss();
-                break;
-            default:
-                pDialog.dismiss();
-                break;
+        }
+        else{
+            Intent intent=new Intent(context,MainActivity.class);
+            context.startActivity(intent);
+            Toast.makeText(context, "Se produjo un error, intente de nuevo mas tarde.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -133,6 +144,8 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
                     result.append(linea);
                 }
             }
+            else
+                flag=true;
         }
         catch (Exception e){
 
@@ -163,6 +176,8 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
                     result.append(linea);
                 }
             }
+            else
+                flag=true;
         }
         catch (Exception e){
 

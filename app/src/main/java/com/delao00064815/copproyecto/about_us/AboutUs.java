@@ -22,24 +22,8 @@ public class AboutUs extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_us);
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu,menu);
-        return true;
+
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        int res_id = item.getItemId();
-        if(res_id==R.id.login){
-            Intent i = new Intent(this, Login.class);
-            startActivity(i);
-        }
-        /*else if(){
 
-        }*/
-        return true;
-    }
-
-}

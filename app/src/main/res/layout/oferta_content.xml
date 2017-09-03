@@ -10,7 +10,9 @@
     <android.support.v7.widget.CardView
         android:id="@+id/NewsCardView"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="160dp"
+        android:paddingBottom="5dp"
+        android:onClick="details"
         app:cardBackgroundColor="#ffffff"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
@@ -20,6 +22,7 @@
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:id="@+id/cardview"
             android:orientation="vertical"
             android:padding="5dp">
 
@@ -84,14 +87,6 @@
                     android:layout_weight="1"
                     android:padding="2dp" />
             </LinearLayout>
-
-            <Button
-                android:id="@+id/details"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ver mas"
-                android:onClick="details"
-                android:layout_gravity="right"/>
 
         </LinearLayout>
 
