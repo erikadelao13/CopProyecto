@@ -25,6 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import static com.delao00064815.copproyecto.SessionManager.KEY_CARNET;
+
 /**
  * Created by hmanr on 5/6/2017.
  */
@@ -56,7 +58,7 @@ public class Talleres extends AppCompatActivity {
         listView.setAdapter(adapter);*/
 
         try {
-            new LoadData(this,myAdapter,listView,"historial",/*String.valueOf(session.getUserDetails())*/"00025815").execute().get();
+            new LoadData(this,myAdapter,listView,"taller",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*"00025815"*/).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

@@ -388,8 +388,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomEstudiante"),
                     jsonArr.getJSONObject(i).getString("carnetE"),
                     jsonArr.getJSONObject(i).getString("password"),
-                    jsonArr.getJSONObject(i).getString("yCarrera"),
-                    jsonArr.getJSONObject(i).getString("idNotificacion")));
+                    jsonArr.getJSONObject(i).getString("yCarrera")));
 
         }
        /* url_Usuario = "http://" + ip2 + "/WebServer/talleres.php?idUsuario=" + arregloU.get(0).getIdestudiante();

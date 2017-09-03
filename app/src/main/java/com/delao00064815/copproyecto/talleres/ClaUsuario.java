@@ -7,14 +7,13 @@ package com.delao00064815.copproyecto.talleres;
 public class ClaUsuario {
     String idcarrera, idestudiante, nomestudiante, carnete, password,ycarrera, idnotificacion;
 
-    public ClaUsuario(String idestudiante, String idcarrera, String nomestudiante, String carnete, String password, String ycarrera, String idnotificacion) {
+    public ClaUsuario(String idestudiante, String idcarrera, String nomestudiante, String carnete, String password, String ycarrera) {
         this.idestudiante = idestudiante;
         this.idcarrera = idcarrera;
         this.nomestudiante = nomestudiante;
         this.carnete = carnete;
         this.password = password;
         this.ycarrera = ycarrera;
-        this.idnotificacion = idnotificacion;
     }
 
     public String getIdcarrera() {
