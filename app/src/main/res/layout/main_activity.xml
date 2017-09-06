@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="60dp"
     android:background="#FFFFFF"
     tools:context="com.delao00064815.copproyecto.MainActivity"
     >

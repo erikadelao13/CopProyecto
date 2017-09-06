@@ -5,20 +5,21 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/item1"
-            android:title="Item 1" />
+            android:title="Inicia Sesion" />
         <item
             android:id="@+id/item2"
-            android:title="Item 2"/>
+            android:title="Historial"/>
     </group>
     <group
         android:id="@+id/group_item2"
         android:checkableBehavior="single">
         <item
             android:id="@+id/item3"
-            android:title="     Item 3"/>
+            android:title="     Ayuda"/>
         <item
             android:id="@+id/item4"
-            android:title="     Item 4"/>
+            android:visible="false"
+            android:title="6Volver al menu"/>
 
     </group>
 

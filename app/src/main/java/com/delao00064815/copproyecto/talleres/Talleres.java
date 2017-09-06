@@ -118,12 +118,18 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+        String msg2;
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.item1) {
+            Intent intent=new Intent(this,Login.class);
+            startActivity(intent);
+        } else if (id == R.id.item2) {
+            Log.d("prueba", "rip");
+            Intent intent4 = new Intent(this,Historial.class);
+            msg2 = "workshop";
+            intent4.putExtra("message", msg2);
+            startActivity(intent4);
 
         } else if (id == R.id.nav_slideshow) {
 

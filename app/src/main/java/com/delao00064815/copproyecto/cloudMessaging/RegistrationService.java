@@ -32,7 +32,6 @@ public class RegistrationService extends IntentService {
     public static final int READ_TIMEOUT=15000;
     public RegistrationService() {
         super("RegistrationService");
-        session = new SessionManager(getApplicationContext());
     }
 
     @Override
@@ -41,6 +40,7 @@ public class RegistrationService extends IntentService {
         URL url = null;
         InstanceID myID = InstanceID.getInstance(this);
         String registrationToken = null;
+        session = new SessionManager(this);
         try {
             registrationToken = myID.getToken(
                     getString(R.string.gcm_defaultSenderId),

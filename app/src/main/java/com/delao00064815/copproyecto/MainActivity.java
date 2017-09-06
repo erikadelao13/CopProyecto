@@ -24,6 +24,7 @@ import com.delao00064815.copproyecto.about_us.AboutUs;
 import com.delao00064815.copproyecto.cloudMessaging.RegistrationService;
 import com.delao00064815.copproyecto.directorio.Directorio;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaEmpleo;
+import com.delao00064815.copproyecto.talleres.Historial;
 import com.delao00064815.copproyecto.talleres.Talleres;
 
 public class MainActivity extends AppCompatActivity
@@ -146,11 +147,18 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        String msg2;
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.item1) {
+            Intent intent=new Intent(this,Login.class);
+            startActivity(intent);
+        } else if (id == R.id.item2) {
+            Log.d("prueba", "rip");
+            Intent intent4 = new Intent(this,Historial.class);
+            msg2 = "workshop";
+            intent4.putExtra("message", msg2);
+            startActivity(intent4);
 
         } else if (id == R.id.nav_slideshow) {
 
