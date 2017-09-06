@@ -223,6 +223,10 @@ public class Login extends AppCompatActivity {
                 /* guardar SharedPreferences*/
                 session.createLoginSession(etEmail.getText().toString());
 
+                //Obtiene token para notifiaciones
+                Intent i = new Intent(getApplicationContext(), RegistrationService.class);
+                startService(i);
+
                 Toast.makeText(Login.this, "Inicio de Sesión Perfecto", Toast.LENGTH_SHORT).show();
 
 

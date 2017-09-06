@@ -96,7 +96,7 @@ public class RegistrationService extends IntentService {
                             result.append(line);
                         }
 
-                        subscription.subscribe(registrationToken, result.toString(), null);
+                        //subscription.subscribe(registrationToken, result.toString(), null);
 
                     }
 

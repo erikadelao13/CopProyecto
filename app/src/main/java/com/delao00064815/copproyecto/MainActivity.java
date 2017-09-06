@@ -53,9 +53,7 @@ public class MainActivity extends AppCompatActivity
         txtDirectorio.setTypeface(typeface);
         txtAboutUs.setTypeface(typeface);
 
-        //Obtiene token para notifiaciones
-        Intent i = new Intent(this, RegistrationService.class);
-        startService(i);
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
