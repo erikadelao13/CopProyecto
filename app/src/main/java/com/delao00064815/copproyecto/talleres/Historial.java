@@ -46,7 +46,7 @@ public class Historial extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listView);
 
         try {
-            new LoadData(this,myAdapter,listView,"historialuser",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*String.valueOf(session.getUserDetails())"00025815"*/).execute().get();
+            new LoadData(this,myAdapter,listView,"historialUser",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*String.valueOf(session.getUserDetails())"00025815"*/).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

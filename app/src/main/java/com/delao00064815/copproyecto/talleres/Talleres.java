@@ -72,7 +72,7 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
         navigationView.setNavigationItemSelectedListener(this);
 
         try {
-            new LoadData(this,myAdapter,listView,"talleruser",String.valueOf(session.getUserDetails().get(KEY_CARNET))).execute().get();
+            new LoadData(this,myAdapter,listView,"tallerUser",String.valueOf(session.getUserDetails().get(KEY_CARNET))).execute().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
