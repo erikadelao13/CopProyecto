@@ -140,22 +140,22 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
          switch(type) {
-            case "taller":
+            /*case "taller":
                 try {
                     url_Usuario="http://"+ip2+"/WebServer/getuser.php?carnetE="+user;
                     response=getInfoWeb(url_Usuario);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
-                break;
-             case "historial":
+                break;*/
+             /*case "historial":
                  try {
                      url_Usuario="http://"+ip2+"/WebServer/getuser.php?carnetE="+user;
                      response=getInfoWeb(url_Usuario);
                  } catch (MalformedURLException e) {
                      e.printStackTrace();
                  }
-                 break;
+                 break;*/
              case "oferta":
                  try {
                      response=getInfoWeb(url_offers);
@@ -214,13 +214,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     @Override
     protected void onPostExecute(String result) {
         switch (type){
-            case "taller":
+            /*case "taller":
                 try {
                     setUser(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
+                break;*/
             case "tallerUser":
                 try {
                     setWorkshop(response);
@@ -228,13 +228,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
-            case "historial":
+           /* case "historial":
                 try {
                     setUser(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
+                break;*/
             case "historialUser":
                 try {
                     setWorkshop(response);
@@ -397,7 +397,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }*/
-       if(type=="taller"){
+       /*if(type=="taller"){
            try {
                new LoadData(context,tAdapter,tList,"tallerUser",arregloU.get(0).getIdestudiante()).execute().get();
            } catch (InterruptedException e) {
@@ -406,8 +406,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                e.printStackTrace();
            }
 
-       }
-       else{
+       }*/
+      /* else{
            try {
                new LoadData(context,tAdapter,tList,"historialUser",arregloU.get(0).getIdestudiante()).execute().get();
            } catch (InterruptedException e) {
@@ -416,7 +416,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                e.printStackTrace();
            }
 
-       }
+       }*/
 
     }
 

@@ -37,6 +37,15 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".talleres.Historial"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="OPEN_ACTIVITY_1" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ofertaEmpleo.OfertaEmpleo"
             android:screenOrientation="portrait" />
         <activity
