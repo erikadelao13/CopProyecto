@@ -7,6 +7,10 @@
             android:id="@+id/item1"
             android:title="Inicia Sesion" />
         <item
+            android:id="@+id/item5"
+            android:title="Cerrar Sesion"
+            android:visible="false"/>
+        <item
             android:id="@+id/item2"
             android:title="Historial"/>
     </group>

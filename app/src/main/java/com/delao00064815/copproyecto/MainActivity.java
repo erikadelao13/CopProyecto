@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity
     TextView txtDirectorio;
     TextView txtAboutUs;
     SessionManager session;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         session = new SessionManager(getApplicationContext());
+
 
         txtEmpleados = (TextView) findViewById(R.id.txtEmpleados);
         txtTalleres = (TextView) findViewById(R.id.txtTalleres);
@@ -61,8 +63,15 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        /*if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }*/
     }
 
 
@@ -148,6 +157,15 @@ public class MainActivity extends AppCompatActivity
         String msg2;
         int id = item.getItemId();
 
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
+
         if (id == R.id.item1) {
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);
@@ -158,8 +176,9 @@ public class MainActivity extends AppCompatActivity
             intent4.putExtra("message", msg2);
             startActivity(intent4);
 
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.item5) {
+            Toast.makeText(this, "Sesion Cerrada",Toast.LENGTH_LONG).show();
+            session.logoutUser();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
@@ -172,5 +191,19 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    protected void onResume()
+    {
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
+    }
+
+
 
 }

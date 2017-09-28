@@ -9,17 +9,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
+import com.delao00064815.copproyecto.SessionManager;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroFacultad;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroTipoOferta;
+import com.delao00064815.copproyecto.talleres.Historial;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 import java.util.concurrent.ExecutionException;
@@ -34,6 +38,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
     RecyclerView rView;
     FloatingActionMenu actionMenu;
     FloatingActionButton actionSinfiltro;
+    SessionManager session;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +59,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        session = new SessionManager(getApplicationContext());
         switch(tipoFiltro){
             case "jobs":
                 try {
@@ -253,14 +259,22 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+        String msg2;
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.item1) {
+            Intent intent=new Intent(this,Login.class);
+            startActivity(intent);
+        } else if (id == R.id.item2) {
+            Log.d("prueba", "rip");
+            Intent intent4 = new Intent(this,Historial.class);
+            msg2 = "workshop";
+            intent4.putExtra("message", msg2);
+            startActivity(intent4);
 
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.item5) {
+            Toast.makeText(this, "Sesion Cerrada",Toast.LENGTH_LONG).show();
+            session.logoutUser();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

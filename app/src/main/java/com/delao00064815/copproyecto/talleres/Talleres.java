@@ -131,8 +131,9 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
             intent4.putExtra("message", msg2);
             startActivity(intent4);
 
-        } else if (id == R.id.nav_slideshow) {
-
+        } else if (id == R.id.item5) {
+            Toast.makeText(this, "Sesion Cerrada",Toast.LENGTH_LONG).show();
+            session.logoutUser();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
