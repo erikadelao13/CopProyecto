@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
@@ -41,6 +42,10 @@ public class Historial extends AppCompatActivity {
         session = new SessionManager(getApplicationContext());
         setContentView(R.layout.activity_drawer_talleres);
         //aqui deberia sacar la lista de la base de datos supongo
+        TextView mTextView = (TextView) findViewById(R.id.txtInscripcion);
+// Put this in OnCreate
+
+
         images = new ArrayList<String>() {
         };
         listView = (ListView) findViewById(R.id.listView);
@@ -48,8 +53,10 @@ public class Historial extends AppCompatActivity {
         try {
             new LoadData(this,myAdapter,listView,"historialUser",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*String.valueOf(session.getUserDetails())"00025815"*/).execute().get();
         } catch (InterruptedException e) {
+            mTextView.setText("No te has inscrito a nada todavía");
             e.printStackTrace();
         } catch (ExecutionException e) {
+            mTextView.setText("No te has inscrito a nada todavía");
             e.printStackTrace();
         }
 

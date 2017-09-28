@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent3);
                 break;
             case R.id.taller_img:
-                Log.d("prueba", "rip");
+
                 Intent intent4 = new Intent(this, Talleres.class);
                 msg = "workshop";
                 intent4.putExtra("message", msg);
@@ -152,7 +152,7 @@ public class MainActivity extends AppCompatActivity
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);
         } else if (id == R.id.item2) {
-            Log.d("prueba", "rip");
+
             Intent intent4 = new Intent(this,Historial.class);
             msg2 = "workshop";
             intent4.putExtra("message", msg2);

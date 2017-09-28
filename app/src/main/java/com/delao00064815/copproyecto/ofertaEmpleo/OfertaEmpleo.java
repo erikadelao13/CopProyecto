@@ -68,7 +68,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Ing. Informática":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Informatica").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3160").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -78,7 +78,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Ing. Quimica":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Quimica").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3050").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -88,7 +88,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Ing. Industrial":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Industrial").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3040").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -118,7 +118,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Ing. Electrica":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Ingenieria%20Electrica").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3010").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -128,7 +128,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Licenciatura en Mercadeo":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Licenciatura%20en%20Mercadeo").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=2220").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -138,7 +138,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Leyes":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=Leyes").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=1260").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

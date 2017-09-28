@@ -78,7 +78,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ofertas de Empleo  y
+                    android:text="Ofertas de Empleo y
           Pasantias"
                     android:textSize="15sp"/>
             </LinearLayout>
