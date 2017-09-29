@@ -48,6 +48,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private String user;
     private ListView listView;
     AdaptadorTalleres myAdapter;
+    SessionManager session;
 
     //Arreglos
     ArrayList<OfertaClass> offer=new ArrayList<>();
@@ -115,6 +116,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     public LoadData(Context c,String condition){
         context=c;
         type=condition;
+        session = new SessionManager(context);
     }
 
 
@@ -308,21 +310,19 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     public  void signUp(String idTaller) throws UnsupportedEncodingException {
         // Get user defined values
-
-        SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
-
-        String carnetE = pref.getString("carnetE", null);
 //        Log.d("signinUp", carnetE);
-        if(carnetE.equals(null)){
+        /*
+        if(!session.isLoggedIn()){
             return;
         }
+        */
         BufferedReader reader=null;
 
         // Send data
         try
         {
             // Defined URL  where to send data
-            URL uri = new URL(url_workshopSignUp+"?carnetE="+carnetE+"&idTaller="+idTaller);
+            URL uri = new URL(url_workshopSignUp+"?carnetE="+session.getUserDetails().get(SessionManager.KEY_CARNET)+"&idTaller="+idTaller);
 
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
             httpCon.setReadTimeout(20000);

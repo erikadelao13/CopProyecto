@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
+import com.delao00064815.copproyecto.SessionManager;
 import com.squareup.picasso.Picasso;
 
 import com.delao00064815.copproyecto.R;
@@ -36,10 +37,13 @@ public class AdaptadorTalleres extends BaseAdapter {
     private int layout;
     private ArrayList<ClaTalleres> images;
 
+    SessionManager session;
+
     public AdaptadorTalleres(Context context, int layout, ArrayList<ClaTalleres> images){
         this.context=context;
         this.layout=layout;
         this.images=images;
+        session = new SessionManager(context);
     }
     @Override
     public int getCount() {
@@ -71,7 +75,7 @@ public class AdaptadorTalleres extends BaseAdapter {
             @Override
             public void onClick(View v){
                 SharedPreferences pref = context.getApplicationContext().getSharedPreferences("MyPref", 0);
-                if(!pref.contains("carnetE")) {
+                if(!session.isLoggedIn()) {
                     Toast.makeText(parent.getContext(),"Debes iniciar sesión para poder registrarte a un taller",Toast.LENGTH_SHORT).show();
                     return;
                 }
