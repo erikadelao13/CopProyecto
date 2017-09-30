@@ -91,12 +91,13 @@ public class RegistrationService extends IntentService {
                         StringBuilder result = new StringBuilder();
                         String line;
 
-                        result.append("/topics/carrera/");
+                        result.append("/topics/");
                         while ((line = reader.readLine()) != null) {
                             result.append(line);
                         }
 
-                        //subscription.subscribe(registrationToken, result.toString(), null);
+
+                        subscription.subscribe(registrationToken, result.toString(), null);
 
                     }
 

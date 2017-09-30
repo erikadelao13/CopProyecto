@@ -220,7 +220,7 @@ public class Login extends AppCompatActivity {
 
             if(result.equalsIgnoreCase("true"))
             {
-                /* guardar SharedPreferences*/
+                /* guardar datos de sesion*/
                 session.createLoginSession(etEmail.getText().toString());
 
                 //Obtiene token para notifiaciones
