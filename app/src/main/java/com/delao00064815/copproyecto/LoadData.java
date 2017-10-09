@@ -14,6 +14,7 @@ import com.delao00064815.copproyecto.directorio.DirectorioClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
+import com.delao00064815.copproyecto.talleres.AdaptadorHistorial;
 import com.delao00064815.copproyecto.talleres.AdaptadorTalleres;
 import com.delao00064815.copproyecto.talleres.ClaTalleres;
 import com.delao00064815.copproyecto.talleres.ClaUsuario;
@@ -74,6 +75,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     //Adaptadores
     AdaptadorTalleres tAdapter;
+    AdaptadorHistorial hAdapter;
     DAdapter dAdapter;
     OfertaAdapter oAdapter;
 
@@ -83,6 +85,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     public LoadData(Context c, AdaptadorTalleres adapter, ListView list,String condition,String carnetuser){
         context=c;
         tAdapter=adapter;
+        tList=list;
+        type=condition;
+        user=carnetuser;
+    }
+    //Constructor para Historial
+    public LoadData(Context c, AdaptadorHistorial adapter, ListView list,String condition,String carnetuser){
+        context=c;
+        hAdapter=adapter;
         tList=list;
         type=condition;
         user=carnetuser;
@@ -239,7 +249,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                 break;*/
             case "historialUser":
                 try {
-                    setWorkshop(response);
+                    setWorkHist(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -376,6 +386,26 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
         tAdapter=new AdaptadorTalleres(context,R.layout.activity_talleres,ws);
         tList.setAdapter(tAdapter);
+
+    }
+    public void setWorkHist(String jsonCad) throws JSONException {
+        JSONArray jsonArr=new JSONArray(jsonCad);
+        for (int i=0;i<jsonArr.length();i++){
+            ws.add(new ClaTalleres(jsonArr.getJSONObject(i).getInt("idTaller"),
+                    jsonArr.getJSONObject(i).getString("nomTaller"),
+                    jsonArr.getJSONObject(i).getString("aulaTaller"),
+                    jsonArr.getJSONObject(i).getString("fechaTaller"),
+                    jsonArr.getJSONObject(i).getString("nomCategoria"),
+                    url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
+        }
+        /*Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getIdTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getFechaTaller()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
+        Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");*/
+
+        hAdapter=new AdaptadorHistorial(context,R.layout.activity_historial,ws);
+        tList.setAdapter(hAdapter);
 
     }
     public void setUser(String jsonCad) throws JSONException {

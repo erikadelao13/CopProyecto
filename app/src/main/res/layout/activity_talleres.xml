@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:scaleType="centerCrop" />
+
         <TextView
         android:id="@+id/txtInscripcion"
         android:layout_width="match_parent"
@@ -28,6 +29,7 @@
         android:textAllCaps="true"
         android:textSize="20sp"
         android:textStyle="bold" />
+
        <Button
            android:textColor="#fafafa"
            android:background="@color/colorPrimaryDark"

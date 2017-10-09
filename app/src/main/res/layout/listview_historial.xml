@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Historial de Talleres inscritos"
+        android:textSize="20sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        />
+    <ListView
+        android:id="@+id/listViewH"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></ListView>
+
+</LinearLayout>

@@ -32,7 +32,7 @@ public class Historial extends AppCompatActivity {
     Button register;
     ListView listView;
     ArrayList<String> images;
-    AdaptadorTalleres myAdapter;
+    AdaptadorHistorial myAdapter;
     SessionManager session;
 
     @Override
@@ -40,7 +40,7 @@ public class Historial extends AppCompatActivity {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
         super.onCreate(savedInstanceState);
         session = new SessionManager(getApplicationContext());
-        setContentView(R.layout.activity_drawer_talleres);
+        setContentView(R.layout.activity_drawer_historial);
         //aqui deberia sacar la lista de la base de datos supongo
         TextView mTextView = (TextView) findViewById(R.id.txtInscripcion);
 // Put this in OnCreate
@@ -48,7 +48,7 @@ public class Historial extends AppCompatActivity {
 
         images = new ArrayList<String>() {
         };
-        listView = (ListView) findViewById(R.id.listView);
+        listView = (ListView) findViewById(R.id.listViewH);
 
         try {
             new LoadData(this,myAdapter,listView,"historialUser",String.valueOf(session.getUserDetails().get(KEY_CARNET))/*String.valueOf(session.getUserDetails())"00025815"*/).execute().get();

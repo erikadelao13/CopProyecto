@@ -45,10 +45,10 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
 
         if (null == convertView) {
             convertView = inflater.inflate(
-                    R.layout.oferta_content,
-                    parent,
-                    false);
-        }
+                R.layout.oferta_content,
+                parent,
+                false);
+    }
         ImageView img=(ImageView)convertView.findViewById(R.id.imageO);
         TextView title=(TextView)convertView.findViewById(R.id.title);
         TextView carreer=(TextView)convertView.findViewById(R.id.content2);
