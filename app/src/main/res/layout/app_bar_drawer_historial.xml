@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/listview_talleres"/>
+    <include layout="@layout/listview_historial"/>
 
 
 </LinearLayout>
