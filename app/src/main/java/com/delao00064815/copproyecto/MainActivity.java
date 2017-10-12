@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -72,6 +73,15 @@ public class MainActivity extends AppCompatActivity
             navigationView.getMenu().findItem(R.id.item1).setVisible(true);
             navigationView.getMenu().findItem(R.id.item5).setVisible(false);
         }*/
+    }
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            //code
+            moveTaskToBack(true);
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 
@@ -175,12 +185,14 @@ public class MainActivity extends AppCompatActivity
             msg2 = "workshop";
             intent4.putExtra("message", msg2);
             startActivity(intent4);
+            finish();
 
         } else if (id == R.id.item5) {
             Toast.makeText(this, "Sesion Cerrada",Toast.LENGTH_LONG).show();
             session.logoutUser();
-        } else if (id == R.id.nav_manage) {
-
+        } else if (id == R.id.item6) {
+            /*Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);*/
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

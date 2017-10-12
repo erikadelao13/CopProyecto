@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
+import com.delao00064815.copproyecto.MainActivity;
 import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.SessionManager;
@@ -244,6 +246,17 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         //searchView.setMenuItem(item);
         return true;
     }*/
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            //code
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     public void onBackPressed() {
