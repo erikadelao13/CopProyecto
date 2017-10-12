@@ -42,6 +42,7 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
     ArrayList<String> images;
     AdaptadorTalleres myAdapter;
     SessionManager session;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         try {
@@ -118,14 +119,24 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
         String msg2;
         int id = item.getItemId();
+
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
 
         if (id == R.id.item1) {
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);
         } else if (id == R.id.item2) {
-            Log.d("prueba", "rip");
+
             Intent intent4 = new Intent(this,Historial.class);
             msg2 = "workshop";
             intent4.putExtra("message", msg2);
@@ -145,6 +156,18 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    protected void onResume()
+    {
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
     }
 
 }

@@ -39,6 +39,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
     FloatingActionMenu actionMenu;
     FloatingActionButton actionSinfiltro;
     SessionManager session;
+    NavigationView navigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +57,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         session = new SessionManager(getApplicationContext());
@@ -262,11 +263,20 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         String msg2;
         int id = item.getItemId();
 
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
+
         if (id == R.id.item1) {
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);
         } else if (id == R.id.item2) {
-            Log.d("prueba", "rip");
+
             Intent intent4 = new Intent(this,Historial.class);
             msg2 = "workshop";
             intent4.putExtra("message", msg2);
@@ -287,4 +297,17 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    protected void onResume()
+    {
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
+    }
+
 }

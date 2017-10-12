@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.directorio.DAdapter;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
@@ -293,7 +295,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         StringBuilder result = null;
         int respuesta = 0;
         try {
-            Log.d(TAG, "getInfoWeb: "+uri+"");
+           // Log.d(TAG, "getInfoWeb: "+uri+"");
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
             httpCon.setReadTimeout(20000);
             httpCon.setConnectTimeout(20000);
@@ -302,7 +304,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             respuesta =httpCon.getResponseCode();
             result = new StringBuilder();
             if (respuesta == HttpURLConnection.HTTP_OK){
-                Log.d(TAG, "getInfoWeb: Funciona");
+                //Log.d(TAG, "getInfoWeb: Funciona");
                 InputStream in =new BufferedInputStream(httpCon.getInputStream());
                 BufferedReader read = new BufferedReader(new InputStreamReader(in));
                 while ((linea=read.readLine())!=null){
@@ -314,7 +316,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         catch (Exception e){
             e.printStackTrace();
         }
-       Log.d(TAG, "getInfoWeb:"+result.toString()+"");
+      // Log.d(TAG, "getInfoWeb:"+result.toString()+"");
         return result.toString();
     }
 
@@ -389,25 +391,29 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
     }
     public void setWorkHist(String jsonCad) throws JSONException {
-        JSONArray jsonArr=new JSONArray(jsonCad);
-        for (int i=0;i<jsonArr.length();i++){
-            ws.add(new ClaTalleres(jsonArr.getJSONObject(i).getInt("idTaller"),
-                    jsonArr.getJSONObject(i).getString("nomTaller"),
-                    jsonArr.getJSONObject(i).getString("aulaTaller"),
-                    jsonArr.getJSONObject(i).getString("fechaTaller"),
-                    jsonArr.getJSONObject(i).getString("nomCategoria"),
-                    url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
-        }
+
+            JSONArray jsonArr = new JSONArray(jsonCad);
+
+            for (int i = 0; i < jsonArr.length(); i++) {
+                ws.add(new ClaTalleres(jsonArr.getJSONObject(i).getInt("idTaller"),
+                        jsonArr.getJSONObject(i).getString("nomTaller"),
+                        jsonArr.getJSONObject(i).getString("aulaTaller"),
+                        jsonArr.getJSONObject(i).getString("fechaTaller"),
+                        jsonArr.getJSONObject(i).getString("nomCategoria"),
+                        url_talleres + jsonArr.getJSONObject(i).getString("imgTaller")));
+            }
         /*Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getIdTaller()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getFechaTaller()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getNomCategoria()+"");
         Log.d(TAG, "setWorkshop: "+ws.get(0).getImgTaller()+"");*/
 
-        hAdapter=new AdaptadorHistorial(context,R.layout.activity_historial,ws);
-        tList.setAdapter(hAdapter);
 
-    }
+
+            hAdapter = new AdaptadorHistorial(context, R.layout.activity_historial, ws);
+            tList.setAdapter(hAdapter);
+            }
+    
     public void setUser(String jsonCad) throws JSONException {
 
         JSONArray jsonArr=new JSONArray(jsonCad);
@@ -462,7 +468,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
                     url_ofertas+jsonArr.getJSONObject(i).getString("img"),
                     jsonArr.getJSONObject(i).getString("nomCarrera")));
-            Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
+            //Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
        /* Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
@@ -482,7 +488,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("correoEmpleado"),
                     jsonArr.getJSONObject(i).getString("cargoEmpleado")));
         }
-        Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
+        //Log.d(TAG, "setEmployers: "+direct.get(0).getNombreEmpleado()+"");
         dAdapter=new DAdapter(context, R.layout.directory_content,direct);
         tList.setAdapter(dAdapter);
     }

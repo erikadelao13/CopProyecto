@@ -35,7 +35,7 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
     }
     @Override
     public void onBindViewHolder(MyHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder: "+ofertas.get(position).getNomTipoOferta()+"");
+        //Log.d(TAG, "onBindViewHolder: "+ofertas.get(position).getNomTipoOferta()+"");
         /*holder.title.setText(ofertas.get(position).getNomTipoOferta());
         holder.content.setText(ofertas.get(position).getCarrera());
         holder.lastDate.setText(ofertas.get(position).getFechaLimite());

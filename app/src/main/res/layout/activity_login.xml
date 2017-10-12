@@ -78,7 +78,7 @@
                     android:background="#383F5A"
                     android:text="Iniciar Sesión" />
 
-                 <TextView android:id="@+id/text_log"
+                    <!-- <TextView android:id="@+id/text_log"
                      android:layout_width="fill_parent"
                      android:layout_height="wrap_content"
                      android:layout_marginTop="24dp"
@@ -87,7 +87,7 @@
                      android:textSize="16dip"
                      android:onClick="LogSin"/>
 
-
+                    -->
             </LinearLayout>
         </LinearLayout>
 

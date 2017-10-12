@@ -63,12 +63,20 @@ public class AdaptadorHistorial extends BaseAdapter {
         LayoutInflater layout_inflater = LayoutInflater.from(this.context);
         v = layout_inflater.inflate(R.layout.activity_historial, null);
         //String currentName = images.get(position);
-        ImageView imageView = (ImageView) v.findViewById(R.id.imageHistorial);
-        Picasso.with(context).load(images.get(position).getImgTaller()).into(imageView);
-        TextView title=(TextView) v.findViewById(R.id.txtdescHist);
-        TextView sub = (TextView) v.findViewById(R.id.txttitHist);
-        title.setText(images.get(position).getNomTaller());
-        sub.setText(images.get(position).getFechaTaller());
+        if(images.isEmpty()){
+            TextView empire=(TextView)convertView.findViewById(R.id.txtdescHist);
+            empire.setText("No te has inscrito a un taller todavía");
+        }
+        else{
+            ImageView imageView = (ImageView) v.findViewById(R.id.imageHistorial);
+            Picasso.with(context).load(images.get(position).getImgTaller()).into(imageView);
+            TextView title=(TextView) v.findViewById(R.id.txtdescHist);
+            TextView sub = (TextView) v.findViewById(R.id.txttitHist);
+            title.setText(images.get(position).getNomTaller());
+            sub.setText(images.get(position).getFechaTaller());
+
+        }
+        System.out.println("EL RESULTADO DE IMAGES ES" + images.isEmpty());
         final ImageView imageTalleres = (ImageView) v.findViewById(R.id.imageHistorial);
         imageTalleres.setOnClickListener(new View.OnClickListener(){
             @Override
