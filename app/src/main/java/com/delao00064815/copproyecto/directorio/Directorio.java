@@ -2,6 +2,7 @@ package com.delao00064815.copproyecto.directorio;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -43,6 +44,7 @@ public class Directorio extends AppCompatActivity implements NavigationView.OnNa
         rView=(ListView) findViewById(R.id.mRecyclerDirectory);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(Color.parseColor("#212438"));
 // Put this in OnCreate
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
