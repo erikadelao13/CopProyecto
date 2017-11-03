@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent2);
                 break;
             case R.id.ofertas_empleo:
-                Intent intent3 = new Intent(this, OfertaEmpleo.class);
+                Intent intent3 = new Intent(this, Test.class);
                 msg = "jobs";
                 intent3.putExtra("message", msg);
                 startActivity(intent3);
