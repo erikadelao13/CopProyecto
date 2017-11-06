@@ -8,24 +8,32 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.delao00064815.copproyecto.LoadData;
+import com.delao00064815.copproyecto.directorio.DAdapter;
+import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaEmpleo;
+
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by César on 25/07/2017.
  */
 
 public class FiltroTipoOferta extends android.support.v4.app.DialogFragment {
-    final CharSequence[] tipoOferta = {"Pasantía", "Oferta de Empleo"};
+    OfertaAdapter OferAdapter;
     String opciones;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
+
+        final CharSequence[] tipoOferta = {"Pasantía", "Oferta de Empleo"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Selecciona el tipo de oferta que te interesa").setSingleChoiceItems(tipoOferta, -1, new DialogInterface.OnClickListener() {
             @Override
 
             public void onClick(DialogInterface dialog, int args1) {
-                switch (args1){
+              opciones =(String) tipoOferta[args1];
+               /* switch (args1){
                     case 0:
                         opciones = (String) tipoOferta[args1];
 
@@ -40,7 +48,7 @@ public class FiltroTipoOferta extends android.support.v4.app.DialogFragment {
                     default:
                         opciones = "Sin filtro";
                         break;
-                }
+                }*/
             }
         }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

@@ -128,7 +128,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         StringBuilder result = null;
         int respuesta = 0;
         try {
-            Log.d(TAG, "getInfoWeb: "+uri+"");
+            //Log.d(TAG, "getInfoWeb: "+uri+"");
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
             httpCon.setReadTimeout(20000);
             httpCon.setConnectTimeout(20000);
@@ -150,7 +150,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         catch (Exception e){
 
         }
-        Log.d(TAG, "getTaller:"+result.toString()+"");
+        //Log.d(TAG, "getTaller:"+result.toString()+"");
         return result.toString();
     }
 
@@ -169,7 +169,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
             respuesta =httpCon.getResponseCode();
             result = new StringBuilder();
             if (respuesta == HttpURLConnection.HTTP_OK){
-                Log.d(TAG, "getOferta2: Funciona");
+               // Log.d(TAG, "getOferta2: Funciona");
                 InputStream in =new BufferedInputStream(httpCon.getInputStream());
                 BufferedReader read = new BufferedReader(new InputStreamReader(in));
                 while ((linea=read.readLine())!=null){
@@ -182,12 +182,12 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         catch (Exception e){
 
         }
-        Log.d(TAG, "getOferta:"+result.toString()+"");
+      //  Log.d(TAG, "getOferta:"+result.toString()+"");
         return result.toString();
     }
     public void setOffer(String jsonCad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsonCad);
-        Log.d(TAG, "setOffer: "+jsonCad);
+        //Log.d(TAG, "setOffer: "+jsonCad);
         for (int i=0;i<jsonArr.length();i++){
             offer.add(new OfertaClass(jsonArr.getJSONObject(i).getInt("idOferta"),
                     jsonArr.getJSONObject(i).getString("nombreTipoOferta"),
@@ -197,13 +197,13 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
                     url_ofertas_imagen+jsonArr.getJSONObject(i).getString("img"),
                     jsonArr.getJSONObject(i).getString("nomCarrera")));
-            Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
+           // Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
-        Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
+       /* Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getEmpresa()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getCargo()+"");
         Log.d(TAG, "setOffer: "+offer.get(1).getImg()+"");
-
+*/
         oAdapter=new OAdapter(context,offer);
         tList.setAdapter(oAdapter);
     }

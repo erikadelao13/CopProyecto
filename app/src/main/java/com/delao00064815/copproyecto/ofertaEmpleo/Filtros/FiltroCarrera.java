@@ -7,27 +7,40 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 
+import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.MainActivity;
+import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaEmpleo;
+
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by César on 25/07/2017.
  */
 
 public class FiltroCarrera extends android.support.v4.app.DialogFragment {
-    final CharSequence[] carrera = {"Ing. Informática", "Ing. Quimica", "Ing. Industrial","Ing. Electrica", "Licenciatura en Mercadeo", "Leyes"};
+    OfertaAdapter OferAdapter;
     String opciones;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        Bundle extras = getActivity().getIntent().getExtras();
+       final ArrayList<CarreraClass> carrera  = extras.getParcelableArrayList("carrera");
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Selecciona la Carrera para la que buscas oferta ").setSingleChoiceItems(carrera, -1, new DialogInterface.OnClickListener() {
+        System.out.println("PROBANDO ESTA WEA LOAD"+carrera.get(0).idCarrera);
+        builder.setTitle("Selecciona la Carrera para la que buscas oferta ").setSingleChoiceItems((ListAdapter) carrera, -1, new DialogInterface.OnClickListener() {
             @Override
 
             public void onClick(DialogInterface dialog, int args1) {
-                switch (args1){
+                opciones =  carrera.get(args1).idCarrera;
+               // System.out.println("PROBANDO ESTA WEA DESPUÉS DEL CLICK"+carrera.get(args1).idCarrera);
+                /*switch (args1){
                     case 0:
                         opciones = (String) carrera[args1];
 
@@ -56,7 +69,7 @@ public class FiltroCarrera extends android.support.v4.app.DialogFragment {
                     default:
                         opciones = "Sin Filtro";
                         break;
-                }
+                }*/
             }
         }).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

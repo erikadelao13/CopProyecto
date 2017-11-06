@@ -2,6 +2,9 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +17,10 @@ import android.widget.TextView;
 
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
+import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.CarreraClass;
+import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -32,10 +39,20 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
     //no se usa borrar
     Context c;
     List<OfertaClass> oferta;
+    ArrayList<CarreraClass> carrera;
+    FloatingActionMenu actionMenu;
+    FloatingActionButton actionSinfiltro;
     public OAdapter(Context context,List<OfertaClass> direct) {
         super(context,0, direct);
         this.c=context;
         this.oferta=direct;
+    }
+
+    public OAdapter(@NonNull Context context, @LayoutRes int resource, Context c, List<OfertaClass> oferta, ArrayList<CarreraClass> carrera) {
+        super(context, resource);
+        this.c = c;
+        this.oferta = oferta;
+        this.carrera = carrera;
     }
 
     @Override
@@ -49,13 +66,16 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
                 parent,
                 false);
     }
+        actionMenu=(FloatingActionMenu)convertView.findViewById(R.id.fabprincipal);
+
+        actionSinfiltro =(com.github.clans.fab.FloatingActionButton)convertView.findViewById(R.id.sinfiltro_float_button);
         ImageView img=(ImageView)convertView.findViewById(R.id.imageO);
         TextView title=(TextView)convertView.findViewById(R.id.title);
         TextView carreer=(TextView)convertView.findViewById(R.id.content2);
         TextView finalDate=(TextView)convertView.findViewById(R.id.lastDate);
         TextView empire=(TextView)convertView.findViewById(R.id.content);
         LinearLayout but=(LinearLayout)convertView.findViewById(R.id.cardview);
-
+        actionMenu.setClosedOnTouchOutside(true);
         OfertaClass o=getItem(position);
         title.setText(o.getNomTipoOferta());
         carreer.setText(o.getCarrera());

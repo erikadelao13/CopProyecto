@@ -22,12 +22,16 @@ import com.delao00064815.copproyecto.MainActivity;
 import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.SessionManager;
+import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.CarreraClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroFacultad;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroTipoOferta;
+import com.delao00064815.copproyecto.talleres.ClaUsuario;
 import com.delao00064815.copproyecto.talleres.Historial;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
+
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -50,6 +54,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         actionMenu.setClosedOnTouchOutside(true);
         actionSinfiltro =(com.github.clans.fab.FloatingActionButton)findViewById(R.id.sinfiltro_float_button);
         String tipoFiltro = getIntent().getStringExtra("message");
+
         rView=(RecyclerView)findViewById(R.id.mRecycler);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -158,74 +163,22 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
 
 
         }
-        /*try {
-            new NetOfertas(this,oAdapter,rView).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }*/
 
-        /*searchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
-            @Override
-            public void onSearchViewShown() {
-
-            }
-
-            @Override
-            public void onSearchViewClosed() {
-
-                //If closed Search View , lstView will return default
-                //lstView = (ListView)findViewById(R.id.lstView);
-                //ArrayAdapter adapter = new ArrayAdapter(OfertaEmpleo.this,android.R.layout.simple_list_item_1,lstSource);
-               // lstView.setAdapter(adapter);
-
-            }
-        });*/
-
-        /*searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                if(newText != null && !newText.isEmpty()){
-                    //List<String> lstFound = new ArrayList<String>();
-                    for(String item:lstSource){
-                        if(item.contains(newText))
-                            lstFound.add(item);
-                    }
-
-                   ArrayAdapter adapter = new ArrayAdapter(OfertaEmpleo.this,android.R.layout.simple_list_item_1,lstFound);
-                    lstView.setAdapter(adapter);
-                }
-                else{
-                    //if search text is null
-                    //return default
-                    ArrayAdapter adapter = new ArrayAdapter(OfertaEmpleo.this,android.R.layout.simple_list_item_1,lstSource);
-                    lstView.setAdapter(adapter);
-                }
-                return true;
-            }
-
-        });*/
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.menu,menu);
-        return true;
-    }
-*/
     //@Override
     public void selectCarrera(View v){
-            FiltroCarrera my_dialog = new FiltroCarrera();
-            my_dialog.show(getSupportFragmentManager(),"Dialog Carrera");
-            actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
-            actionMenu.toggle(true);
+// set Fragmentclass Arguments
+        try {
+            new LoadData(this,"Carreras").execute().get();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+       /* */
+
     }
     public void selectTipo(View v){
         FiltroTipoOferta my_dialog = new FiltroTipoOferta();
