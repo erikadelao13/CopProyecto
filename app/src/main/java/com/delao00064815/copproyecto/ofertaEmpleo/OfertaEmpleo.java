@@ -1,6 +1,7 @@
 package com.delao00064815.copproyecto.ofertaEmpleo;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -51,6 +52,7 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
         rView=(RecyclerView)findViewById(R.id.mRecycler);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(Color.parseColor("#212438"));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

@@ -4,8 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,9 +13,6 @@ import android.widget.TextView;
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.directorio.DAdapter;
 import com.delao00064815.copproyecto.directorio.DirectorioClass;
-import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.CarreraClass;
-import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
-import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.enlace;
 import com.delao00064815.copproyecto.ofertaEmpleo.OAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaAdapter;
 import com.delao00064815.copproyecto.ofertaEmpleo.OfertaClass;
@@ -42,8 +37,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
-import static android.R.attr.fragment;
-
 /**
  * Created by hmanr on 25/6/2017.
  */
@@ -64,14 +57,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<OfertaClass> offer=new ArrayList<>();
     ArrayList<ClaTalleres> ws=new ArrayList<>();
     ArrayList<DirectorioClass> direct=new ArrayList<>();
-    ArrayList<CarreraClass> carreraa=new ArrayList<>();
     ArrayList<ClaUsuario> arregloU = new ArrayList<>();
 
     //URLs
-    String ip2="copuca-com.stackstaging.com";
+    String ip2="cop-uca-com.stackstaging.com";
     String ip="10.45.7.31";
     String url_talleres="http://"+ip2+"/WebServer/imagenes/talleres/";
-    String url_carreras="http://"+ip2+"/WebServer/getCarrera.php";
     String url_ofertas="http://"+ip2+"/WebServer/imagenes/ofertas/";
     String url_Usuario="";
     String url_workshop="http://"+ip2+"/WebServer/talleres.php";
@@ -123,11 +114,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         type=condition;
         filtro=filtros;
     }
-    public LoadData(Context c,/*OfertaAdapter oa,*/  String filtros){
-        context=c;
-        /*oAdapter=oa;*/
-        type=filtros;
-    }
+
     //Constructor para directorio
     public LoadData(Context c,DAdapter adapter, ListView rv,String condition){
         context=c;
@@ -138,11 +125,11 @@ public class LoadData extends AsyncTask<Void, Void, String> {
 
 
     //Constructor para agregarTaller
-   /* public LoadData(Context c,String condition){
+    public LoadData(Context c,String condition){
         context=c;
         type=condition;
         session = new SessionManager(context);
-    }*/
+    }
 
 
 
@@ -158,8 +145,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         pDialog = new ProgressDialog(context) ;
         pDialog.setMessage("Loading data. Please wait...");
         pDialog.setIndeterminate(false);
+        //pDialog.show();
         pDialog.setCancelable(false);
-        pDialog.show();
 
     }
 
@@ -167,17 +154,25 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     @Override
     protected String doInBackground(Void... params) {
          switch(type) {
-
-             case "oferta":
+            /*case "taller":
+                try {
+                    url_Usuario="http://"+ip2+"/WebServer/getuser.php?carnetE="+user;
+                    response=getInfoWeb(url_Usuario);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;*/
+             /*case "historial":
                  try {
-                     response=getInfoWeb(url_offers);
+                     url_Usuario="http://"+ip2+"/WebServer/getuser.php?carnetE="+user;
+                     response=getInfoWeb(url_Usuario);
                  } catch (MalformedURLException e) {
                      e.printStackTrace();
                  }
-                 break;
-             case "Carreras":
+                 break;*/
+             case "oferta":
                  try {
-                     response=getInfoWeb(url_carreras);
+                     response=getInfoWeb(url_offers);
                  } catch (MalformedURLException e) {
                      e.printStackTrace();
                  }
@@ -247,13 +242,6 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
-            /*case "Carreras":
-                try {
-                    setCarrera(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;*/
            /* case "historial":
                 try {
                     setUser(response);
@@ -479,7 +467,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargo"),
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
                     url_ofertas+jsonArr.getJSONObject(i).getString("img"),
-                    jsonArr.getJSONObject(i).getString("nomCarrera")));
+                    jsonArr.getJSONObject(i).getString("nomCarrera"),
+                    url_ofertas+jsonArr.getJSONObject(i).getString("img_detail")));
             //Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
        /* Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");
@@ -504,20 +493,4 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         dAdapter=new DAdapter(context, R.layout.directory_content,direct);
         tList.setAdapter(dAdapter);
     }
-  /*  public void setCarrera(String jsoncad) throws JSONException {
-        JSONArray jsonArr=new JSONArray(jsoncad);
-        CarreraClass otraCarrera = new CarreraClass();
-        for (int i=0;i<jsonArr.length();i++){
-            otraCarrera.idCarrera = jsonArr.getJSONObject(i).getString("idCarrera") ;
-            otraCarrera.nomCarrera = jsonArr.getJSONObject(i).getString("nomCarrera") ;
-            carreraa.add(otraCarrera);
-        }
-        //enlace adapter= new enlace(carreraa);
-        /*trying to make an intent to the fragment...
-        FiltroCarrera my_dialog = new FiltroCarrera();
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList("carrera", carreraa);
-        my_dialog.setArguments(bundle);
-
-    }*/
 }

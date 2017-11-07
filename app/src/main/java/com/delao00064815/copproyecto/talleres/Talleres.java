@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -65,6 +66,7 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
         /*AdaptadorTalleres adapter = new AdaptadorTalleres(this,R.layout.activity_talleres, images);
         listView.setAdapter(adapter);*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(Color.parseColor("#212438"));
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -74,12 +76,20 @@ public class Talleres extends AppCompatActivity implements NavigationView.OnNavi
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        try {
-            new LoadData(this,myAdapter,listView,"tallerUser",String.valueOf(session.getUserDetails().get(KEY_CARNET))).execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        if(session.isLoggedIn()) {
+            try {
+                new LoadData(this, myAdapter, listView, "tallerUser", String.valueOf(session.getUserDetails().get(KEY_CARNET))).execute().get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            Toast.makeText(this, "Debes iniciar sesion para ver los talleres", Toast.LENGTH_SHORT).show();
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         /************para el dialog************************/

@@ -2,6 +2,7 @@ package com.delao00064815.copproyecto.talleres;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -51,6 +52,7 @@ public class Historial extends AppCompatActivity
         //aqui deberia sacar la lista de la base de datos supongo
         TextView mTextView = (TextView) findViewById(R.id.txtInscripcion);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setBackgroundColor(Color.parseColor("#212438"));
 // Put this in OnCreate
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -104,7 +106,14 @@ public class Historial extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         String msg2;
         int id = item.getItemId();
-
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
         if (id == R.id.item1) {
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);
