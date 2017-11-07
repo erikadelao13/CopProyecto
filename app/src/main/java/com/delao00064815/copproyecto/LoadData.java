@@ -159,7 +159,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         pDialog.setMessage("Loading data. Please wait...");
         pDialog.setIndeterminate(false);
         pDialog.setCancelable(false);
-        //pDialog.show();
+        pDialog.show();
 
     }
 
@@ -247,13 +247,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;
-            case "Carreras":
+            /*case "Carreras":
                 try {
                     setCarrera(response);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                break;
+                break;*/
            /* case "historial":
                 try {
                     setUser(response);
@@ -504,7 +504,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         dAdapter=new DAdapter(context, R.layout.directory_content,direct);
         tList.setAdapter(dAdapter);
     }
-    public void setCarrera(String jsoncad) throws JSONException {
+  /*  public void setCarrera(String jsoncad) throws JSONException {
         JSONArray jsonArr=new JSONArray(jsoncad);
         CarreraClass otraCarrera = new CarreraClass();
         for (int i=0;i<jsonArr.length();i++){
@@ -512,12 +512,12 @@ public class LoadData extends AsyncTask<Void, Void, String> {
             otraCarrera.nomCarrera = jsonArr.getJSONObject(i).getString("nomCarrera") ;
             carreraa.add(otraCarrera);
         }
-        enlace adapter= new enlace(carreraa);
+        //enlace adapter= new enlace(carreraa);
         /*trying to make an intent to the fragment...
         FiltroCarrera my_dialog = new FiltroCarrera();
         Bundle bundle = new Bundle();
         bundle.putParcelableArrayList("carrera", carreraa);
-        my_dialog.setArguments(bundle);*/
+        my_dialog.setArguments(bundle);
 
-    }
+    }*/
 }

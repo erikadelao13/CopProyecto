@@ -9,29 +9,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.delao00064815.copproyecto.LoadData;
 import com.delao00064815.copproyecto.Login;
 import com.delao00064815.copproyecto.MainActivity;
-import com.delao00064815.copproyecto.NetConection.NetOfertas;
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.SessionManager;
-import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.CarreraClass;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroCarrera;
-import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroFacultad;
 import com.delao00064815.copproyecto.ofertaEmpleo.Filtros.FiltroTipoOferta;
-import com.delao00064815.copproyecto.talleres.ClaUsuario;
 import com.delao00064815.copproyecto.talleres.Historial;
 import com.github.clans.fab.FloatingActionMenu;
 import com.github.clans.fab.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -79,40 +72,10 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
                     e.printStackTrace();
                 }
                 break;
-            case "Ing. Informática":
-                try {
-                    actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3160").execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Ing. Quimica":
-                try {
-                    actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3050").execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Ing. Industrial":
-                try {
-                    actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3040").execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                break;
             case "Pasantía":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://copuca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Pasantia").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://cop-uca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Pasantia").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -122,44 +85,25 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
             case "Oferta de Empleo":
                 try {
                     actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://copuca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Plaza%20Fija").execute().get();
+                    new LoadData(this,oAdapter,rView,"ofertaTipo","http://cop-uca-com.stackstaging.com/WebServer/oferta_empleotipo.php?tipoofer=Plaza%20Fija").execute().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
                 break;
-            case "Ing. Electrica":
-                try {
-                    actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=3010").execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Licenciatura en Mercadeo":
-                try {
-                    actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=2220").execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "Leyes":
-                try {
-                    actionSinfiltro.setVisibility(View.VISIBLE);
-                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://copuca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera=1260").execute().get();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                } catch (ExecutionException e) {
-                    e.printStackTrace();
-                }
-                break;
+
             default:
+                try {
+                    actionSinfiltro.setVisibility(View.VISIBLE);
+                    tipoFiltro= tipoFiltro.replaceAll(" ", "%20");
+                    new LoadData(this,oAdapter,rView,"ofertaCarrera","http://cop-uca-com.stackstaging.com/WebServer/oferta_empleocarrera.php?carrera="+tipoFiltro).execute().get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                break;
 
 
         }
@@ -169,15 +113,26 @@ public class OfertaEmpleo extends FragmentActivity implements NavigationView.OnN
     //@Override
     public void selectCarrera(View v){
 // set Fragmentclass Arguments
-        try {
+       /* try {
             new LoadData(this,"Carreras").execute().get();
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }catch (ExecutionException e) {
             e.printStackTrace();
-        }
+        }*/
        /* */
+        FiltroCarrera my_dialog = new FiltroCarrera();
+        //Bundle extras = this.getIntent().getExtras();
+        // ArrayList<CarreraClass> carrera  = extras.getParcelableArrayList("carrera");
+        // System.out.println("PROBANDO ESTA WEA OFERTA"+carrera.get(0).idCarrera);
+        Bundle bundle = new Bundle();
+       /// System.out.println("PROBANDO en ENLACE "+ carrera.get(0).idCarrera);
+        //bundle.putParcelableArrayList("carrera", carrera);
+        //my_dialog.setArguments(bundle);
+        my_dialog.show(getSupportFragmentManager(),"Dialog Carrera");
+        actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
+        actionMenu.toggle(true);
 
     }
     public void selectTipo(View v){

@@ -26,7 +26,7 @@ public class enlace  extends FragmentActivity{
         this.carrera = carrera;
     }
     //@Override
-    public void selectCarrera(View v){
+    /*public void selectCarrera(View v){
 // set Fragmentclass Arguments
         FiltroCarrera my_dialog = new FiltroCarrera();
         //Bundle extras = this.getIntent().getExtras();
@@ -39,7 +39,7 @@ public class enlace  extends FragmentActivity{
         //my_dialog.show(getSupportFragmentManager(),"Dialog Carrera");
         actionMenu=(FloatingActionMenu)findViewById(R.id.fabprincipal);
         actionMenu.toggle(true);
-    }
+    }*/
 
 
 

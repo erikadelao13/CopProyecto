@@ -7,10 +7,34 @@ import android.os.Parcelable;
  * Created by César on 20/10/2017.
  */
 
-public class CarreraClass implements Parcelable {
+public class CarreraClass/* implements Parcelable*/ {
     public String idCarrera, nomCarrera;
 
-    public CarreraClass(){
+    public String getIdCarrera() {
+        return idCarrera;
+    }
+
+    public void setIdCarrera(String idCarrera) {
+        this.idCarrera = idCarrera;
+    }
+
+    public String getNomCarrera() {
+        return nomCarrera;
+    }
+
+    public void setNomCarrera(String nomCarrera) {
+        this.nomCarrera = nomCarrera;
+    }
+
+    public CarreraClass(String idCarrera, String nomCarrera) {
+        this.idCarrera = idCarrera;
+        this.nomCarrera = nomCarrera;
+    }
+
+    public CarreraClass(String nomCarrera) {
+        this.nomCarrera = nomCarrera;
+    }
+    /*public CarreraClass(){
         idCarrera = new String();
         nomCarrera= new String();
     }
@@ -45,7 +69,7 @@ public class CarreraClass implements Parcelable {
         dest.writeString(idCarrera);
         dest.writeString(nomCarrera);
 
-    }
+    }*/
 }
 
 
