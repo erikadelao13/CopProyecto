@@ -45,7 +45,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
     ArrayList<OfertaClass> offer=new ArrayList<>();
 
     //URLs
-    String ip2="copuca-com.stackstaging.com";
+    String ip2="cop-uca-com.stackstaging.com";
     String url_ofertas_imagen="http://"+ip2+"/WebServer/imagenes/ofertas/";
     String url_offers="http://"+ip2+"/WebServer/ofertas_empleo.php";
     String url_views="http://"+ip2+"/WebServer/vistas.php?idOferta=";
@@ -196,7 +196,8 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargo"),
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
                     url_ofertas_imagen+jsonArr.getJSONObject(i).getString("img"),
-                    jsonArr.getJSONObject(i).getString("nomCarrera")));
+                    jsonArr.getJSONObject(i).getString("nomCarrera"),
+                    url_ofertas_imagen+jsonArr.getJSONObject(i).getString("img_detail")));
             Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
         Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");

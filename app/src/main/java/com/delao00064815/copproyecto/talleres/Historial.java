@@ -106,7 +106,14 @@ public class Historial extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         String msg2;
         int id = item.getItemId();
-
+        super.onResume();
+        if(session.isLoggedIn()){
+            navigationView.getMenu().findItem(R.id.item1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(true);
+        } else {
+            navigationView.getMenu().findItem(R.id.item1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item5).setVisible(false);
+        }
         if (id == R.id.item1) {
             Intent intent=new Intent(this,Login.class);
             startActivity(intent);

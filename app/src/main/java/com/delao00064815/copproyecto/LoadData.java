@@ -60,7 +60,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     ArrayList<ClaUsuario> arregloU = new ArrayList<>();
 
     //URLs
-    String ip2="copuca-com.stackstaging.com";
+    String ip2="cop-uca-com.stackstaging.com";
     String ip="10.45.7.31";
     String url_talleres="http://"+ip2+"/WebServer/imagenes/talleres/";
     String url_ofertas="http://"+ip2+"/WebServer/imagenes/ofertas/";
@@ -145,8 +145,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         pDialog = new ProgressDialog(context) ;
         pDialog.setMessage("Loading data. Please wait...");
         pDialog.setIndeterminate(false);
-        pDialog.setCancelable(false);
         //pDialog.show();
+        pDialog.setCancelable(false);
 
     }
 
@@ -467,7 +467,8 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("cargo"),
                     jsonArr.getJSONObject(i).getString("fechaLimite"),
                     url_ofertas+jsonArr.getJSONObject(i).getString("img"),
-                    jsonArr.getJSONObject(i).getString("nomCarrera")));
+                    jsonArr.getJSONObject(i).getString("nomCarrera"),
+                    url_ofertas+jsonArr.getJSONObject(i).getString("img_detail")));
             //Log.d(TAG, "setOffer: "+offer.get(i).getImg()+"");
         }
        /* Log.d(TAG, "setOffer: "+offer.get(1).getNomTipoOferta()+"");

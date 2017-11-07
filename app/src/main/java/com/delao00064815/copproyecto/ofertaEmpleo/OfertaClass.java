@@ -6,7 +6,7 @@ package com.delao00064815.copproyecto.ofertaEmpleo;
 
 public class OfertaClass {
     int idOferta;
-    String nomTipoOferta, empresa,remuneracion, descEmpleo, cargo, fechaLimite, img, carrera;
+    String nomTipoOferta, empresa,remuneracion, descEmpleo, cargo, fechaLimite, img, carrera, img_detail;
 
 
     public int getIdOferta() {
@@ -81,7 +81,11 @@ public class OfertaClass {
         this.carrera = carrera;
     }
 
-    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String descEmpleo, String cargo, String fechaLimite, String img, String carrera) {
+    public String getImg_detail(){ return img_detail; }
+
+    public void setImg_detail(String img_detail){this.img_detail=img_detail;}
+
+    public OfertaClass(int idOferta, String nomTipoOferta, String empresa, String descEmpleo, String cargo, String fechaLimite, String img, String carrera,String img_detail) {
         this.idOferta = idOferta;
         this.nomTipoOferta = nomTipoOferta;
         this.empresa = empresa;
@@ -90,6 +94,7 @@ public class OfertaClass {
         this.fechaLimite = fechaLimite;
         this.img = img;
         this.carrera =carrera;
+        this.img_detail=img_detail;
     }
 
 }
