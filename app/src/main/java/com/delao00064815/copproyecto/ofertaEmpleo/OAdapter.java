@@ -83,7 +83,8 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
         empire.setText(o.getEmpresa());
         Picasso.with(c).load(o.getImg()).into(img);
 
-        but.setOnClickListener(new View.OnClickListener(){
+    //El error
+        /*but.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(c,Oferta_descripcion.class);
@@ -95,7 +96,7 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
                 c.startActivity(intent);
             }
 
-        });
+        });*/
 
         ImageView imageTalleres = (ImageView)convertView.findViewById(R.id.imageO);
         imageTalleres.setOnClickListener(new View.OnClickListener(){

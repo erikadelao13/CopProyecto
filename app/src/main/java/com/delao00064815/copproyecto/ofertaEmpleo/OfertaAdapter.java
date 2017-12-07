@@ -53,13 +53,13 @@ public class OfertaAdapter extends RecyclerView.Adapter<MyHolder> {
         holder.but.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                Intent intent =new Intent(c,Oferta_descripcion.class);
+                /*Intent intent =new Intent(c,Oferta_descripcion.class);
                 intent.putExtra("id",ofertas.get(position).getIdOferta());
                 intent.putExtra("nombre",ofertas.get(position).getNomTipoOferta());
                 intent.putExtra("carrera",ofertas.get(position).getCarrera());
                 intent.putExtra("img",ofertas.get(position).getImg());
                 intent.putExtra("empresa",ofertas.get(position).getEmpresa());
-                c.startActivity(intent);
+                c.startActivity(intent);*/
             }
         });
         holder.imagee.setOnClickListener(new View.OnClickListener(){
