@@ -77,8 +77,8 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ofertas de Empleo  y
-          Pasantias"
+                    android:text="ofertas de empleo  y
+          pasantias"
                     android:textSize="15sp"/>
             </LinearLayout>
             <LinearLayout
@@ -103,7 +103,7 @@
                     android:layout_weight="0.1"
                     android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:text="Talleres"
+                    android:text="talleres"
                     android:textSize="15sp"/>
             </LinearLayout>
         </LinearLayout>
@@ -135,7 +135,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Directorio"
+                    android:text="directorio"
                     android:textSize="15sp"/>
             </LinearLayout>
             <LinearLayout
@@ -159,7 +159,7 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sobre Nosotros"
+                    android:text="sobre nosotros"
                     android:textSize="15sp"/>
             </LinearLayout>
         </LinearLayout>
