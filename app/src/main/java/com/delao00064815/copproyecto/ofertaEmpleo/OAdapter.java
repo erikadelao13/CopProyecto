@@ -114,6 +114,23 @@ public class OAdapter extends ArrayAdapter<OfertaClass> {
                 dialog.show();
             }
         });
+        /*second_image_ofertas*/
+        LinearLayout secondImageOfertas = (LinearLayout)convertView.findViewById(R.id.second_image_ofertas);
+        secondImageOfertas.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                LayoutInflater layoutInflater = LayoutInflater.from(c);
+                View v2 = layoutInflater.inflate(R.layout.ofertas_detail, null);
+                ImageView image = (ImageView) v2.findViewById(R.id.second_image_view_ofertas);
+                AlertDialog.Builder builder = new AlertDialog.Builder(c);
+                AlertDialog dialog = builder.create();
+                dialog.setView(v2);
+                dialog.setCancelable(true);
+                PhotoViewAttacher photoView = new PhotoViewAttacher(image); //esto uso para el zoom de las imagenes y otras cosas que agregue al gradle
+                Picasso.with(c).load(oferta.get(position).getImg_detail()).into(image);
+                dialog.show();
+            }
+        });
         return convertView;
     }
 

@@ -10,7 +10,7 @@
     <android.support.v7.widget.CardView
         android:id="@+id/NewsCardView"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="wrap_content"
         android:paddingBottom="5dp"
         android:onClick="details"
         app:cardBackgroundColor="#ffffff"
@@ -19,7 +19,6 @@
         app:cardUseCompatPadding="true">
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/cardview"
@@ -31,12 +30,15 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/second_image_ofertas"
+                    android:layout_marginBottom="10dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1.37"
                     android:orientation="vertical">
 
                     <TextView
+                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -49,7 +51,6 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/content2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -60,7 +61,6 @@
                         android:textAppearance="?attr/textAppearanceListItem" />
 
                     <TextView
-                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/lastDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -71,7 +71,6 @@
                         android:textAppearance="?attr/textAppearanceListItem" />
 
                     <TextView
-                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
