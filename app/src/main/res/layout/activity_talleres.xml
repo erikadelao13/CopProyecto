@@ -31,6 +31,7 @@
         android:textStyle="bold" />
 
        <Button
+           android:fontFamily="sans-serif-smallcaps"
            android:textColor="#fafafa"
            android:background="@color/colorPrimaryDark"
         android:layout_gravity="bottom|end"

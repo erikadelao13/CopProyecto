@@ -71,6 +71,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/a"/>
                 <TextView
+                    android:fontFamily="sans-serif-smallcaps"
                     android:layout_marginTop="4dp"
                     android:id="@+id/txtEmpleados"
                     android:layout_gravity="center"
@@ -95,6 +96,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/b"/>
                 <TextView
+                    android:fontFamily="sans-serif-smallcaps"
                     android:layout_marginTop="4dp"
                     android:id="@+id/txtTalleres"
                     android:layout_gravity="center"
@@ -127,6 +129,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/d"/>
                 <TextView
+                    android:fontFamily="sans-serif-smallcaps"
                     android:layout_marginTop="4dp"
                     android:id="@+id/txtDirectorio"
                     android:layout_gravity="center"
@@ -150,6 +153,7 @@
                     android:layout_height="match_parent"
                     android:src="@drawable/c"/>
                 <TextView
+                    android:fontFamily="sans-serif-smallcaps"
                     android:layout_marginTop="4dp"
                     android:id="@+id/txtAboutUs"
                     android:layout_gravity="center"

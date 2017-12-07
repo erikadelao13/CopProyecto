@@ -119,8 +119,7 @@ public class AdaptadorTalleres extends BaseAdapter {
                 LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
                 View v2 = layoutInflater.inflate(R.layout.image_view_talleres, null);
                 ImageView image = (ImageView) v2.findViewById(R.id.image_view_talleres);
-                AlertDialog.Builder builder = new AlertDialog.Builder(parent.getContext());
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(parent.getContext(),android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context,android.R.style.Theme_Black_NoTitleBar_Fullscreen);
                 //con esto cargo las imagenes desde el webservice
                 PhotoViewAttacher photoView = new PhotoViewAttacher(image); //esto uso para el zoom de las imagenes y otras cosas que agregue al gradle
                 Picasso.with(context).load(images.get(position).getImgTaller()).into(image);

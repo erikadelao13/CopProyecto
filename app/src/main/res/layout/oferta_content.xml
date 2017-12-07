@@ -49,6 +49,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/content2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -59,6 +60,7 @@
                         android:textAppearance="?attr/textAppearanceListItem" />
 
                     <TextView
+                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/lastDate"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -69,6 +71,7 @@
                         android:textAppearance="?attr/textAppearanceListItem" />
 
                     <TextView
+                        android:fontFamily="sans-serif-smallcaps"
                         android:id="@+id/content"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
