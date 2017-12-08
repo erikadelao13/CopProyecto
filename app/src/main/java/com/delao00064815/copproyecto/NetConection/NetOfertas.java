@@ -117,7 +117,7 @@ public class NetOfertas extends AsyncTask<Void, Void, String> {
         else{
             Intent intent=new Intent(context,MainActivity.class);
             context.startActivity(intent);
-            Toast.makeText(context, "Se produjo un error, intente de nuevo mas tarde.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Se produjo un error de conexion., intente de nuevo mas tarde.", Toast.LENGTH_SHORT).show();
         }
     }
 

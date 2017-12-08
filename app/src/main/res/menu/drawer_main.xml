@@ -24,8 +24,8 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/item3"
-            android:title="     Ayuda"/>
-        <item
+            android:title="Ayuda"/>
+        <item-
             android:id="@+id/item4"
             android:visible="false"
             android:title="Volver al menu"/>

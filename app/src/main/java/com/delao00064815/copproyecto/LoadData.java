@@ -1,7 +1,9 @@
 package com.delao00064815.copproyecto;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.delao00064815.copproyecto.R;
 import com.delao00064815.copproyecto.directorio.DAdapter;
@@ -50,6 +53,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     private String filtro;
     private String user;
     private ListView listView;
+    boolean flag=true;
     AdaptadorTalleres myAdapter;
     SessionManager session;
 
@@ -227,7 +231,14 @@ public class LoadData extends AsyncTask<Void, Void, String> {
     //Aqui seteo la info en las vistas
     @Override
     protected void onPostExecute(String result) {
-        switch (type){
+        if(response=="") {
+            Intent intent=new Intent(context,MainActivity.class);
+            context.startActivity(intent);
+            Toast.makeText(context, "Se produjo un error de conexion., intente de nuevo mas tarde.", Toast.LENGTH_SHORT).show();
+            ((Activity)context).finish();
+        }
+        else {
+            switch (type) {
             /*case "taller":
                 try {
                     setUser(response);
@@ -235,13 +246,13 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;*/
-            case "tallerUser":
-                try {
-                    setWorkshop(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
+                case "tallerUser":
+                    try {
+                        setWorkshop(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
            /* case "historial":
                 try {
                     setUser(response);
@@ -249,42 +260,44 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     e.printStackTrace();
                 }
                 break;*/
-            case "historialUser":
-                try {
-                    setWorkHist(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "oferta":
-                try {
-                    setOffer(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "empleado":
-                try {
-                    setEmployers(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "ofertaCarrera":
-                try {
-                    setOffer(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
-            case "ofertaTipo":
-                try {
-                    setOffer(response);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                break;
+                case "historialUser":
+                    try {
+                        setWorkHist(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "oferta":
+                    try {
+                        setOffer(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "empleado":
+                    try {
+                        setEmployers(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "ofertaCarrera":
+                    try {
+                        setOffer(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case "ofertaTipo":
+                    try {
+                        setOffer(response);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+            }
         }
+
         pDialog.dismiss();
 
     }
@@ -294,6 +307,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
         String linea ="";
         StringBuilder result = null;
         int respuesta = 0;
+        String exit="";
         try {
            // Log.d(TAG, "getInfoWeb: "+uri+"");
             HttpURLConnection httpCon = (HttpURLConnection)uri.openConnection();
@@ -310,14 +324,18 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                 while ((linea=read.readLine())!=null){
                     result.append(linea);
                 }
+                exit=result.toString();
             }
+            else{
+                flag=false;
 
+            }
         }
         catch (Exception e){
             e.printStackTrace();
         }
       // Log.d(TAG, "getInfoWeb:"+result.toString()+"");
-        return result.toString();
+        return exit;
     }
 
     public  void signUp(String idTaller) throws UnsupportedEncodingException {
