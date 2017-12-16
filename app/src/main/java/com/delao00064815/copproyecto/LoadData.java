@@ -377,7 +377,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                     jsonArr.getJSONObject(i).getString("nomTaller"),
                     jsonArr.getJSONObject(i).getString("aulaTaller"),
                     jsonArr.getJSONObject(i).getString("fechaTaller"),
-                    jsonArr.getJSONObject(i).getString("nomCategoria"),
+                    /*jsonArr.getJSONObject(i).getString("nomCategoria"),*/
                     url_talleres+jsonArr.getJSONObject(i).getString("imgTaller")));
         }
         /*Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");
@@ -399,7 +399,7 @@ public class LoadData extends AsyncTask<Void, Void, String> {
                         jsonArr.getJSONObject(i).getString("nomTaller"),
                         jsonArr.getJSONObject(i).getString("aulaTaller"),
                         jsonArr.getJSONObject(i).getString("fechaTaller"),
-                        jsonArr.getJSONObject(i).getString("nomCategoria"),
+                       /* jsonArr.getJSONObject(i).getString("nomCategoria"),*/
                         url_talleres + jsonArr.getJSONObject(i).getString("imgTaller")));
             }
         /*Log.d(TAG, "setWorkshop: "+ws.get(0).getNomTaller()+"");

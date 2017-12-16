@@ -9,7 +9,7 @@ public class ClaTalleres {
     private String nomTaller;
     private String aulaTaller;
     private String fechaTaller;
-    private String nomCategoria;
+  /*  private String nomCategoria;*/
     private String imgTaller;
 
     public int getIdTaller() {
@@ -45,13 +45,13 @@ public class ClaTalleres {
         this.fechaTaller = fechaTaller;
     }
 
-    public String getNomCategoria() {
+  /*  public String getNomCategoria() {
         return nomCategoria;
     }
 
     public void setNomCategoria(String nomCategoria) {
         this.nomCategoria = nomCategoria;
-    }
+    }*/
 
     public String getImgTaller() {
         return imgTaller;
@@ -61,12 +61,12 @@ public class ClaTalleres {
         this.imgTaller = imgTaller;
     }
 
-    public ClaTalleres(int idTaller, String nomTaller, String aulaTaller, String fechaTaller, String nomCategoria, String imgTaller) {
+    public ClaTalleres(int idTaller, String nomTaller, String aulaTaller, String fechaTaller, /*String nomCategoria, */String imgTaller) {
         this.idTaller = idTaller;
         this.nomTaller = nomTaller;
         this.aulaTaller = aulaTaller;
         this.fechaTaller = fechaTaller;
-        this.nomCategoria = nomCategoria;
+       /* this.nomCategoria = nomCategoria;*/
         this.imgTaller = imgTaller;
 
     }
